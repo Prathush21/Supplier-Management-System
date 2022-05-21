@@ -7,41 +7,45 @@ import {
   } from 'reactstrap';
   import '../components/addsupplymanager.css'
 
-  export default function addsupplymanager() {
+  export default function addsupplrecord() {
    
       return (
         <div className="Container">
-          <h2>New Supply Manager </h2>
+          <h2>New Supply Record </h2>
           <Form className="form">
             <FormGroup>
-              <Label for="name">Name</Label>
+              <Label for="supplID">Supplier ID</Label>
               <Input
                 type="text"
-                name="name"
-                id="exampleName"
+                name="supplID"
+                id="supplID"
                 
               />
             </FormGroup>
             <FormGroup>
-            <Label for="exampleEmail">Email Address</Label>
+           
+            <Label for="UnitPrice">Unit Price</Label>
             <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
+              type="number"
+               step="0.01"
+              name="unitprice"
+              id="unitprice"
              
             />
-            <Label for="ContactNo">Contact Number</Label>
+            <Label for="Amount">Amount</Label>
             <Input
-              type="text"
-              name="contactno"
-              id="contactnumbesr"
+              type="number"
+               step="0.01"
+              name="amount"
+              id="amount"
              
             />
-            <Label for="date">Joined Date</Label>
+            
+            <Label for="date">Received Date</Label>
             <Input
               type="date"
-              name="joineddate"
-              id="joineddate"
+              name="receivedddate"
+              id="receiveddate"
              
             />
 
