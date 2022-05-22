@@ -13,7 +13,7 @@ import {
           <Button color="primary" style={{ marginLeft: '.5rem' }}> Delete Record </Button>
 
           <br></br> <br></br> <br></br>
-          <Table striped bordered hover variant="dark" >
+          <Table responsive striped bordered hover variant="dark" >
         <thead>
           <tr>
             <th>ID</th>
