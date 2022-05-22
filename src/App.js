@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
-import AddManager from "./pages/addsupplymanager";
-import AddSupplier from "./pages/addsupplier";
-import AddSupplyRecord from "./pages/addsupplyrecord";
+import AddManager from "./components/addsupplymanager";
+import AddSupplier from "./components/addsupplier";
+import AddSupplyRecord from "./components/addsupplyrecord";
 
 
 

@@ -5,13 +5,13 @@ import {
     Input,
     Label
   } from 'reactstrap';
-  import '../components/addsupplymanager.css'
+  import '../styles/addsupplymanager.css'
 
-  export default function addsupplier() {
+  export default function addsupplymanager() {
    
       return (
         <div className="Container">
-          <h2>New Supplier </h2>
+          <h2>New Supply Manager </h2>
           <Form className="form">
             <FormGroup>
               <Label for="name">Name</Label>
@@ -37,13 +37,6 @@ import {
               id="contactnumbesr"
              
             />
-            <Label for="address">Address</Label>
-              <Input
-                type="text"
-                name="address"
-                id="address"
-                
-              />
             <Label for="date">Joined Date</Label>
             <Input
               type="date"

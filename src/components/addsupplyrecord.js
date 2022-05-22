@@ -5,7 +5,7 @@ import {
     Input,
     Label
   } from 'reactstrap';
-  import '../components/addsupplymanager.css'
+  import '../styles/addsupplymanager.css'
 
   export default function addsupplrecord() {
    
