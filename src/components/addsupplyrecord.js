@@ -4,7 +4,7 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 
 export default function addsupplrecord() {
   return (
-    <div className="Container">
+    <div className="Container-fluid">
       <h2>New Supply Record </h2>
       <Form className="form">
         <FormGroup>
