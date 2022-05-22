@@ -7,7 +7,7 @@ import {
   export default function supplyRecords() {
    
       return (
-        <div className='Container' >
+        <div className='Container-fluid' >
           <h2>Supply Records </h2><br></br>
           <Button color="primary" > Add New Record</Button> {' '} {' '}
           <Button color="primary" style={{ marginLeft: '.5rem' }}> Delete Record </Button>

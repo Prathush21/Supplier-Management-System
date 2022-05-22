@@ -10,7 +10,7 @@ import {
   export default function addsupplier() {
    
       return (
-        <div className="Container">
+        <div className="Container-fluid">
           <h2>New Supplier </h2>
           <Form className="form">
             <FormGroup>

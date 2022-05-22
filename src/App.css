@@ -11,7 +11,7 @@ body{
   background-color: aquamarine;
 }
 
-.navbar-dark {
+.navbar-dark,.navigationBar {
   background-color: #2d37a8;
 }
 
