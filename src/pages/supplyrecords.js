@@ -2,18 +2,18 @@ import {
     Button,
     Table
   } from 'reactstrap';
-  import '../styles/addsupplymanager.css'
+  import '../styles/supplyrecords.css'
 
   export default function supplyRecords() {
    
       return (
-        <div className="Container">
+        <div className='Container' >
           <h2>Supply Records </h2><br></br>
           <Button color="primary" > Add New Record</Button> {' '} {' '}
           <Button color="primary" style={{ marginLeft: '.5rem' }}> Delete Record </Button>
 
           <br></br> <br></br> <br></br>
-          <Table striped bordered hover variant="dark">
+          <Table striped bordered hover variant="dark" >
         <thead>
           <tr>
             <th>ID</th>
