@@ -4,6 +4,8 @@ import Login from "./pages/login";
 import AddManager from "./components/addsupplymanager";
 import AddSupplier from "./components/addsupplier";
 import AddSupplyRecord from "./components/addsupplyrecord";
+import SupplyRecords from "./pages/supplyrecords";
+
 
 
 
@@ -19,6 +21,8 @@ function App() {
       <Route path='/addmanager' element={<AddManager />}></Route>
       <Route path='/addsupplier' element={<AddSupplier />}></Route>
       <Route path='/addsupplyrecord' element={<AddSupplyRecord />}></Route>
+      <Route path='/supplyrecords' element={<SupplyRecords />}></Route>
+
 
 
       </Routes>
