@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import Image from "react-bootstrap/Image";
+import '../styles/login.css';
+
 
 export default function Login() {
   return (
