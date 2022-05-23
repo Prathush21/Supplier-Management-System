@@ -1,19 +1,17 @@
 import { Button, Table } from "react-bootstrap";
-import "../styles/supplyrecords.css";
+import "../styles/table.css";
 import { MDBCol, MDBInput } from "mdbreact";
 
-export default function suppliers() {
-
-    
+export default function SupplyManagers() {
 
   return (
-    <div className="Container">
-      <h2>Supplier</h2>
+    <div className="Container-fluid">
+      <h2>Supply Managers </h2>
       <br></br>
-      <Button color="primary"> Add New Supplier </Button>{" "}
+      <Button color="primary"> Add New Supply Manager </Button>{" "}
       <Button color="primary" style={{ marginLeft: ".5rem" }}>
         {" "}
-        Delete Supplier{" "}
+        Delete Record{" "}
       </Button>
       <br></br>
       <br></br>
@@ -25,7 +23,7 @@ export default function suppliers() {
         />
       </MDBCol>
       <br></br> <br></br> 
-      <Table responsive striped bordered hover>
+      <Table responsive striped bordered hover className="Mytable">
         <thead>
           <tr>
             <th>ID</th>

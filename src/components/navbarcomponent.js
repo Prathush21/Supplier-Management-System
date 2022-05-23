@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, } from "reactstrap";
 
 export default function NavigationBar() {
   return (
@@ -15,12 +15,12 @@ export default function NavigationBar() {
         </Button>
       </div>
       <div className="row mt-3" >
-        <Button outline color="light"  href='/addmanager'>
+        <Button outline color="light"  href='/supplymanagers'>
           <span className="fa fa-user-o fa-lg"></span>  SUPPLY MANAGERS
         </Button>
       </div>
       <div className="row mt-3">
-        <Button outline color="light"  href='/addsupplier'>
+        <Button outline color="light"  href='/suppliers'>
           <span className="fa fa-vcard fa-lg"></span>  SUPPLIERS
         </Button>
       </div>

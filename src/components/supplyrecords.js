@@ -2,7 +2,7 @@ import {
     Button,
     Table
   } from 'reactstrap';
-  import '../styles/supplyrecords.css'
+  import '../styles/table.css'
 
   export default function supplyRecords() {
    

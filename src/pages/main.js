@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Header from "../components/headercomponent";
 import NavigationBar from "../components/navbarcomponent";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AddManager from "../components/addsupplymanager";
-import AddSupplier from "../components/addsupplier";
+import SupplyManagers from "../components/supplymanagers";
+import Suppliers from "../components/suppliers";
 import AddSupplyRecord from "../components/addsupplyrecord";
-import SupplyRecords from "./supplyrecords";
+import SupplyRecords from "../components/supplyrecords";
 import {} from "reactstrap";
 
 class Main extends Component {
@@ -20,8 +20,8 @@ class Main extends Component {
           <div className="col-12 col-md-10">
             <Router>
               <Routes>
-                <Route path="/addmanager" element={<AddManager />}></Route>
-                <Route path="/addsupplier" element={<AddSupplier />}></Route>
+                <Route path="/supplymanagers" element={<SupplyManagers />}></Route>
+                <Route path="/suppliers" element={<Suppliers />}></Route>
                 <Route
                   path="/addsupplyrecord"
                   element={<AddSupplyRecord />}
