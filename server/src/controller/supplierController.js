@@ -3,29 +3,25 @@ const db = require("../db/db");
 const addSupplier = (req, res) => {
   try {
     const supplier = req.body;
-    addressSql =
-      "INSERT INTO Address (Line1, Line2,City,District,Postal_Code) VALUES (?, ?, ?, ?,?);";
+    supplierSql =
+      "INSERT INTO Supplier (name, email,Joined_date,photo) VALUES (?, ?, ?, ?);";
     db.query(
-      addressSql,
-      [
-        supplier.line1,
-        supplier.line2,
-        supplier.city,
-        supplier.district,
-        supplier.Postal_Code,
-      ],
-      (err, resultAddress) => {
-        if (resultAddress.affectedRows) {
-          supplierSql =
-            "INSERT INTO Supplier (name, email,Joined_date,photo,address) VALUES (?, ?, ?, ?,?);";
+      supplierSql,
+      [supplier.name, supplier.email, new Date(), supplier.photo],
+      (err, result) => {
+        if (result.affectedRows) {
+          console.log(result);
+          addressSql =
+            "INSERT INTO Address (Line1, Line2,City,District,Postal_Code,supplierID) VALUES (?, ?, ?, ?,?,?);";
           db.query(
-            supplierSql,
+            addressSql,
             [
-              supplier.name,
-              supplier.email,
-              new Date(),
-              supplier.photo,
-              resultAddress.insertId,
+              supplier.line1,
+              supplier.line2,
+              supplier.city,
+              supplier.district,
+              supplier.Postal_Code,
+              result.insertId,
             ],
             (err, result) => {
               if (result.affectedRows) {
@@ -47,7 +43,7 @@ const getSupplierByName = (req, res) => {
     const name = "%" + searchName + "%";
 
     const supplierSql =
-      "SELECT * FROM Supplier INNER JOIN Address ON Supplier.address=Address.ID WHERE name LIKE ?";
+      "SELECT * FROM Supplier INNER JOIN Address ON Supplier.sID=Address.supplierID WHERE name LIKE ?";
     db.query(supplierSql, [name], (err, result) => {
       res.send(result);
     });
@@ -59,7 +55,7 @@ const getSupplierByName = (req, res) => {
 const getSupplierByID = (req, res) => {
   try {
     const supplierSql =
-      "SELECT * FROM Supplier INNER JOIN Address ON Supplier.address=Address.ID WHERE Supplier.ID = ?";
+      "SELECT * FROM Supplier INNER JOIN Address ON Supplier.sID=Address.supplierID WHERE Supplier.sID = ?";
     db.query(supplierSql, [req.params.id], (err, result) => {
       res.send(result);
     });
@@ -71,7 +67,7 @@ const getSupplierByID = (req, res) => {
 const getSuppliers = (req, res) => {
   try {
     const supplierSql =
-      "SELECT * FROM Supplier INNER JOIN Address ON Supplier.address=Address.ID";
+      "SELECT * FROM Supplier INNER JOIN Address ON Supplier.sID=Address.supplierID";
     db.query(supplierSql, [req.params.id], (err, result) => {
       res.send(result);
     });
@@ -82,7 +78,7 @@ const getSuppliers = (req, res) => {
 
 const deleteSupplierByID = (req, res) => {
   try {
-    const supplierSql = "DELETE FROM Supplier WHERE ID = ?";
+    const supplierSql = "DELETE FROM Supplier WHERE sID = ?";
     db.query(supplierSql, [req.params.id], (err, result) => {
       if (result.affectedRows) {
         res.send("Supplier Deleted...");
@@ -116,7 +112,7 @@ const editSupplier = (req, res) => {
     });
 
     const supplierSql =
-      "UPDATE Supplier SET name= ? , email = ? , Joined_date = ? , photo = ? WHERE ID = ?";
+      "UPDATE Supplier SET name= ? , email = ? , Joined_date = ? , photo = ? WHERE sID = ?";
     db.query(
       supplierSql,
       [
@@ -128,33 +124,28 @@ const editSupplier = (req, res) => {
       ],
       (err, result) => {
         if (result.affectedRows) {
-          const supplierSql = "SELECT address FROM Supplier WHERE ID = ?";
-          db.query(supplierSql, [req.params.id], (err, result) => {
-            if (result[0]) {
-              const supplierSql =
-                "UPDATE Address SET line1= ? , line2 = ? , city = ? , district = ? , postal_Code = ? WHERE ID = ?";
-              db.query(
-                supplierSql,
-                [
-                  requestedUpdates.line1,
-                  requestedUpdates.line2,
-                  requestedUpdates.city,
-                  requestedUpdates.district,
-                  requestedUpdates.postal_Code,
-                  result[0].address,
-                ],
-                (err, result) => {
-                  if (result.affectedRows) {
-                    res.send("Successfully Updated...");
-                  } else {
-                    res.send("Not Updated...");
-                  }
-                }
-              );
-            } else {
-              res.send("Not Updated...");
+          const supplierSql =
+            "UPDATE Address SET line1= ? , line2 = ? , city = ? , district = ? , postal_Code = ? WHERE supplierID = ?";
+          db.query(
+            supplierSql,
+            [
+              requestedUpdates.line1,
+              requestedUpdates.line2,
+              requestedUpdates.city,
+              requestedUpdates.district,
+              requestedUpdates.postal_Code,
+              supplierID,
+            ],
+            (err, result) => {
+              if (result.affectedRows) {
+                res.send("Successfully Updated...");
+              } else {
+                res.send("Not Updated...");
+              }
             }
-          });
+          );
+        } else {
+          res.send("Not Updated...");
         }
       }
     );

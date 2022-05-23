@@ -9,17 +9,19 @@ db.connect((err) => {
 });
 
 app.get("/", (req, res) => {
-//   let sql =
-//     "CREATE TABLE IF NOT EXISTS `Address` ( \
-//   `ID` int AUTO_INCREMENT,\
-//   `Line1` varchar(10),\
-//   `Line2` varchar(50),\
-//   `City` varchar(20),\
-//   `District` varchar(20),\
-//   `Postal_Code` varchar(10),\
-//   PRIMARY KEY (`ID`)\
-// ) ENGINE=INNODB;";
-let sql ="CREATE TABLE IF NOT EXISTS `Supplier` (`ID` int NOT NULL AUTO_INCREMENT,`name` varchar(20),`email` varchar(50),`Joined_date` date,`photo` blob,`address` int,PRIMARY KEY (`ID`),FOREIGN KEY (address) REFERENCES Address(ID) ON DELETE CASCADE) ENGINE=INNODB;"
+  let sql =
+    "CREATE TABLE IF NOT EXISTS `Address` ( \
+  `aID` int AUTO_INCREMENT,\
+  `Line1` varchar(10),\
+  `Line2` varchar(50),\
+  `City` varchar(20),\
+  `District` varchar(20),\
+  `Postal_Code` varchar(10),\
+  `supplierID` int,\
+  PRIMARY KEY (`aID`)\
+  ,FOREIGN KEY (supplierID) REFERENCES Supplier(sID) ON DELETE CASCADE \
+) ENGINE=INNODB;";
+// let sql ="CREATE TABLE IF NOT EXISTS `Supplier` (`sID` int NOT NULL AUTO_INCREMENT,`name` varchar(20),`email` varchar(50),`Joined_date` date,`photo` blob,PRIMARY KEY (`sID`)) ENGINE=INNODB;"
  db.query(sql, (err, result) => {
   if (err) throw err;
   console.log(result);
