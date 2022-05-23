@@ -1,5 +1,5 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import "../styles/addsupplymanager.css";
+import "../styles/supplyrecords.css";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 
 export default function addsupplrecord() {
