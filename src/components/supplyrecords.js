@@ -5,6 +5,49 @@ import {
   import '../styles/table.css'
 
   export default function supplyRecords() {
+
+    const supplyrecords = [
+      {
+        'id': 100, 
+        'supplierID': '175', 
+        'unitprice':75,
+        'amount':10000,
+        'type': '1',
+        'availability':"yes",
+        'receiveddate':'2015-10-18'
+  
+      },
+      {
+        'id': 100, 
+        'supplierID': '175', 
+        'unitprice':75,
+        'amount':10000,
+        'type': '1',
+        'availability':"yes",
+        'receiveddate':'2015-10-18'
+  
+      },
+      {
+        'id': 100, 
+        'supplierID': '175', 
+        'unitprice':75,
+        'amount':10000,
+        'type': '1',
+        'availability':"yes",
+        'receiveddate':'2015-10-18'
+  
+      },
+      {
+        'id': 100, 
+        'supplierID': '175', 
+        'unitprice':75,
+        'amount':10000,
+        'type': '1',
+        'availability':"yes",
+        'receiveddate':'2015-10-18'
+  
+      }
+  ];
    
       return (
         <div className='Container-fluid' >
@@ -16,6 +59,7 @@ import {
           <Table responsive striped bordered hover variant="dark" >
         <thead>
           <tr>
+          <th><input type="checkbox"     /></th>
             <th>ID</th>
             <th>Supplier ID</th>
 
@@ -24,55 +68,24 @@ import {
             <th> Type</th>
             <th> Availability</th>
             <th> Received Date</th>
+
           </tr>
         </thead>
         <tbody>
-      
+        {supplyrecords.map((record, index) => (
+              <tr data-index={index}>
+                            <td><input type="checkbox"    /></td>
 
-            
-            
-          <tr>
-            <td ><a href ="103"> 103 </a></td>
-            <td>Loki</td>
-            <td>65</td>
-            <td>65</td>
-            <td>65</td>
-            <td>65</td>
-            <td>65</td>
-          
-          </tr>
+                <td>{record.id}</td>
+                <td>{record.supplierID}</td>
+                <td>{record.unitprice}</td>
+                <td>{record.amount}</td>
+                <td>{record.type}</td>
+                <td>{record.availability}</td>
+                <td>{record.receiveddate}</td>
 
-          <tr>
-            <td>104</td>
-            <td>Kanag</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-       
-          </tr>
-          <tr>
-            <td>104</td>
-            <td>Kanag</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-       
-          </tr>
-          <tr>
-            <td>104</td>
-            <td>Kanag</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-            <td>72</td>
-       
-          </tr>
-         
+              </tr>
+            ))}
           
         </tbody>
       </Table>
