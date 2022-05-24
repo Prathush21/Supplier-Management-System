@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import {
     Button,
     Form,
@@ -5,50 +6,69 @@ import {
     Input,
     Label
   } from 'reactstrap';
-  import '../components/addsupplymanager.css'
+import '../components/addsupplymanager.css';
+import axios from 'axios';
 
-  export default function addsupplymanager() {
-   
-      return (
-        <div className="Container">
-          <h2>New Supply Manager </h2>
-          <Form className="form">
-            <FormGroup>
-              <Label for="name">Name</Label>
-              <Input
-                type="text"
-                name="name"
-                id="exampleName"
-                
-              />
-            </FormGroup>
-            <FormGroup>
-            <Label for="exampleEmail">Email Address</Label>
-            <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-             
-            />
-            <Label for="ContactNo">Contact Number</Label>
+
+export default function AddSupplyManager() {
+  
+    const [name, setName]  = useState('');
+    const [email, setEmail]  = useState('');
+    const [contactNo, setContactNo]  = useState('');
+    const [date, setDate]  = useState('');
+
+    const sendDataToAPI = () => {
+      axios.post('',
+      name,
+      email,
+      contactNo,
+      date)
+    }
+
+    return (
+      <div className="Container">
+        <h2>New Supply Manager </h2>
+        <Form className="form">
+          <FormGroup>
+            <Label for="name">Name</Label>
             <Input
               type="text"
-              name="contactno"
-              id="contactnumbesr"
-             
+              name="name"
+              id="exampleName"
+              onChange={(e) => setName(e.target.value)}
+              
             />
-            <Label for="date">Joined Date</Label>
-            <Input
-              type="date"
-              name="joineddate"
-              id="joineddate"
-             
-            />
+          </FormGroup>
+          <FormGroup>
+          <Label for="exampleEmail">Email Address</Label>
+          <Input
+            type="email"
+            name="email"
+            id="exampleEmail" 
+            onChange={(e) => setEmail(e.target.value)}
+                 
+          />
+          <Label for="ContactNo">Contact Number</Label>
+          <Input 
+            type="text"
+            name="contactno"
+            id="contactnumbesr" 
+            onChange={(e) => setContactNo(e.target.value)}
+            
+          />
+          <Label for="date">Joined Date</Label>
+          <Input
+            type="date"
+            name="joineddate"
+            id="joineddate"
+            onChange={(e) => setDate(e.target.value)}
+            
+          />
 
-            </FormGroup>
-          <Button color="primary"> Submit </Button>
-        </Form>
-      </div>
-    );
-  }
+          </FormGroup>
+        <Button color="primary" onClick={sendDataToAPI}> Submit </Button>
+      </Form>
+    </div>
+  );
+}
   
