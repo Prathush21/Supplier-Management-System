@@ -5,9 +5,6 @@ import AddManager from "./pages/addsupplymanager";
 import AddSupplier from "./pages/addsupplier";
 import AddSupplyRecord from "./pages/addsupplyrecord";
 
-
-
-
 function App() {
   return (
     <div className="App">
@@ -24,9 +21,6 @@ function App() {
       </Routes>
 
       </Router>
-     
-       
-
     </div>
   );
 }
