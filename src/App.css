@@ -1,12 +1,21 @@
-.loginHeading{
-  padding-left: 8vw;
-  padding-top: 20vh;
-}
-
-.loginImage{
-  padding-top: 20vh;
-}
-
 body{
   background: #F5F7F9;  
+  margin: 0;
+}
+
+.container-fluid .jumbotron, .container .jumbotron {
+
+}
+
+.header{
+  background-color: aquamarine;
+}
+
+.navbar-dark,.navigationBar {
+  background-color: #2d37a8;
+}
+
+.App{
+  padding: 0;
+  margin: 0;
 }

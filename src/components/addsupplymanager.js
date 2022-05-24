@@ -6,6 +6,7 @@ import {
     Input,
     Label
   } from 'reactstrap';
+<<<<<<< HEAD:src/pages/addsupplymanager.js
 import '../components/addsupplymanager.css';
 import axios from 'axios';
 
@@ -31,6 +32,34 @@ export default function AddSupplyManager() {
         <Form className="form">
           <FormGroup>
             <Label for="name">Name</Label>
+=======
+  import '../styles/supplyrecords.css'
+
+  export default function addsupplymanager() {
+   
+      return (
+        <div className="Container-fluid">
+          <h2>New Supply Manager </h2>
+          <Form className="form">
+            <FormGroup>
+              <Label for="name">Name</Label>
+              <Input
+                type="text"
+                name="name"
+                id="exampleName"
+                
+              />
+            </FormGroup>
+            <FormGroup>
+            <Label for="exampleEmail">Email Address</Label>
+            <Input
+              type="email"
+              name="email"
+              id="exampleEmail"
+             
+            />
+            <Label for="ContactNo">Contact Number</Label>
+>>>>>>> 909ee4783e383bbca3e7fd910e6f3757729d882b:src/components/addsupplymanager.js
             <Input
               type="text"
               name="name"

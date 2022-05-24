@@ -5,12 +5,12 @@ import {
     Input,
     Label
   } from 'reactstrap';
-  import '../components/addsupplymanager.css'
+  import '../styles/supplyrecords.css'
 
   export default function addsupplier() {
    
       return (
-        <div className="Container">
+        <div className="Container-fluid">
           <h2>New Supplier </h2>
           <Form className="form">
             <FormGroup>
