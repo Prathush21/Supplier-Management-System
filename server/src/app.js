@@ -10,7 +10,9 @@ app.use(
 app.use(bodyParser.json());
 
 const { supplierRouter } = require("./router/supplier.routes");
+const { supplyRecordRouter } = require("./router/supplyRecord.routes");
 
 app.use("/supplier", supplierRouter);
+app.use("/supplyRecord", supplyRecordRouter);
 
 module.exports = app;
