@@ -1,53 +1,78 @@
-import { Button, Table } from "react-bootstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Table
+} from "reactstrap";
 import "../styles/table.css";
-import { MDBCol, MDBInput } from "mdbreact";
-import {useState} from "react"
+import { MDBRow, MDBCol, MDBInput } from "mdbreact";
+import React, { Component, useState } from "react";
+import AddSupplier from "./addsupplier";
 
-export default function Suppliers() {
+class Suppliers extends Component{
+  constructor(props) {
+    super(props);
 
-  const [check, setChecked] = useState(false);
-  const [selectAll,setSelectAll] = useState(false);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.toggleSelectAll = this.toggleSelectAll.bind(this);
+    this.state = {
+      isModalOpen: false,
+      check:false,
+      selectAll:false,
+    };
+  }
 
+  toggleModal() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+    });
+  }
+
+  toggleSelectAll() {
+    this.setState({
+      selectAll: !this.state.selectAll,
+    });
+  }
+
+  render() {
   const suppliers = [
     {
-      'id': 100, 
-      'name': 'Kamal', 
-      'email': 'kamal@gmail.com', 
-      'contactno':'0759862565',
-      'joineddate':'2015-10-18'
-
+      id: 100,
+      name: "Kamal",
+      email: "kamal@gmail.com",
+      contactno: "0759862565",
+      joineddate: "2015-10-18",
     },
     {
-      'id': 100, 
-      'name': 'Kamal', 
-      'email': 'kamal@gmail.com', 
-      'contactno':'0759862565',
-      'joineddate':'2015-10-18'
-
+      id: 100,
+      name: "Kamal",
+      email: "kamal@gmail.com",
+      contactno: "0759862565",
+      joineddate: "2015-10-18",
     },
     {
-      'id': 100, 
-      'name': 'Kamal', 
-      'email': 'kamal@gmail.com', 
-      'contactno':'0759862565',
-      'joineddate':'2015-10-18'
-
+      id: 100,
+      name: "Kamal",
+      email: "kamal@gmail.com",
+      contactno: "0759862565",
+      joineddate: "2015-10-18",
     },
     {
-      'id': 100, 
-      'name': 'Kamal', 
-      'email': 'kamal@gmail.com', 
-      'contactno':'0759862565',
-      'joineddate':'2015-10-18'
-
+      id: 100,
+      name: "Kamal",
+      email: "kamal@gmail.com",
+      contactno: "0759862565",
+      joineddate: "2015-10-18",
     },
-];
-  
+  ];
+
   return (
+    <React.Fragment>
     <div className="Container-fluid">
       <h2>Supplier</h2>
       <br></br>
-      <Button color="primary"> Add New Supplier </Button>{" "}
+      <Button color="primary" onClick={this.toggleModal}> Add New Supplier </Button>{" "}
       <Button color="primary" style={{ marginLeft: ".5rem" }}>
         {" "}
         Delete Supplier{" "}
@@ -55,27 +80,29 @@ export default function Suppliers() {
       <br></br>
       <br></br>
       <div className="search-box">
-      <MDBCol md="6" style={{ display: "inline-grid" }}>
-        <MDBInput
-          hint="Search"
-          type="text"
-          id="search"
-        />
-      </MDBCol>{' '}
-        <Button
-          color="secondary"
-          style={{ marginLeft: ".5rem", marginBottom: ".4rem" }}
-        >
-          {" "}
-          Search{" "}
-        </Button>
+        <MDBRow>
+          <MDBCol md="9" style={{ display: "inline-grid" }}>
+            <MDBInput hint="Search" type="text" id="search" />
+          </MDBCol>
+          <MDBCol md="3" style={{ display: "inline-grid" }}>
+            <Button
+              color="secondary"
+              style={{ width: "8vw", marginBottom: "1.5rem" }}
+            >
+              Search
+            </Button>
+          </MDBCol>
+        </MDBRow>
       </div>
       <Table responsive striped bordered hover>
         <thead>
           <tr>
             <th>
               {" "}
-              <input type="checkbox" onChange={()=>setSelectAll(!selectAll)} />
+              <input
+                type="checkbox"
+                onChange={this.toggleSelectAll}
+              />
             </th>
             <th>ID</th>
             <th>Name</th>
@@ -85,25 +112,33 @@ export default function Suppliers() {
           </tr>
         </thead>
         <tbody>
+          {suppliers.map((supplier, index) => (
+            <tr data-index={index}>
+              <td>
+                <input type="checkbox" onChange={!this.check} />
+              </td>
 
-        
-        {suppliers.map((supplier, index) => (
-              <tr data-index={index}>
-                            <td><input type="checkbox"  onChange= {!check}   /></td>
-
-                <td>{supplier.id}</td>
-                <td>{supplier.name}</td>
-                <td>{supplier.email}</td>
-                <td>{supplier.contactno}</td>
-                <td>{supplier.joineddate}</td>
-
-              </tr>
-            ))}
-
-
+              <td>{supplier.id}</td>
+              <td>{supplier.name}</td>
+              <td>{supplier.email}</td>
+              <td>{supplier.contactno}</td>
+              <td>{supplier.joineddate}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+            <ModalHeader toggle={this.toggleModal}>
+            <h3>New Supplier</h3></ModalHeader>
+            <ModalBody>
+              <AddSupplier/>
+            </ModalBody>
+          </Modal>
+      </React.Fragment>
   );
 }
+}
+
+export default Suppliers;
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
 import "../styles/table.css";
 import { MDBCol, MDBInput, MDBRow } from "mdbreact";
 import AddSupplyManager from "./addsupplymanager";
@@ -8,6 +7,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
+  Table
 } from "reactstrap";
 
 class SupplyManagers extends Component {

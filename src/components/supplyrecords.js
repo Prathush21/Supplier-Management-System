@@ -1,10 +1,31 @@
+import React, { Component } from 'react';
 import {
-    Button,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
     Table
   } from 'reactstrap';
-  import '../styles/table.css'
+  import '../styles/table.css';
+  import AddSupplRecord from "./addsupplyrecord";
 
-  export default function supplyRecords() {
+  class SupplyRecords extends Component {
+    constructor(props) {
+      super(props);
+  
+      this.toggleModal = this.toggleModal.bind(this);
+      this.state = {
+        isModalOpen: false,
+      };
+    }
+  
+    toggleModal() {
+      this.setState({
+        isModalOpen: !this.state.isModalOpen,
+      });
+    }
+  
+    render() {
 
     const supplyrecords = [
       {
@@ -50,9 +71,10 @@ import {
   ];
    
       return (
+        <React.Fragment>
         <div className='Container-fluid' >
           <h2>Supply Records </h2><br></br>
-          <Button color="primary" > Add New Record</Button> {' '} {' '}
+          <Button color="primary" onClick={this.toggleModal}> Add New Record</Button> {' '} {' '}
           <Button color="primary" style={{ marginLeft: '.5rem' }}> Delete Record </Button>
 
           <br></br> <br></br> <br></br>
@@ -90,6 +112,16 @@ import {
         </tbody>
       </Table>
       </div>
+              <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+              <ModalHeader toggle={this.toggleModal}>
+              <h3>New Supply Record  </h3>             </ModalHeader>
+              <ModalBody>
+                <AddSupplRecord/>
+              </ModalBody>
+            </Modal>
+        </React.Fragment>
     );
   }
-  
+} 
+
+export default SupplyRecords;
