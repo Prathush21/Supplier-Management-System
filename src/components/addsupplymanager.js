@@ -1,74 +1,63 @@
-import React, {useState} from 'react';
-import {
-    Button,
-    Form,
-    FormGroup,
-    Input,
-    Label
-  } from 'reactstrap';
-import '../components/addsupplymanager.css';
-import axios from 'axios';
-
+import React, { useState } from "react";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import "../styles/table.css";
+import axios from "axios";
 
 export default function AddSupplyManager() {
-  
-    const [name, setName]  = useState('');
-    const [email, setEmail]  = useState('');
-    const [contactNo, setContactNo]  = useState('');
-    const [date, setDate]  = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactNo, setContactNo] = useState("");
+  const [date, setDate] = useState("");
 
-    const sendDataToAPI = () => {
-      axios.post('',
-      name,
-      email,
-      contactNo,
-      date)
-    }
+  const sendDataToAPI = () => {
+    axios.post("", name, email, contactNo, date);
+  };
 
-    return (
-      <div className="Container">
-        <h2>New Supply Manager </h2>
-        <Form className="form">
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input
-              type="text"
-              name="name"
-              id="exampleName"
-              onChange={(e) => setName(e.target.value)}
-              
-            />
-          </FormGroup>
-          <FormGroup>
+  return (
+    <div className="Container-fluid">
+      <Form className="form">
+        <FormGroup>
+          <Label for="name">Name</Label>
+          <Input
+            type="text"
+            name="name"
+            id="exampleName"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup>
           <Label for="exampleEmail">Email Address</Label>
           <Input
             type="email"
             name="email"
-            id="exampleEmail" 
+            id="exampleEmail"
             onChange={(e) => setEmail(e.target.value)}
-                 
           />
+        </FormGroup>
+
+        <FormGroup>
           <Label for="ContactNo">Contact Number</Label>
-          <Input 
+          <Input
             type="text"
             name="contactno"
-            id="contactnumbesr" 
+            id="contactnumbesr"
             onChange={(e) => setContactNo(e.target.value)}
-            
           />
+        </FormGroup>
+        <FormGroup>
           <Label for="date">Joined Date</Label>
           <Input
             type="date"
             name="joineddate"
             id="joineddate"
             onChange={(e) => setDate(e.target.value)}
-            
           />
-
-          </FormGroup>
-        <Button color="primary" onClick={sendDataToAPI}> Submit </Button>
+        </FormGroup>
+        <Button color="primary" onClick={sendDataToAPI}>
+          {" "}
+          Submit{" "}
+        </Button>
       </Form>
     </div>
   );
 }
-  
