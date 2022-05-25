@@ -3,10 +3,6 @@ body{
   margin: 0;
 }
 
-.container-fluid .jumbotron, .container .jumbotron {
-
-}
-
 .header{
   background-color: aquamarine;
 }
@@ -18,4 +14,12 @@ body{
 .App{
   padding: 0;
   margin: 0;
+  height: 100vh;
+}
+.navigationBar{
+
+}
+
+.main{
+  height: 100vh;
 }

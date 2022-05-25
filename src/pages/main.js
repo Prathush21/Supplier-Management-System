@@ -13,7 +13,7 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <div className="row">
+        <div className="row main">
           <div className="col-12 col-md-2 navigationBar">
             <NavigationBar />
           </div>
