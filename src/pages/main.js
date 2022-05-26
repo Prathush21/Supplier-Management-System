@@ -6,6 +6,8 @@ import SupplyManagers from "../components/supplymanagers";
 import Suppliers from "../components/suppliers";
 import AddSupplyRecord from "../components/addsupplyrecord";
 import SupplyRecords from "../components/supplyrecords";
+import Goods from "../components/goods";
+
 import {} from "reactstrap";
 
 class Main extends Component {
@@ -29,6 +31,10 @@ class Main extends Component {
                 <Route
                   path="/supplyrecords"
                   element={<SupplyRecords />}
+                ></Route>
+                <Route
+                  path="/goods"
+                  element={<Goods />}
                 ></Route>
 
                 <Route path="/main" element={<Main />}></Route>
