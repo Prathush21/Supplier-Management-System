@@ -11,6 +11,7 @@ import {
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../styles/table.css";
 import AddGood from "./addnewgood";
+import axios from "axios";
 
 class Storage extends Component {
   constructor(props) {
@@ -40,41 +41,11 @@ class Storage extends Component {
         stockamount: 25,
         refilledDate: "2022/05/27",
         availability: "available",
-      },
-      {
-        id:2,
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        unitprize: "475.00",
-        image: "/assets/images/login.jpg",
-        stockamount: 25,
-        refilledDate: "2022/05/27",
-        availability: "available",
-      },
-      {
-        id:3,
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        unitprize: "475.00",
-        image: "/assets/images/login.jpg",
-        stockamount: 25,
-        refilledDate: "2022/05/27",
-        availability: "available",
-      },
-      {
-        id:4,
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        unitprize: "475.00",
-        image: "/assets/images/login.jpg",
-        stockamount: 25,
-        refilledDate: "2022/05/27",
-        availability: "available",
-      },
-    ];
+      }]
+
+    axios.get('').then((getData) => {
+      storage.push(getData.data);
+    });
 
     return (
       <React.Fragment>

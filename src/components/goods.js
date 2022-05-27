@@ -57,7 +57,12 @@ class Good extends Component {
     //   },
     // ];
 
-    const goods = [];
+    const goods = [{
+          typeid: 100,
+          typename: "type 1",
+          unittype: "kg",
+          image: "/assets/images/login.jpg",
+        }];
     
     axios.get('').then((getData) => {
       goods.push(getData.data);

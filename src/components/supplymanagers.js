@@ -3,6 +3,7 @@ import "../styles/table.css";
 import { MDBCol, MDBInput, MDBRow } from "mdbreact";
 import AddSupplyManager from "./addsupplymanager";
 import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
+import axios from "axios";
 
 class SupplyManagers extends Component {
   constructor(props) {
@@ -28,29 +29,13 @@ class SupplyManagers extends Component {
         email: "kamal@gmail.com",
         contactno: "0759862565",
         joineddate: "2015-10-18",
-      },
-      {
-        id: 100,
-        name: "Kamal",
-        email: "kamal@gmail.com",
-        contactno: "0759862565",
-        joineddate: "2015-10-18",
-      },
-      {
-        id: 100,
-        name: "Kamal",
-        email: "kamal@gmail.com",
-        contactno: "0759862565",
-        joineddate: "2015-10-18",
-      },
-      {
-        id: 100,
-        name: "Kamal",
-        email: "kamal@gmail.com",
-        contactno: "0759862565",
-        joineddate: "2015-10-18",
-      },
+      }
     ];
+
+    axios.get('').then((getData) => {
+      supplymanagers.push(getData.data);
+    });
+
     return (
       <React.Fragment>
         <div className="Container-fluid">
