@@ -1,12 +1,10 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import "../styles/supplyrecords.css";
 
-export default function editUsername() {
+export default function EditUsername() {
   return (
     <div className="Container-fluid">
-          <h2>Edit Username</h2>
 
-     
       <Form className="form">
         <FormGroup>
           <Label for="oldusername">Old Username</Label>
@@ -22,7 +20,6 @@ export default function editUsername() {
           <Input type="text"  name="reusername" id="reusername" />
         </FormGroup>
 
-        
         <Button color="primary"> Submit </Button>
       </Form>
     </div>
