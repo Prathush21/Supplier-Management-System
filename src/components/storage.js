@@ -52,7 +52,6 @@ class Storage extends Component {
         <div className="Container-fluid">
           <h2>Storage </h2>
           <br></br>
-
           <MDBRow>
             {storage.map((good, index) => (
               <MDBCol sm="4">

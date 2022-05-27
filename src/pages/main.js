@@ -22,26 +22,24 @@ class Main extends Component {
             <NavigationBar />
           </div>
           <div className="col-12 col-md-10">
-            <Router>
-              <Routes>
-                <Route
-                  path="/supplymanagers"
-                  element={<SupplyManagers />}
-                ></Route>
-                <Route path="/suppliers" element={<Suppliers />}></Route>
-                <Route
-                  path="/addsupplyrecord"
-                  element={<AddSupplyRecord />}
-                ></Route>
-                <Route
-                  path="/supplyrecords"
-                  element={<SupplyRecords />}
-                ></Route>
-                <Route path="/goods" element={<Goods />}></Route>
-                <Route path="/storage" element={<Storage />}></Route>
-                <Route path="/editaccountdetails" element={<EditAccountDetails />}></Route>
-              </Routes>
-            </Router>
+            <Routes>
+              <Route
+                path="/supplymanagers"
+                element={<SupplyManagers />}
+              ></Route>
+              <Route path="/suppliers" element={<Suppliers />}></Route>
+              <Route
+                path="/addsupplyrecord"
+                element={<AddSupplyRecord />}
+              ></Route>
+              <Route path="/supplyrecords" element={<SupplyRecords />}></Route>
+              <Route path="/goods" element={<Goods />}></Route>
+              <Route path="/storage" element={<Storage />}></Route>
+              <Route
+                path="/editaccountdetails"
+                element={<EditAccountDetails />}
+              ></Route>
+            </Routes>
           </div>
         </div>
       </div>
