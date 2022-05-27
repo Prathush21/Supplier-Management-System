@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import "../styles/table.css";
 import { MDBCol, MDBInput, MDBRow } from "mdbreact";
 import AddSupplyManager from "./addsupplymanager";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Table
-} from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
 
 class SupplyManagers extends Component {
   constructor(props) {
@@ -118,12 +112,13 @@ class SupplyManagers extends Component {
           </Table>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-            <ModalHeader toggle={this.toggleModal}>
-            <h3>New Supply Manager </h3>             </ModalHeader>
-            <ModalBody>
-              <AddSupplyManager/>
-            </ModalBody>
-          </Modal>
+          <ModalHeader toggle={this.toggleModal}>
+            <h3>New Supply Manager </h3>{" "}
+          </ModalHeader>
+          <ModalBody>
+            <AddSupplyManager />
+          </ModalBody>
+        </Modal>
       </React.Fragment>
     );
   }

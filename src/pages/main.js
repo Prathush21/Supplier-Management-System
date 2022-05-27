@@ -7,10 +7,8 @@ import Suppliers from "../components/suppliers";
 import AddSupplyRecord from "../components/addsupplyrecord";
 import SupplyRecords from "../components/supplyrecords";
 import Goods from "../components/goods";
-import EditPassword from "../components/editpassword";
-import EditUsername from "../components/editusername";
-import EditUserDetails from "../components/edituserdetails";
-import EditAccount from "../components/editaccount";
+import Storage from "../components/storage";
+import EditAccountDetails from "../components/editaccountdetails";
 
 import {} from "reactstrap";
 
@@ -40,14 +38,8 @@ class Main extends Component {
                   element={<SupplyRecords />}
                 ></Route>
                 <Route path="/goods" element={<Goods />}></Route>
-                <Route path="/editpassword" element={<EditPassword />}></Route>
-                <Route path="/editusername" element={<EditUsername />}></Route>
-
-                <Route path="/edituserdetails" element={<EditUserDetails />}></Route>
-                <Route path="/editaccount" element={<EditAccount />}></Route>
-
-
-                <Route path="/main" element={<Main />}></Route>
+                <Route path="/storage" element={<Storage />}></Route>
+                <Route path="/editaccountdetails" element={<EditAccountDetails />}></Route>
               </Routes>
             </Router>
           </div>

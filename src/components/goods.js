@@ -5,17 +5,10 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBCardImage,
-  MDBBtn,
-  MDBRipple,
   MDBCol,
   MDBRow,
 } from "mdb-react-ui-kit";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-} from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../styles/table.css";
 import AddGood from "./addnewgood"
 import axios from "axios";

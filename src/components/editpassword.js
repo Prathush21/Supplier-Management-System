@@ -1,11 +1,9 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import "../styles/supplyrecords.css";
 
-export default function editPassword() {
+export default function EditPassword() {
   return (
     <div className="Container-fluid">
-              <h2>Edit Password</h2>
-
       <Form className="form">
         <FormGroup>
           <Label for="oldpass">Old Password</Label>
