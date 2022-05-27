@@ -8,6 +8,7 @@ import AddSupplyRecord from "../components/addsupplyrecord";
 import SupplyRecords from "../components/supplyrecords";
 import Goods from "../components/goods";
 import Storage from "../components/storage";
+import EditAccount from "../components/editaccountdetails";
 
 import {} from "reactstrap";
 
@@ -38,8 +39,7 @@ class Main extends Component {
                 ></Route>
                 <Route path="/goods" element={<Goods />}></Route>
                 <Route path="/storage" element={<Storage />}></Route>
-
-                <Route path="/main" element={<Main />}></Route>
+                <Route path="/editaccountdetails" element={<EditAccount />}></Route>
               </Routes>
             </Router>
           </div>

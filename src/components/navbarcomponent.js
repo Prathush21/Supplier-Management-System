@@ -35,7 +35,7 @@ export default function NavigationBar() {
         </Button>
       </div>
       <div className="row mt-3 mb-2">
-        <Button outline color="light" href='/'>
+        <Button outline color="light" href='/editaccount'>
           <span className="fa fa-cogs fa-lg"></span>  EDIT ACCOUNT DETAILS
         </Button>
       </div>
