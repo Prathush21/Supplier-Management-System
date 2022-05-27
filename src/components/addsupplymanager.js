@@ -9,8 +9,15 @@ export default function AddSupplyManager() {
   const [contactNo, setContactNo] = useState("");
   const [date, setDate] = useState("");
 
-  const sendDataToAPI = () => {
-    axios.post("", name, email, contactNo, date);
+  const sendData = {
+    method: 'post',
+    url: '../server/src/controller/$',
+    data: {
+      name : name,
+      email : email,
+      contact : contactNo,
+      date : date
+    }
   };
 
   return (
@@ -53,7 +60,7 @@ export default function AddSupplyManager() {
             onChange={(e) => setDate(e.target.value)}
           />
         </FormGroup>
-        <Button color="primary" onClick={sendDataToAPI}>
+        <Button color="primary" onClick={axios(sendData)}>
           {" "}
           Submit{" "}
         </Button>

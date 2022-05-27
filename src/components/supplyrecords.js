@@ -8,6 +8,7 @@ import {
   } from 'reactstrap';
   import '../styles/table.css';
   import AddSupplRecord from "./addsupplyrecord";
+  import axios from "axios";
 
   class SupplyRecords extends Component {
     constructor(props) {
@@ -37,38 +38,12 @@ import {
         'availability':"yes",
         'receiveddate':'2015-10-18'
   
-      },
-      {
-        'id': 100, 
-        'supplierID': '175', 
-        'unitprice':75,
-        'amount':10000,
-        'type': '1',
-        'availability':"yes",
-        'receiveddate':'2015-10-18'
-  
-      },
-      {
-        'id': 100, 
-        'supplierID': '175', 
-        'unitprice':75,
-        'amount':10000,
-        'type': '1',
-        'availability':"yes",
-        'receiveddate':'2015-10-18'
-  
-      },
-      {
-        'id': 100, 
-        'supplierID': '175', 
-        'unitprice':75,
-        'amount':10000,
-        'type': '1',
-        'availability':"yes",
-        'receiveddate':'2015-10-18'
-  
       }
-  ];
+    ];
+
+    axios.get('').then((getData) => {
+      supplyrecords.push(getData.data);
+    })
    
       return (
         <React.Fragment>

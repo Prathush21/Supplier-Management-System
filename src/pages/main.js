@@ -9,6 +9,7 @@ import SupplyRecords from "../components/supplyrecords";
 import Goods from "../components/goods";
 import Storage from "../components/storage";
 import EditAccountDetails from "../components/editaccountdetails";
+import EditStorage from "../components/editstorage";
 
 import {} from "reactstrap";
 
@@ -22,26 +23,32 @@ class Main extends Component {
             <NavigationBar />
           </div>
           <div className="col-12 col-md-10">
-            <Router>
-              <Routes>
-                <Route
-                  path="/supplymanagers"
-                  element={<SupplyManagers />}
-                ></Route>
-                <Route path="/suppliers" element={<Suppliers />}></Route>
-                <Route
-                  path="/addsupplyrecord"
-                  element={<AddSupplyRecord />}
-                ></Route>
-                <Route
-                  path="/supplyrecords"
-                  element={<SupplyRecords />}
-                ></Route>
-                <Route path="/goods" element={<Goods />}></Route>
-                <Route path="/storage" element={<Storage />}></Route>
-                <Route path="/editaccountdetails" element={<EditAccountDetails />}></Route>
-              </Routes>
-            </Router>
+            <Routes>
+              <Route
+                exact
+                path="/supplymanagers"
+                element={<SupplyManagers />}
+              ></Route>
+              <Route exact path="/suppliers" element={<Suppliers />}></Route>
+              <Route
+                exact
+                path="/addsupplyrecord"
+                element={<AddSupplyRecord />}
+              ></Route>
+              <Route
+                exact
+                path="/supplyrecords"
+                element={<SupplyRecords />}
+              ></Route>
+              <Route exact path="/goods" element={<Goods />}></Route>
+              <Route exact path="/storage" element={<Storage />}></Route>
+              <Route path="/editstorage/:dataID" element={<EditStorage />} />
+              <Route
+                exact
+                path="/editaccountdetails"
+                element={<EditAccountDetails />}
+              ></Route>
+            </Routes>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import "../styles/table.css";
 import { MDBRow, MDBCol, MDBInput } from "mdbreact";
 import React, { Component} from "react";
 import AddSupplier from "./addsupplier";
+import axios from "axios";
 
 class Suppliers extends Component{
   constructor(props) {
@@ -43,29 +44,13 @@ class Suppliers extends Component{
       email: "kamal@gmail.com",
       contactno: "0759862565",
       joineddate: "2015-10-18",
-    },
-    {
-      id: 100,
-      name: "Kamal",
-      email: "kamal@gmail.com",
-      contactno: "0759862565",
-      joineddate: "2015-10-18",
-    },
-    {
-      id: 100,
-      name: "Kamal",
-      email: "kamal@gmail.com",
-      contactno: "0759862565",
-      joineddate: "2015-10-18",
-    },
-    {
-      id: 100,
-      name: "Kamal",
-      email: "kamal@gmail.com",
-      contactno: "0759862565",
-      joineddate: "2015-10-18",
-    },
+    }
   ];
+
+  axios.get('').then((getData) => {
+    suppliers.push(getData.data);
+  });
+
 
   return (
     <React.Fragment>

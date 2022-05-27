@@ -11,6 +11,8 @@ import {
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../styles/table.css";
 import AddGood from "./addnewgood";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Storage extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class Storage extends Component {
   }
 
   toggleModal() {
-    this.setState({       
+    this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
   }
@@ -31,7 +33,7 @@ class Storage extends Component {
   render() {
     const storage = [
       {
-        id:1,
+        id: 1,
         typeid: 100,
         typename: "type 1",
         unittype: "kg",
@@ -42,8 +44,8 @@ class Storage extends Component {
         availability: "available",
       },
       {
-        id:2,
-        typeid: 100,
+        id: 2,
+        typeid: 200,
         typename: "type 1",
         unittype: "kg",
         unitprize: "475.00",
@@ -53,19 +55,8 @@ class Storage extends Component {
         availability: "available",
       },
       {
-        id:3,
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        unitprize: "475.00",
-        image: "/assets/images/login.jpg",
-        stockamount: 25,
-        refilledDate: "2022/05/27",
-        availability: "available",
-      },
-      {
-        id:4,
-        typeid: 100,
+        id: 3,
+        typeid: 300,
         typename: "type 1",
         unittype: "kg",
         unitprize: "475.00",
@@ -76,12 +67,15 @@ class Storage extends Component {
       },
     ];
 
+    axios.get("").then((getData) => {
+      storage.push(getData.data);
+    });
+
     return (
       <React.Fragment>
         <div className="Container-fluid">
           <h2>Storage </h2>
           <br></br>
-
           <MDBRow>
             {storage.map((good, index) => (
               <MDBCol sm="4">
@@ -108,9 +102,9 @@ class Storage extends Component {
                         Availability Status : {good.availability}
                       </MDBCardText>
 
-                      <Button color="primary"  onClick={this.toggleModal}>
-                        Edit 
-                      </Button>
+                      <Link to={"/editstorage/" + good.id}>
+                        <Button color="primary">Edit</Button>
+                      </Link>
                     </MDBCardBody>
                   </MDBCard>
                 </center>
