@@ -2,7 +2,7 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import "../styles/supplyrecords.css";
 import React, { useState } from 'react';
 import { DropdownButton, Dropdown } from "react-bootstrap";
-import axios from axios;
+import axios from 'axios';
 
 export default function AddSupplRecord() {
   const {sup_ID, setSupplyID} = useState('');
