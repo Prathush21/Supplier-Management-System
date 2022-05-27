@@ -9,6 +9,18 @@ export default function AddSupplier() {
   const [contact, setContactNumber] = useState('');
   const [address, setAddress] = useState('');
   const [date, setDate] = useState('');
+  const [errorMessage, setErrorMessage] = useState('')
+
+
+  const validateDate = (value) => {
+    
+    if ((new Date(value) <= new Date())) {
+      setDate(value);
+      setErrorMessage('')
+    } else {
+      setErrorMessage('Enter Valid Date!')
+    }
+  }
 
   const sendData = {
     method: 'post',
@@ -27,33 +39,37 @@ export default function AddSupplier() {
       <Form className="form">
         <FormGroup>
           <Label for="name">Name</Label>
-          <Input type="text" name="name" id="exampleName" 
+          <Input type="text" name="name" id="exampleName" required='true'
           onChange={(e) => setName(e.target.value)}
           />
         </FormGroup>
 
         <FormGroup>
           <Label for="exampleEmail">Email Address</Label>
-          <Input type="email" name="email" id="exampleEmail" 
+          <Input type="email" name="email" id="exampleEmail" required='true'
           onChange={(e) => setEmail(e.target.value)}/>
         </FormGroup>
 
         <FormGroup>
           <Label for="ContactNo">Contact Number</Label>
-          <Input type="text" name="contactno" id="contactnumbesr" 
+          <Input type="text" name="contactno" id="contactnumbesr" required='true'
           onChange={(e) => setContactNumber(e.target.value)}/>
         </FormGroup>
 
         <FormGroup>
           <Label for="address">Address</Label>
-          <Input type="text" name="address" id="address" 
+          <Input type="text" name="address" id="address" required='true'
           onChange={(e) => setAddress(e.target.value)}/>
         </FormGroup>
 
         <FormGroup>
           <Label for="date">Joined Date</Label>
-          <Input type="date" name="joineddate" id="joineddate" 
-          onChange={(e) => setDate(e.target.value)}/>
+          <Input type="date" name="joineddate" id="joineddate" required='true'
+          onChange={(e) => validateDate(e.target.value)}/>
+          <span style={{
+          fontWeight: 'bold',
+          color: 'red',
+        }}>{errorMessage}</span>
         </FormGroup>
 
         <Button color="primary"
