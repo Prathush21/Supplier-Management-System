@@ -7,7 +7,7 @@ import {
 } from "reactstrap";
 import "../styles/table.css";
 import { MDBRow, MDBCol, MDBInput } from "mdbreact";
-import React, { Component, useState } from "react";
+import React, { Component} from "react";
 import AddSupplier from "./addsupplier";
 
 class Suppliers extends Component{

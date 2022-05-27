@@ -10,7 +10,7 @@ export default function NavigationBar() {
         </Button>
       </div>
       <div className="row mt-3">
-        <Button outline color="light"  href='/supplyrecords'>
+        <Button outline color="light"  href='/storage'>
           <span className="fa fa-archive fa-lg"></span>  STORAGE
         </Button>
       </div>
