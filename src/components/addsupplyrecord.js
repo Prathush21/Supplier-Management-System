@@ -5,17 +5,16 @@ import { DropdownButton, Dropdown } from "react-bootstrap";
 import axios from 'axios';
 
 export default function AddSupplRecord() {
-  const {sup_ID, setSupplyID} = useState('');
-  const {unit_Prize, setUnitPrice} = useState('');
-  const {amount, setAmount} = useState('');
-  const {date, setDate} = useState('');
-  const {type, setType} = useState('');
-  const {availability, setAvailability} = useState('');
-
+  const [sup_ID, setSupplyID] = useState('');
+  const [unit_Prize, setUnitPrice] = useState('');
+  const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('');
+  const [type, setType] = useState('');
+  const [availability, setAvailability] = useState('');
 
   const sendData = {
     method: 'post',
-    url: '/login',
+    url: '../server/src/controller/supplyRecord.controller.js',
     data: {
       sup_ID : sup_ID,
       unit_Prize : unit_Prize,
@@ -25,8 +24,6 @@ export default function AddSupplRecord() {
       availability : availability
     }
   };
-
-  axios(sendData);
 
   return (
     <div className="Container-fluid">
@@ -95,7 +92,7 @@ export default function AddSupplRecord() {
 
         <Button 
         color="primary"
-        onClick={sendData}> Submit </Button>
+        onClick={axios(sendData)}> Submit </Button>
       </Form>
     </div>
   );
