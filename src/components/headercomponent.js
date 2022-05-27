@@ -12,7 +12,7 @@ import '../styles/headercomponent.css';
 export default function Header() {
   return (
     <Navbar dark expand="md">
-      <div className="container">
+      <div>
         <div className="row mt-2 mb-3 d-flex align-items-center">
           <div className="col-2 col-sm-1 float-left">
             <NavbarBrand>
