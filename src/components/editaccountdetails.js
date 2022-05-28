@@ -4,6 +4,7 @@ import "../styles/supplyrecords.css";
 import EditUsername from "./editusername";
 import EditPassword from "./editpassword";
 import EditDetails from "./editdetails";
+import axios from "axios";
 
 class EditAccountDetails extends Component {
   constructor(props) {
@@ -47,6 +48,11 @@ class EditAccountDetails extends Component {
         contactNumber: "0768582163",
       },
     ];
+
+    axios.get('').then((getData) => {
+      userDetails.push(getData.data);
+    });
+
     return (
       <React.Fragment>
         <div className="Container-fluid">

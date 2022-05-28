@@ -29,6 +29,13 @@ class SupplyManagers extends Component {
         email: "kamal@gmail.com",
         contactno: "0759862565",
         joineddate: "2015-10-18",
+      },
+      {
+        id: 100,
+        name: "Nimal",
+        email: "nimal@gmail.com",
+        contactno: "0759862565",
+        joineddate: "2015-10-18",
       }
     ];
 

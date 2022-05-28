@@ -2,6 +2,7 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import React from "react";
 import { useParams } from "react-router-dom";
 import "../styles/editstorage.css";
+import axios from "axios";
 
 export default function EditStorage() {
   const storage = [
@@ -39,6 +40,10 @@ export default function EditStorage() {
       availability: "available",
     },
   ];
+
+  axios.get("").then((getData) => {
+    storage.push(getData.data);
+  });
 
   const params = useParams();
   const dataID = params.dataID;
