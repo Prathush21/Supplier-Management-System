@@ -73,15 +73,15 @@ class Storage extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid">
+        <div className="Container-fluid shadow-2-strong">
           <h2>Storage </h2>
           <br></br>
           <MDBRow>
             {storage.map((good, index) => (
               <MDBCol sm="4">
                 <center>
-                  <MDBCard style={{ margin: "0.5rem" }}>
-                    <MDBCardBody style={{ borderRadius: "5px" }}>
+                  <MDBCard className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
+                    <MDBCardBody className="shadow-5 hover-overlay" style={{ borderRadius: "5px" }}>
                       <MDBCardTitle>{good.typename}</MDBCardTitle>
                       <MDBCardText>
                         <b>{good.unitprize}</b>
@@ -103,7 +103,7 @@ class Storage extends Component {
                       </MDBCardText>
 
                       <Link to={"/editstorage/" + good.id}>
-                        <Button color="primary">Edit</Button>
+                        <Button outline color="dark">Edit</Button>
                       </Link>
                     </MDBCardBody>
                   </MDBCard>

@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "../styles/editstorage.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function EditStorage() {
   const storage = [
@@ -50,46 +51,86 @@ export default function EditStorage() {
   const data = storage.filter((s) => s.id === parseInt(dataID, 10))[0];
 
   return (
-    <div className="Container-fluid">
-        <h2>Edit Storage</h2>
-        <br></br>
-      <Form className="form">
-        <FormGroup>
-          <Label for="typename">Type Name</Label>
-          <Input
-            type="text"
-            name="typename"
-            id="typename"
-            readOnly
-            value={data.typename}
-          />
-        </FormGroup>
+    <div className="Container-fluid shadow-2-strong">
+      <h2>Edit Storage</h2>
+      <br></br>
+      <div className="row">
+        <div className="col-6 offset-1">
+          <Form className="form">
+            <FormGroup>
+              <Label for="typename">Type Name</Label>
+              <Input
+                type="text"
+                name="typename"
+                id="typename"
+                readOnly
+                value={data.typename}
+              />
+            </FormGroup>
 
-        <FormGroup>
-          <Label for="unit">Unit</Label>
-          <Input type="text" name="unit" id="unit" readOnly
-            value={data.unittype} />
-        </FormGroup>
+            <FormGroup>
+              <Label for="unit">Unit</Label>
+              <Input
+                type="text"
+                name="unit"
+                id="unit"
+                readOnly
+                value={data.unittype}
+              />
+            </FormGroup>
 
-        <FormGroup>
-          <Label for="refilledDate">Last Refilled Date</Label>
-          <Input type="text" name="refilledDate" id="refilledDate" readOnly
-            value={data.refilledDate} />
-        </FormGroup>
+            <FormGroup>
+              <Label for="refilledDate">Last Refilled Date</Label>
+              <Input
+                type="text"
+                name="refilledDate"
+                id="refilledDate"
+                readOnly
+                value={data.refilledDate}
+              />
+            </FormGroup>
 
-        <FormGroup>
-          <Label for="unitPrice">Unit Price</Label>
-          <Input type="text" name="unitPrice" id="unitPrice" placeholder={data.unitprize}/>
-        </FormGroup>
+            <FormGroup>
+              <Label for="unitPrice">Unit Price</Label>
+              <Input
+                type="text"
+                name="unitPrice"
+                id="unitPrice"
+                placeholder={data.unitprize}
+              />
+            </FormGroup>
 
-        <FormGroup>
-          <Label for="stockAmount">Stock Amount </Label>
-          <Input type="text" name="stockAmount" id="stockAmount" placeholder={data.stockamount}/>
-        </FormGroup>
+            <FormGroup>
+              <Label for="stockAmount">Stock Amount </Label>
+              <Input
+                type="text"
+                name="stockAmount"
+                id="stockAmount"
+                placeholder={data.stockamount}
+              />
+            </FormGroup>
 
-        <Button color="primary" href="/storage"> Submit </Button>
-      </Form>
-      
+            <div className="row">
+              <div className="col-auto">
+                <Button color="primary"> Submit </Button>
+              </div>
+
+              <div className="col-auto ">
+                {" "}
+                <Link to="/storage">
+                  <Button outline color="primary">
+                    {" "}
+                    Back to Storage{" "}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Form>
+        </div>
+        <div className="col-3 d-flex align-items-center justify-content-center">
+        <img src={data.image} className='img-fluid rounded' width="350vw" alt='' />
+        </div>
+      </div>
     </div>
   );
 }

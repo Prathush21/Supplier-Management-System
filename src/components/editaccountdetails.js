@@ -55,15 +55,15 @@ class EditAccountDetails extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid">
+        <div className="Container-fluid shadow-2-strong">
           <h2>Edit Account Information</h2>
           <br></br>
-          <Button color="primary" onClick={this.toggleModalEditDetails}> Edit Account Details</Button>{" "}
-          <Button color="primary" onClick={this.toggleModalEditUsername} style={{ marginLeft: ".5rem" }}>
+          <Button color="light" onClick={this.toggleModalEditDetails}> Edit Account Details</Button>{" "}
+          <Button color="light" onClick={this.toggleModalEditUsername} style={{ marginLeft: ".5rem" }}>
             {" "}
             Change Username{" "}
           </Button>
-          <Button color="primary" onClick={this.toggleModalEditPassword} style={{ marginLeft: ".6rem" }}>
+          <Button color="light" onClick={this.toggleModalEditPassword} style={{ marginLeft: ".6rem" }}>
             {" "}
             Change Password{" "}
           </Button>

@@ -70,18 +70,18 @@ class Good extends Component {
 
     return (
       <React.Fragment>
-      <div className="Container-fluid">
+      <div className="Container-fluid shadow-2-strong">
         <h2>Goods</h2>
         <br></br>
 
-        <Button color="primary" onClick={this.toggleModal}> Add New Good Type </Button>
+        <Button color="light" onClick={this.toggleModal}> Add New Good Type </Button>
         <br></br>
         <br></br>
 
         <MDBRow>
           {goods.map((good, index) => (
             <MDBCol sm="4">
-              <MDBCard style={{ margin: "0.5rem" }}>
+              <MDBCard className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
                 <MDBCardBody style={{ borderRadius: "5px" }}>
                   <MDBCardImage
                     className="img-fluid"

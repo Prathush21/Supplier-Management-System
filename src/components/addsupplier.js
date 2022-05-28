@@ -35,7 +35,7 @@ export default function AddSupplier() {
   };
 
   return (
-    <div className="Container-fluid">
+    <div className="Container-fluid shadow-2-strong">
       <Form className="form">
         <FormGroup>
           <Label for="name">Name</Label>

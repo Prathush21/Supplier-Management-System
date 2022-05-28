@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import Header from "../components/headercomponent";
-import NavigationBar from "../components/navbarcomponent";
+import Header from "./headercomponent";
+import NavigationBar from "./navbarcomponent";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SupplyManagers from "../components/supplymanagers";
-import Suppliers from "../components/suppliers";
-import AddSupplyRecord from "../components/addsupplyrecord";
-import SupplyRecords from "../components/supplyrecords";
-import Goods from "../components/goods";
-import Storage from "../components/storage";
-import EditAccountDetails from "../components/editaccountdetails";
-import EditStorage from "../components/editstorage";
-
+import SupplyManagers from "./supplymanagers";
+import Suppliers from "./suppliers";
+import AddSupplyRecord from "./addsupplyrecord";
+import SupplyRecords from "./supplyrecords";
+import Goods from "./goods";
+import Storage from "./storage";
+import EditAccountDetails from "./editaccountdetails";
+import EditStorage from "./editstorage";
 import {} from "reactstrap";
+import Home from "./homecomponent";
 
 class Main extends Component {
   render() {
@@ -24,6 +24,11 @@ class Main extends Component {
           </div>
           <div className="col-12 col-md-10">
             <Routes>
+            <Route
+                exact
+                path="/home"
+                element={<Home />}
+              ></Route>
               <Route
                 exact
                 path="/supplymanagers"

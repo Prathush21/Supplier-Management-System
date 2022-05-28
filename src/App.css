@@ -49,3 +49,13 @@ hr{
   transform: translateX(100%);
   transition: all 300ms ease-out;
 }
+
+h2{
+  color: #0411a4;
+  font-family: 'Slabo 27px', serif;
+}
+
+h1{
+  font-family: 'Bree Serif', serif;
+  color: #0411a4;
+}
