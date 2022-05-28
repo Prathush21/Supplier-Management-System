@@ -64,7 +64,7 @@ export default function AddSupplRecord() {
             alignRight
             title="Select type"
             id="dropdown-menu-align-right"
-            variant="secondary"
+            variant="light"
             onChange={(e) => setType(e.target.value)}
           >
             <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
@@ -81,7 +81,7 @@ export default function AddSupplRecord() {
             alignRight
             title="Select Availability"
             id="dropdown-menu-align-right"
-            variant="secondary"
+            variant="light"
             onChange={(e) => setAvailability(e.target.value)}
           >
             <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>

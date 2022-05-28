@@ -53,6 +53,11 @@ class Main extends Component {
                 path="/editaccountdetails"
                 element={<EditAccountDetails />}
               ></Route>
+              <Route
+                exact
+                path="*"
+                element={<Home />}
+              ></Route>
             </Routes>
           </div>
         </div>

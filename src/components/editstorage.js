@@ -112,7 +112,9 @@ export default function EditStorage() {
 
             <div className="row">
               <div className="col-auto">
-                <Button color="primary"> Submit </Button>
+                <Link to="/storage">
+                  <Button color="primary"> Submit </Button>
+                </Link>
               </div>
 
               <div className="col-auto ">
@@ -128,7 +130,12 @@ export default function EditStorage() {
           </Form>
         </div>
         <div className="col-3 d-flex align-items-center justify-content-center">
-        <img src={data.image} className='img-fluid rounded' width="350vw" alt='' />
+          <img
+            src={data.image}
+            className="img-fluid rounded"
+            width="350vw"
+            alt=""
+          />
         </div>
       </div>
     </div>

@@ -49,7 +49,7 @@ class EditAccountDetails extends Component {
       },
     ];
 
-    axios.get('').then((getData) => {
+    axios.get("").then((getData) => {
       userDetails.push(getData.data);
     });
 
@@ -58,15 +58,32 @@ class EditAccountDetails extends Component {
         <div className="Container-fluid shadow-2-strong">
           <h2>Edit Account Information</h2>
           <br></br>
-          <Button color="light" onClick={this.toggleModalEditDetails}> Edit Account Details</Button>{" "}
-          <Button color="light" onClick={this.toggleModalEditUsername} style={{ marginLeft: ".5rem" }}>
-            {" "}
-            Change Username{" "}
-          </Button>
-          <Button color="light" onClick={this.toggleModalEditPassword} style={{ marginLeft: ".6rem" }}>
-            {" "}
-            Change Password{" "}
-          </Button>
+          <div className="row">
+            <div className="col-auto">
+              <Button color="light" onClick={this.toggleModalEditDetails}>
+                Edit Account Details
+              </Button>
+            </div>
+
+            <div className="col-auto">
+              <Button
+                color="light"
+                onClick={this.toggleModalEditUsername}
+                style={{ marginLeft: ".5rem" }}
+              >
+                Change Username
+              </Button>
+            </div>
+            <div className="col-auto">
+              <Button
+                color="light"
+                onClick={this.toggleModalEditPassword}
+                style={{ marginLeft: ".6rem" }}
+              >
+                Change Password
+              </Button>
+            </div>
+          </div>
           <br></br>
           <Table responsive>
             <br></br>
@@ -103,7 +120,10 @@ class EditAccountDetails extends Component {
             </tbody>
           </Table>
         </div>
-        <Modal isOpen={this.state.editUsername} toggle={this.toggleModalEditUsername}>
+        <Modal
+          isOpen={this.state.editUsername}
+          toggle={this.toggleModalEditUsername}
+        >
           <ModalHeader toggle={this.toggleModalEditUsername}>
             <h3>Edit Username </h3>{" "}
           </ModalHeader>
@@ -111,7 +131,10 @@ class EditAccountDetails extends Component {
             <EditUsername />
           </ModalBody>
         </Modal>
-        <Modal isOpen={this.state.editPassword} toggle={this.toggleModalEditPassword}>
+        <Modal
+          isOpen={this.state.editPassword}
+          toggle={this.toggleModalEditPassword}
+        >
           <ModalHeader toggle={this.toggleModalEditPassword}>
             <h3>Edit Password </h3>{" "}
           </ModalHeader>
@@ -119,7 +142,10 @@ class EditAccountDetails extends Component {
             <EditPassword />
           </ModalBody>
         </Modal>
-        <Modal isOpen={this.state.editDetails} toggle={this.toggleModalEditDetails}>
+        <Modal
+          isOpen={this.state.editDetails}
+          toggle={this.toggleModalEditDetails}
+        >
           <ModalHeader toggle={this.toggleModalEditDetails}>
             <h3>Edit Account Information</h3>{" "}
           </ModalHeader>
