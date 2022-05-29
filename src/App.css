@@ -59,3 +59,12 @@ h1{
   font-family: 'Bree Serif', serif;
   color: #0411a4;
 }
+
+a.nav-link.active{
+  font-weight: bold;
+}
+
+.header1{
+  color: rgb(255, 252, 252);
+}
+

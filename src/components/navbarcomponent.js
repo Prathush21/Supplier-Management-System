@@ -13,43 +13,43 @@ export default function NavigationBar() {
         <Nav navbar>
           <hr></hr>
           <NavItem>
-            <NavLink style={{ color:"#fff" }} className="nav-link" to="/home">
+            <NavLink style={{ color:"#fff" }} className="nav-link" to="home">
               <span className="fa fa-home fa-lg"></span> HOME
             </NavLink>
           </NavItem>
           <hr></hr>
           <NavItem>
-            <NavLink style={{ color:"#fff" }} className="nav-link" to="/storage">
+            <NavLink style={{ color:"#fff" }} className="nav-link" to="storage">
             <span className="fa fa-archive fa-lg"></span> STORAGE
             </NavLink>
           </NavItem>
           <hr></hr>
           <NavItem>
-            <NavLink style={{ color:"#fff" }} className="nav-link" to="/supplymanagers">
+            <NavLink style={{ color:"#fff" }} className="nav-link" to="supplymanagers">
             <span className="fa fa-user fa-lg"></span> SUPPLY MANAGERS
             </NavLink>
           </NavItem>
           <hr></hr>
           <NavItem>
-            <NavLink style={{ color:"#fff" }} className="nav-link" to="/suppliers">
+            <NavLink style={{ color:"#fff" }} className="nav-link" to="suppliers">
             <span className="fa fa-vcard fa-lg"></span> SUPPLIERS
             </NavLink>
           </NavItem>
           <hr></hr>
           <NavItem>
-            <NavLink style={{ color:"#fff" }} className="nav-link" to="/supplyrecords">
+            <NavLink style={{ color:"#fff" }} className="nav-link" to="supplyrecords">
             <span className="fa fa-list-alt fa-lg"></span> SUPPLY RECORDS
             </NavLink>
           </NavItem>
           <hr></hr>
           <NavItem>
-            <NavLink style={{ color:"#fff" }} className="nav-link" to="/goods">
+            <NavLink style={{ color:"#fff" }} className="nav-link" to="goods">
             <span className="fa fa-shopping-basket fa-lg"></span> GOODS
             </NavLink>
           </NavItem>
           <hr></hr>
           <NavItem>
-            <NavLink style={{ color:"#fff" }} className="nav-link" to="/editaccountdetails">
+            <NavLink style={{ color:"#fff" }} className="nav-link" to="editaccountdetails">
             <span className="fa fa-cogs fa-lg"></span> EDIT ACCOUNT DETAILS
             </NavLink>
           </NavItem>

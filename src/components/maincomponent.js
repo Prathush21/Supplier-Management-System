@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./headercomponent";
 import NavigationBar from "./navbarcomponent";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import SupplyManagers from "../components/supplymanagers";
 import Suppliers from "../components/suppliers";
 import AddSupplyRecord from "../components/addsupplyrecord";
@@ -25,43 +25,7 @@ class Main extends Component {
             <NavigationBar />
           </div>
           <div className="col-12 col-md-10">
-            <Routes>
-            <Route
-                exact
-                path="/home"
-                element={<Home />}
-              ></Route>
-              <Route
-                exact
-                path="/supplymanagers"
-                element={<SupplyManagers />}
-              ></Route>
-              <Route exact path="/suppliers" element={<Suppliers />}></Route>
-              <Route
-                exact
-                path="/addsupplyrecord"
-                element={<AddSupplyRecord />}
-              ></Route>
-              <Route
-                exact
-                path="/supplyrecords"
-                element={<SupplyRecords />}
-              ></Route>
-              <Route exact path="/goods" element={<Goods />}></Route>
-              <Route exact path="/storage" element={<Storage />}></Route>
-              <Route path="/editstorage/:dataID" element={<EditStorage />} />
-              <Route
-                exact
-                path="/editaccountdetails"
-                element={<EditAccountDetails />}
-              ></Route>
-              <Route exact path="/editsupplier" element={<EditSupplier />}></Route>
-              <Route
-                exact
-                path="*"
-                element={<Home />}
-              ></Route>
-            </Routes>
+            <Outlet/>
           </div>
         </div>
       </div>

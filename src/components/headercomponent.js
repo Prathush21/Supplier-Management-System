@@ -14,7 +14,7 @@ export default function Header() {
               <Image
                 roundedCircle
                 fluid
-                src="assets/images/logo.jpg"
+                src="/assets/images/logo.jpg"
                 alt="logo.jpg"
               />
             </div>

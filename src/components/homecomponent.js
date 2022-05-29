@@ -12,7 +12,7 @@ export default function Home() {
       <br></br>
       <div className="row d-flex align-items-center justify-content-center">
         <img
-          src="assets/images/logo.jpg"
+          src="/assets/images/logo.jpg"
           className="img-fluid shadow-2-strong"
           alt=""
           style={{ maxWidth: "30rem"}}
