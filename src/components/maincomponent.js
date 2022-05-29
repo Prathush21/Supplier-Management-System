@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Header from "../components/headercomponent";
-import NavigationBar from "../components/navbarcomponent";
+import Header from "./headercomponent";
+import NavigationBar from "./navbarcomponent";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SupplyManagers from "../components/supplymanagers";
 import Suppliers from "../components/suppliers";
@@ -14,6 +14,8 @@ import EditStorage from "../components/editstorage";
 
 import {} from "reactstrap";
 import EditSupplier from "../components/editsupplier";
+import {} from "reactstrap";
+import Home from "./homecomponent";
 
 class Main extends Component {
   render() {
@@ -26,6 +28,11 @@ class Main extends Component {
           </div>
           <div className="col-12 col-md-10">
             <Routes>
+            <Route
+                exact
+                path="/home"
+                element={<Home />}
+              ></Route>
               <Route
                 exact
                 path="/supplymanagers"
@@ -51,6 +58,11 @@ class Main extends Component {
                 element={<EditAccountDetails />}
               ></Route>
               <Route exact path="/editsupplier" element={<EditSupplier />}></Route>
+              <Route
+                exact
+                path="*"
+                element={<Home />}
+              ></Route>
             </Routes>
           </div>
         </div>

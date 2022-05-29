@@ -47,10 +47,10 @@ import {
    
       return (
         <React.Fragment>
-        <div className='Container-fluid' >
+        <div className='Container-fluid shadow-2-strong' >
           <h2>Supply Records </h2><br></br>
-          <Button color="primary" onClick={this.toggleModal}> Add New Record</Button> {' '} {' '}
-          <Button color="primary" style={{ marginLeft: '.5rem' }}> Delete Record </Button>
+          <Button  color="light" onClick={this.toggleModal}> Add New Record</Button> {' '} {' '}
+          <Button color="dark" style={{ marginLeft: '.5rem' }}> Delete Record </Button>
 
           <br></br> <br></br> <br></br>
           <Table responsive striped bordered hover variant="dark" >

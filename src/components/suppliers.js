@@ -14,12 +14,10 @@ class Suppliers extends Component {
     super(props);
 
     this.toggleModal = this.toggleModal.bind(this);
-    this.toggleModal1 = this.toggleModal1.bind(this);
 
     this.toggleSelectAll = this.toggleSelectAll.bind(this);
     this.state = {
       isModalOpen: false,
-      isEditModalOpen: false,
       check: false,
       selectAll: false,
     };
@@ -28,11 +26,6 @@ class Suppliers extends Component {
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
-    });
-  }
-  toggleModal1() {
-    this.setState({
-      isEditModalOpen: !this.state.isEditModalOpen,
     });
   }
 
@@ -61,18 +54,17 @@ class Suppliers extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid">
+        <div className="Container-fluid shadow-2-strong">
           <h2>Supplier</h2>
           <br></br>
-          <Button color="primary" onClick={this.toggleModal}>
+          <Button color="light" onClick={this.toggleModal}>
             {" "}
             Add New Supplier{" "}
           </Button>{" "}
-          <Button color="primary" style={{ marginLeft: ".5rem" }}>
+          <Button color="dark" style={{ marginLeft: ".5rem" }}>
             {" "}
             Delete Supplier{" "}
           </Button>
-        
           <br></br>
           <br></br>
           <div className="search-box">
@@ -82,7 +74,8 @@ class Suppliers extends Component {
               </MDBCol>
               <MDBCol md="3" style={{ display: "inline-grid" }}>
                 <Button
-                  color="secondary"
+                  outline
+                  color="primary"
                   style={{ width: "8vw", marginBottom: "1.5rem" }}
                 >
                   Search
@@ -102,7 +95,6 @@ class Suppliers extends Component {
                 <th>Email</th>
                 <th> Contact Number</th>
                 <th> Joined Date</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -112,16 +104,11 @@ class Suppliers extends Component {
                     <input type="checkbox" onChange={!this.check} />
                   </td>
 
-                  <td>
-                    <a onclick={this.toggleModal1} style={{ color: "blue" }}>
-                      {supplier.id}
-                    </a>{" "}
-                  </td>
+                  <td><a style={{color:"blue"}}>{supplier.id}</a></td>
                   <td>{supplier.name}</td>
                   <td>{supplier.email}</td>
                   <td>{supplier.contactno}</td>
                   <td>{supplier.joineddate}</td>
-                
                 </tr>
               ))}
             </tbody>
@@ -136,15 +123,6 @@ class Suppliers extends Component {
           </ModalBody>
         </Modal>
 
-        <Modal isOpen={this.state.isEditModalOpen} toggle={this.toggleModal1}>
-          <ModalHeader toggle={this.toggleModal1}>
-            <h3>Edit Supplier</h3>
-          </ModalHeader>
-          <ModalBody>
-            <EditSupplier />
-          </ModalBody>
-        </Modal>
-    
       </React.Fragment>
     );
   }

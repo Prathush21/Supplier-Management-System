@@ -19,7 +19,7 @@ export default function AddGood() {
   };
 
   return (
-    <div className="Container-fluid">
+    <div className="Container-fluid shadow-2-strong">
       <Form className="form">
         <FormGroup>
           <Label for="typename">Type Name</Label>

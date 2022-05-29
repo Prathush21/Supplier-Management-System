@@ -29,6 +29,13 @@ class SupplyManagers extends Component {
         email: "kamal@gmail.com",
         contactno: "0759862565",
         joineddate: "2015-10-18",
+      },
+      {
+        id: 100,
+        name: "Nimal",
+        email: "nimal@gmail.com",
+        contactno: "0759862565",
+        joineddate: "2015-10-18",
       }
     ];
 
@@ -38,13 +45,13 @@ class SupplyManagers extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid">
+        <div className="Container-fluid shadow-2-strong">
           <h2>Supply Managers </h2>
           <br></br>
-          <Button color="primary" onClick={this.toggleModal}>
+          <Button color="light" onClick={this.toggleModal}>
             Add New Supply Manager
           </Button>
-          <Button color="primary" style={{ marginLeft: ".5rem" }}>
+          <Button color="dark" style={{ marginLeft: ".5rem" }}>
             Delete Record
           </Button>
           <br></br>
@@ -56,7 +63,8 @@ class SupplyManagers extends Component {
               </MDBCol>
               <MDBCol md="3" style={{ display: "inline-grid" }}>
                 <Button
-                  color="secondary"
+                outline rounded
+                  color="primary"
                   style={{ width: "8vw", marginBottom: "1.5rem" }}
                 >
                   Search
