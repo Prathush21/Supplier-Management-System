@@ -11,7 +11,9 @@ import Storage from "../components/storage";
 import EditAccountDetails from "../components/editaccountdetails";
 import EditStorage from "../components/editstorage";
 
+
 import {} from "reactstrap";
+import EditSupplier from "../components/editsupplier";
 
 class Main extends Component {
   render() {
@@ -48,6 +50,7 @@ class Main extends Component {
                 path="/editaccountdetails"
                 element={<EditAccountDetails />}
               ></Route>
+              <Route exact path="/editsupplier" element={<EditSupplier />}></Route>
             </Routes>
           </div>
         </div>
