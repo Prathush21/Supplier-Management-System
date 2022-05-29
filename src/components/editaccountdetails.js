@@ -59,26 +59,26 @@ class EditAccountDetails extends Component {
           <h2>Edit Account Information</h2>
           <br></br>
           <div className="row">
-            <div className="col-auto">
+            <div className="col-sm-12 col-md-auto mb-2 align-content-center">
               <Button color="light" onClick={this.toggleModalEditDetails}>
                 Edit Account Details
               </Button>
             </div>
 
-            <div className="col-auto">
+            <div className="col-sm-12 col-md-auto mb-2 align-content-left">
               <Button
                 color="light"
                 onClick={this.toggleModalEditUsername}
-                style={{ marginLeft: ".5rem" }}
+                
               >
                 Change Username
               </Button>
             </div>
-            <div className="col-auto">
+            <div className="col-sm-12 col-md-auto mb-2 align-content-center">
               <Button
                 color="light"
                 onClick={this.toggleModalEditPassword}
-                style={{ marginLeft: ".6rem" }}
+                
               >
                 Change Password
               </Button>
