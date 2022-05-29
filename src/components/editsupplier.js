@@ -3,7 +3,7 @@ import "../styles/supplyrecords.css";
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function EditSupplier() {
+export default function EditSupplier(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [contact, setContactNumber] = useState('');
@@ -12,15 +12,26 @@ export default function EditSupplier() {
   const [errorMessage, setErrorMessage] = useState('')
 
   
-    const suppliers = [
-      {
-        id: 100,
-        name: "Kamal",
-        email: "kamal@gmail.com",
-        contactno: "0759862565",
-        joineddate: "2015-10-18",
-      }
-    ];
+  const suppliers = [
+    {
+      id: 100,
+      name: "Kamal",
+      email: "kamal@gmail.com",
+      contactno: "0759862565",
+      address: "Kandy Road, Kurunegala",
+      joineddate: "2015-10-18",
+    },
+    {
+      id: 100,
+      name: "Nimal",
+      email: "nimal@gmail.com",
+      contactno: "0759862565",
+      address: "Kandy Road, Kurunegala",
+      joineddate: "2015-10-18",
+    },
+  ];
+
+    const data = suppliers[props.row];
 
 
   const validateDate = (value) => {
@@ -50,32 +61,32 @@ export default function EditSupplier() {
       <Form className="form">
         <FormGroup>
           <Label for="name">Name</Label>
-          <Input type="text" name="name" id="exampleName"   required='true'
+          <Input type="text" name="name" id="exampleName" placeholder={data.name}  required='true'
           onChange={(e) => setName(e.target.value)}
           />
         </FormGroup>
 
         <FormGroup>
           <Label for="exampleEmail">Email Address</Label>
-          <Input type="email" name="email" id="exampleEmail" required='true'
+          <Input type="email" name="email" id="exampleEmail" placeholder={data.email} required='true'
           onChange={(e) => setEmail(e.target.value)}/>
         </FormGroup>
 
         <FormGroup>
           <Label for="ContactNo">Contact Number</Label>
-          <Input type="text" name="contactno" id="contactnumbesr" required='true'
+          <Input type="text" name="contactno" id="contactnumbesr" placeholder={data.contactno} required='true'
           onChange={(e) => setContactNumber(e.target.value)}/>
         </FormGroup>
 
         <FormGroup>
           <Label for="address">Address</Label>
-          <Input type="text" name="address" id="address" required='true'
+          <Input type="text" name="address" id="address" placeholder={data.address} required='true'
           onChange={(e) => setAddress(e.target.value)}/>
         </FormGroup>
 
         <FormGroup>
           <Label for="date">Joined Date</Label>
-          <Input type="date" name="joineddate" id="joineddate" required='true'
+          <Input type="text" name="joineddate" id="joineddate" value={data.joineddate} required='true'
           onChange={(e) => validateDate(e.target.value)}/>
           <span style={{
           fontWeight: 'bold',

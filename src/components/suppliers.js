@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 import { getValue } from "@testing-library/user-event/dist/utils";
-import SupplersTable from "./SupplersTable";
+import SupplersTable from "./SuppliersTable";
 
 class Suppliers extends Component {
   constructor(props) {

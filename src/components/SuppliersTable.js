@@ -3,6 +3,7 @@ import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
 import { Checkbox } from "./checkbox";
+import EditSupplier from "./editsupplier";
 
 const COLUMNS = [
   {
@@ -22,6 +23,10 @@ const COLUMNS = [
     accessor: "contactno",
   },
   {
+    Header: "Address",
+    accessor: "address",
+  },
+  {
     Header: "Joined Date",
     accessor: "joineddate",
   },
@@ -33,6 +38,7 @@ const suppliers = [
     name: "Kamal",
     email: "kamal@gmail.com",
     contactno: "0759862565",
+    address: "Kandy Road, Kurunegala",
     joineddate: "2015-10-18",
   },
   {
@@ -40,12 +46,12 @@ const suppliers = [
     name: "Nimal",
     email: "nimal@gmail.com",
     contactno: "0759862565",
+    address: "Kandy Road, Kurunegala",
     joineddate: "2015-10-18",
   },
 ];
 
 export default function SupplersTable() {
-
   axios.get("").then((getData) => {
     suppliers.push(getData.data);
   });
@@ -98,9 +104,11 @@ export default function SupplersTable() {
           {
             id: "edit",
             Cell: ({ row }) => (
-              <Button outline color="dark" onClick={() => viewModal(row.id)}>Edit</Button>
+              <Button outline color="dark" onClick={() => viewModal(row.id)}>
+                Edit
+              </Button>
             ),
-          }, 
+          },
         ];
       });
     }
@@ -143,10 +151,12 @@ export default function SupplersTable() {
         </tbody>
       </Table>
       <Modal isOpen={modalIsOpen}>
-        <ModalHeader close={<Button close onClick={setModalIsOpenToFalse}></Button>}>
-          <h3>Edit Supply Manager</h3>
+        <ModalHeader
+          close={<Button close onClick={setModalIsOpenToFalse}></Button>}
+        >
+          <h3>Edit Supplier</h3>
         </ModalHeader>
-        <ModalBody>{modalId}</ModalBody>
+        <ModalBody><EditSupplier row={modalId}/></ModalBody>
       </Modal>
     </div>
   );
