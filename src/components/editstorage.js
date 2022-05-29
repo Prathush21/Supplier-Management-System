@@ -5,7 +5,7 @@ import "../styles/editstorage.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function EditStorage() {
+export default function EditStorage(props) {
   const storage = [
     {
       id: 1,
@@ -47,13 +47,11 @@ export default function EditStorage() {
   });
 
   const params = useParams();
-  const dataID = params.dataID;
+  const dataID = props.id;
   const data = storage.filter((s) => s.id === parseInt(dataID, 10))[0];
 
   return (
     <div className="Container-fluid shadow-2-strong">
-      <h2>Edit Storage</h2>
-      <br></br>
       <div className="row">
         <div className="col-6 offset-1">
           <Form className="form">
@@ -110,32 +108,8 @@ export default function EditStorage() {
               />
             </FormGroup>
 
-            <div className="row">
-              <div className="col-auto">
-                <Link to="/storage">
-                  <Button color="primary"> Submit </Button>
-                </Link>
-              </div>
-
-              <div className="col-auto ">
-                {" "}
-                <Link to="/storage">
-                  <Button outline color="primary">
-                    {" "}
-                    Back to Storage{" "}
-                  </Button>
-                </Link>
-              </div>
-            </div>
+            <Button color="primary"> Submit </Button>
           </Form>
-        </div>
-        <div className="col-3 d-flex align-items-center justify-content-center">
-          <img
-            src={data.image}
-            className="img-fluid rounded"
-            width="350vw"
-            alt=""
-          />
         </div>
       </div>
     </div>

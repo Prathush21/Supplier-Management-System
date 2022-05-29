@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/table.css";
-import { MDBCol, MDBInput, MDBRow } from "mdbreact";
+import { MDBCol, MDBInput, MDBRow, MDBBtn } from "mdbreact";
 import AddSupplyManager from "./addsupplymanager";
 import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
 import axios from "axios";
@@ -57,20 +57,16 @@ class SupplyManagers extends Component {
           <br></br>
           <br></br>
           <div className="search-box">
-            <MDBRow>
-              <MDBCol md="9" style={{ display: "inline-grid" }}>
+            <div className="row">
+              <div className="col-9">
                 <MDBInput hint="Search" type="text" id="search" />
-              </MDBCol>
-              <MDBCol md="3" style={{ display: "inline-grid" }}>
-                <Button
-                outline rounded
-                  color="primary"
-                  style={{ width: "8vw", marginBottom: "1.5rem" }}
-                >
-                  Search
-                </Button>
-              </MDBCol>
-            </MDBRow>
+              </div>
+              <div className="col-3">
+                <Button outline color="primary">Search</Button>
+
+              </div>
+
+            </div>
           </div>
           <Table responsive striped bordered hover className="Mytable">
             <thead>

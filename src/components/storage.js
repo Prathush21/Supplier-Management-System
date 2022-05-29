@@ -10,24 +10,36 @@ import {
 } from "mdb-react-ui-kit";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../styles/table.css";
-import AddGood from "./addnewgood";
+import EditStorage from './editstorage';
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 class Storage extends Component {
   constructor(props) {
     super(props);
-
-    this.toggleModal = this.toggleModal.bind(this);
     this.state = {
       isModalOpen: false,
+      id:0
     };
+
+    this.toggleModal = this.toggleModal.bind(this);
+    this.viewModal = this.viewModal.bind(this);
   }
 
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
+  }
+
+  viewModal(Id){
+    this.setState(this.toggleModal);
+    if (this.state.isModalOpen === false) {
+      this.setState(
+        {id : Id}
+      )
+      
+    }
   }
 
   render() {
@@ -80,7 +92,7 @@ class Storage extends Component {
             {storage.map((good, index) => (
               <MDBCol sm="4">
                 <center>
-                  <MDBCard className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
+                  <MDBCard key={good.id} className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
                     <MDBCardBody className="shadow-5 hover-overlay" style={{ borderRadius: "5px" }}>
                       <MDBCardTitle>{good.typename}</MDBCardTitle>
                       <MDBCardText>
@@ -101,10 +113,7 @@ class Storage extends Component {
                         <br></br>
                         Availability Status : {good.availability}
                       </MDBCardText>
-
-                      <Link to={"/editstorage/" + good.id}>
-                        <Button outline color="dark">Edit</Button>
-                      </Link>
+                        <Button outline color="dark" onClick={() => this.viewModal(good.id)}>Edit</Button>
                     </MDBCardBody>
                   </MDBCard>
                 </center>
@@ -114,9 +123,9 @@ class Storage extends Component {
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>
-            <h3>New Storage Type </h3>
+            <h3> Edit Storage </h3>
           </ModalHeader>
-          <ModalBody>{/* <AddStorage/> */}</ModalBody>
+          <ModalBody>{ <EditStorage id={this.state.id}/> }</ModalBody>
         </Modal>
       </React.Fragment>
     );

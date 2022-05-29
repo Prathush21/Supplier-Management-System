@@ -81,7 +81,7 @@ class Good extends Component {
         <MDBRow>
           {goods.map((good, index) => (
             <MDBCol sm="4">
-              <MDBCard className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
+              <MDBCard key={good.typeid} className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
                 <MDBCardBody style={{ borderRadius: "5px" }}>
                   <MDBCardImage
                     className="img-fluid"
