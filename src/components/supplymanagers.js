@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "../styles/table.css";
-import { MDBCol, MDBInput, MDBRow, MDBBtn } from "mdbreact";
-import AddSupplyManager from "./addsupplymanager";
+import { MDBInput, } from "mdbreact";
+import { useRowSelect, useTable } from "react-table";
 import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
-import axios from "axios";
+import "../styles/table.css";
+import AddSupplyManager from "./addsupplymanager";
+import SupplyManagersTable from "./SupplyManagersTable";
 
 class SupplyManagers extends Component {
   constructor(props) {
@@ -22,27 +23,7 @@ class SupplyManagers extends Component {
   }
 
   render() {
-    const supplymanagers = [
-      {
-        id: 100,
-        name: "Kamal",
-        email: "kamal@gmail.com",
-        contactno: "0759862565",
-        joineddate: "2015-10-18",
-      },
-      {
-        id: 100,
-        name: "Nimal",
-        email: "nimal@gmail.com",
-        contactno: "0759862565",
-        joineddate: "2015-10-18",
-      }
-    ];
-
-    axios.get('').then((getData) => {
-      supplymanagers.push(getData.data);
-    });
-
+    
     return (
       <React.Fragment>
         <div className="Container-fluid shadow-2-strong">
@@ -63,42 +44,10 @@ class SupplyManagers extends Component {
               </div>
               <div className="col-3">
                 <Button outline color="primary">Search</Button>
-
               </div>
-
             </div>
           </div>
-          <Table responsive striped bordered hover className="Mytable">
-            <thead>
-              <tr>
-                <th>
-                  <input type="checkbox" />
-                </th>
-                <th>ID</th>
-                <th>Name</th>
-
-                <th>Email</th>
-                <th> Contact Number</th>
-
-                <th> Joined Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {supplymanagers.map((suppman, index) => (
-                <tr data-index={index}>
-                  <td>
-                    <input type="checkbox" />
-                  </td>
-
-                  <td>{suppman.id}</td>
-                  <td>{suppman.name}</td>
-                  <td>{suppman.email}</td>
-                  <td>{suppman.contactno}</td>
-                  <td>{suppman.joineddate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <SupplyManagersTable/>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>

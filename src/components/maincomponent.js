@@ -10,8 +10,6 @@ import Goods from "../components/goods";
 import Storage from "../components/storage";
 import EditAccountDetails from "../components/editaccountdetails";
 import EditStorage from "../components/editstorage";
-
-
 import {} from "reactstrap";
 import EditSupplier from "../components/editsupplier";
 import {} from "reactstrap";

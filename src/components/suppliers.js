@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 import { getValue } from "@testing-library/user-event/dist/utils";
+import SupplersTable from "./SupplersTable";
 
 class Suppliers extends Component {
   constructor(props) {
@@ -38,19 +39,6 @@ class Suppliers extends Component {
   getValue(suppliers, id) {}
 
   render() {
-    const suppliers = [
-      {
-        id: 100,
-        name: "Kamal",
-        email: "kamal@gmail.com",
-        contactno: "0759862565",
-        joineddate: "2015-10-18",
-      },
-    ];
-
-    axios.get("").then((getData) => {
-      suppliers.push(getData.data);
-    });
 
     return (
       <React.Fragment>
@@ -58,61 +46,24 @@ class Suppliers extends Component {
           <h2>Supplier</h2>
           <br></br>
           <Button color="light" onClick={this.toggleModal}>
-            {" "}
-            Add New Supplier{" "}
-          </Button>{" "}
+            Add New Supplier
+          </Button>
           <Button color="dark" style={{ marginLeft: ".5rem" }}>
-            {" "}
-            Delete Supplier{" "}
+            Delete Supplier
           </Button>
           <br></br>
           <br></br>
           <div className="search-box">
-            <MDBRow>
-              <MDBCol md="9" style={{ display: "inline-grid" }}>
+            <div className="row">
+              <div className="col-9">
                 <MDBInput hint="Search" type="text" id="search" />
-              </MDBCol>
-              <MDBCol md="3" style={{ display: "inline-grid" }}>
-                <Button
-                  outline
-                  color="primary"
-                  style={{ width: "8vw", marginBottom: "1.5rem" }}
-                >
-                  Search
-                </Button>
-              </MDBCol>
-            </MDBRow>
+              </div>
+              <div className="col-3">
+                <Button outline color="primary">Search</Button>
+              </div>
+            </div>
           </div>
-          <Table responsive striped bordered hover>
-            <thead>
-              <tr>
-                <th>
-                  {" "}
-                  <input type="checkbox" onChange={this.toggleSelectAll} />
-                </th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th> Contact Number</th>
-                <th> Joined Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {suppliers.map((supplier, index) => (
-                <tr data-index={index}>
-                  <td>
-                    <input type="checkbox" onChange={!this.check} />
-                  </td>
-
-                  <td><a style={{color:"blue"}}>{supplier.id}</a></td>
-                  <td>{supplier.name}</td>
-                  <td>{supplier.email}</td>
-                  <td>{supplier.contactno}</td>
-                  <td>{supplier.joineddate}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <SupplersTable/>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>
@@ -122,7 +73,6 @@ class Suppliers extends Component {
             <AddSupplier />
           </ModalBody>
         </Modal>
-
       </React.Fragment>
     );
   }
