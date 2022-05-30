@@ -10,6 +10,7 @@ const {
 } = require("../controller/supplyRecord.controller");
 
 router.post("/create", addSupplyRecord);
+router.post("/createGood", addNewGood);   //TO IMPL
 router.get("/single/:supId", getSupplyRecordBySupID);
 router.get("/all", getSupplyRecords);
 router.patch("/edit/:srId", editSupplyRecord);

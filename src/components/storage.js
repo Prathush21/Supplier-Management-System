@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState  } from "react";
 import {
   MDBCard,
   MDBCardBody,
@@ -79,9 +79,13 @@ class Storage extends Component {
       },
     ];
 
-    // axios.get("").then((getData) => {
-    //   storage.push(getData.data);
-    // });
+    axios.get("http://localhost:3000/supplier/all")
+      .then(getItem => {
+        storage.append(getItem.data);
+        console.log(getItem)
+      }).catch(err => {
+        console.log(err)
+      })
 
     return (
       <React.Fragment>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
@@ -35,32 +35,40 @@ const COLUMNS = [
   },
 ];
 
-const supplyrecords = [
-  {
-    id: 100,
-    supplierID: "175",
-    unitprice: 75,
-    amount: 10000,
-    type: "1",
-    availability: "yes",
-    receiveddate: "2015-10-18",
-  },
-  {
-    id: 100,
-    supplierID: "175",
-    unitprice: 75,
-    amount: 10000,
-    type: "1",
-    availability: "yes",
-    receiveddate: "2015-10-18",
-  },
-];
+// const supplyrecords = [
+//   {
+//     id: 100,
+//     supplierID: "175",
+//     unitprice: 75,
+//     amount: 10000,
+//     type: "1",
+//     availability: "yes",
+//     receiveddate: "2015-10-18",
+//   },
+//   {
+//     id: 100,
+//     supplierID: "175",
+//     unitprice: 75,
+//     amount: 10000,
+//     type: "1",
+//     availability: "yes",
+//     receiveddate: "2015-10-18",
+//   },
+// ];
 
 export default function SupplyRecordsTable() {
 
-  // axios.get("").then((getData) => {
-  //   supplyrecords.push(getData.data);
-  // });
+  const [supplyrecords, setSupplyRecords] = useState('');
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/supplyRecords/all")
+      .then(getRecords => {
+        setSupplyRecords(getRecords.data);
+        console.log(getRecords)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);

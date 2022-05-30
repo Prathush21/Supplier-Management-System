@@ -12,10 +12,12 @@ export default function AddSupplRecord() {
   const [type, setType] = useState('');
   const [availability, setAvailability] = useState('');
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/supplyRecord.controller.js',
-    data: {
+
+
+
+    const sendData = () => {
+    const url = 'http://localhost:3000/supplyRecord/create'
+    const data = {
       sup_ID : sup_ID,
       unit_Prize : unit_Prize,
       amount : amount,
@@ -23,6 +25,11 @@ export default function AddSupplRecord() {
       date : date,
       availability : availability
     }
+    axios.post(url,data).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   };
 
   return (

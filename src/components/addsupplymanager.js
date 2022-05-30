@@ -9,15 +9,19 @@ export default function AddSupplyManager() {
   const [contactNo, setContactNo] = useState("");
   const [date, setDate] = useState("");
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/$',
-    data: {
+  const sendData = () => {
+    const url = 'http://localhost:3000/main/suppliers/addSupplyManager'
+    const data =  {
       name : name,
       email : email,
       contact : contactNo,
       date : date
     }
+    axios.post(url,data).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   };
 
   return (

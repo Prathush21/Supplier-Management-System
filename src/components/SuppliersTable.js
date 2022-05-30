@@ -34,33 +34,33 @@ const COLUMNS = [
 
 
 
-const suppliers = [
-  {
-    id: 100,
-    name: "Kamal",
-    email: "kamal@gmail.com",
-    contactno: "0759862565",
-    address: "Kandy Road, Kurunegala",
-    joineddate: "2015-10-18",
-  },
-  {
-    id: 100,
-    name: "Nimal",
-    email: "nimal@gmail.com",
-    contactno: "0759862565",
-    address: "Kandy Road, Kurunegala",
-    joineddate: "2015-10-18",
-  },
-];
+// const suppliers = [
+//   {
+//     id: 100,
+//     name: "Kamal",
+//     email: "kamal@gmail.com",
+//     contactno: "0759862565",
+//     address: "Kandy Road, Kurunegala",
+//     joineddate: "2015-10-18",
+//   },
+//   {
+//     id: 100,
+//     name: "Nimal",
+//     email: "nimal@gmail.com",
+//     contactno: "0759862565",
+//     address: "Kandy Road, Kurunegala",
+//     joineddate: "2015-10-18",
+//   },
+// ];
 
 export default function SupplersTable() {
 
-  // const [suppliers, setSuppliers] = useState('');
+  const [suppliers, setSuppliers] = useState('');
 
   useEffect(() => {
     axios.get("http://localhost:3000/supplier/all")
       .then(getSuppliers => {
-        // setSuppliers(getSuppliers.data);
+        setSuppliers(getSuppliers.data);
         console.log(getSuppliers)
       }).catch(err => {
         console.log(err)

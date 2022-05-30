@@ -30,43 +30,52 @@ class Good extends Component {
   }
 
   render() {
-    // const goods = [
-    //   {
-    //     typeid: 100,
-    //     typename: "type 1",
-    //     unittype: "kg",
-    //     image: "/assets/images/login.jpg",
-    //   },
-    //   {
-    //     typeid: 100,
-    //     typename: "type 1",
-    //     unittype: "kg",
-    //     image: "/assets/images/login.jpg",
-    //   },
-    //   {
-    //     typeid: 100,
-    //     typename: "type 1",
-    //     unittype: "kg",
-    //     image: "/assets/images/login.jpg",
-    //   },
-    //   {
-    //     typeid: 100,
-    //     typename: "type 1",
-    //     unittype: "kg",
-    //     image: "/assets/images/login.jpg",
-    //   },
-    // ];
+    const goods = [
+      {
+        typeid: 100,
+        typename: "type 1",
+        unittype: "kg",
+        image: "/assets/images/login.jpg",
+      },
+      {
+        typeid: 100,
+        typename: "type 1",
+        unittype: "kg",
+        image: "/assets/images/login.jpg",
+      },
+      {
+        typeid: 100,
+        typename: "type 1",
+        unittype: "kg",
+        image: "/assets/images/login.jpg",
+      },
+      {
+        typeid: 100,
+        typename: "type 1",
+        unittype: "kg",
+        image: "/assets/images/login.jpg",
+      },
+    ];
 
-    const goods = [{
-          typeid: 100,
-          typename: "type 1",
-          unittype: "kg",
-          image: "/assets/images/login.jpg",
-        }];
     
-    axios.get('').then((getData) => {
-      goods.push(getData.data);
-    })
+    axios.get("http://localhost:3000/supplyRecord/all")
+      .then(getGoods => {
+        goods.append(getGoods.data);
+        console.log(getGoods)
+      }).catch(err => {
+        console.log(err)
+      })
+
+    // const goods = [{
+    //       typeid: 100,
+    //       typename: "type 1",
+    //       unittype: "kg",
+    //       image: "/assets/images/login.jpg",
+    //     }];
+    
+    // axios.get('').then((getData) => {
+    //   goods.push(getData.data);
+    // })
 
     return (
       <React.Fragment>

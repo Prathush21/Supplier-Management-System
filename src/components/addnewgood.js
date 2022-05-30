@@ -8,14 +8,18 @@ export default function AddGood() {
   const [unit, setUnit] = useState('');
   const [image, setImage] = useState('');
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/$',
-    data: {
+  const sendData = () => {
+    const url = 'http://localhost:3000/supplyRecord/createGood'
+    const data = {
       typename : typename,
       unit : unit,
       image : image,
     }
+    axios.post(url,data).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   };
 
   return (
@@ -39,7 +43,7 @@ export default function AddGood() {
         </FormGroup>
 
         <Button color="primary"
-        onClick={axios(sendData)}> Submit </Button>
+        onClick={sendData}> Submit </Button>
       </Form>
     </div>
   );

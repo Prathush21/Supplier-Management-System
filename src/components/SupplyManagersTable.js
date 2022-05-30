@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
@@ -27,28 +27,36 @@ const COLUMNS = [
   },
 ];
 
-const supplymanagers = [
-  {
-    id: 100,
-    name: "Kamal",
-    email: "kamal@gmail.com",
-    contactno: "0759862565",
-    joineddate: "2015-10-18",
-  },
-  {
-    id: 100,
-    name: "Nimal",
-    email: "nimal@gmail.com",
-    contactno: "0759862565",
-    joineddate: "2015-10-18",
-  },
-];
+// const supplymanagers = [
+//   {
+//     id: 100,
+//     name: "Kamal",
+//     email: "kamal@gmail.com",
+//     contactno: "0759862565",
+//     joineddate: "2015-10-18",
+//   },
+//   {
+//     id: 100,
+//     name: "Nimal",
+//     email: "nimal@gmail.com",
+//     contactno: "0759862565",
+//     joineddate: "2015-10-18",
+//   },
+// ];
 
 export default function SupplyManagersTable() {
 
-  // axios.get("").then((getData) => {
-  //   supplymanagers.push(getData.data);
-  // });  
+  const [supplymanagers, setSupplyManagers] = useState('');
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/supplier/getManagers")
+      .then(getManagers => {
+        setSupplyManagers(getManagers.data);
+        console.log(getManagers)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);

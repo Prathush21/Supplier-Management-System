@@ -22,7 +22,7 @@ export default function AddSupplier() {
   }
 
   const sendData = () => {
-    const url = '../../server/src/controller/supplierController'
+    const url = 'http://localhost:3000/supplier/create'
     const data = {
         name : name,
         email : email,
