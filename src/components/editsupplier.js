@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function EditSupplier(props) {
+  
+  const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [contact, setContactNumber] = useState('');
@@ -32,6 +34,7 @@ export default function EditSupplier(props) {
   ];
 
     const data = suppliers[props.row];
+    setId(data.id);
 
   const validateDate = (value) => {
     
@@ -46,10 +49,10 @@ export default function EditSupplier(props) {
 
   const sendData = () => {
 
-
     const url = 'http://localhost:3000/supplyRecord/edit/:id' //Edit Supplier
 
     const data = {
+      id : id,
       name : name,
       email : email,
       contact : contact,

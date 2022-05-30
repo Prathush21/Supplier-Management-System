@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 
 export default function EditDetails() {
 
+  const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
@@ -32,6 +33,7 @@ export default function EditDetails() {
     const url = 'http://localhost:3000/'  //EDIT DETAILS
 
     const data = {
+      id : id,
       name : name,
       email : email,
       contactNumber : contactNumber
@@ -45,6 +47,7 @@ export default function EditDetails() {
   };
 
   useEffect(() => {
+    setId(userDetails[0].id);
     setName(userDetails[0].name);
     setEmail(userDetails[0].email);
     setContactNumber(userDetails[0].contactNumber);

@@ -66,17 +66,6 @@ class Good extends Component {
         console.log(err)
       })
 
-    // const goods = [{
-    //       typeid: 100,
-    //       typename: "type 1",
-    //       unittype: "kg",
-    //       image: "/assets/images/login.jpg",
-    //     }];
-    
-    // axios.get('').then((getData) => {
-    //   goods.push(getData.data);
-    // })
-
     return (
       <React.Fragment>
       <div className="Container-fluid shadow-2-strong">

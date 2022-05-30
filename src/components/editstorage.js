@@ -58,6 +58,7 @@ export default function EditStorage(props) {
     const url = 'http://localhost:3000/supplyRecord/' //Edit Supplier
 
     const data = {
+      id : dataID,
       unitprize : unitprize,
       stockamount : stockamount
     }
