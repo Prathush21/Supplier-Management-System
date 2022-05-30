@@ -38,7 +38,6 @@ class Storage extends Component {
       this.setState(
         {id : Id}
       )
-      
     }
   }
 
