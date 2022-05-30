@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
@@ -32,6 +32,8 @@ const COLUMNS = [
   },
 ];
 
+
+
 const suppliers = [
   {
     id: 100,
@@ -52,9 +54,21 @@ const suppliers = [
 ];
 
 export default function SupplersTable() {
-  axios.get("").then((getData) => {
-    suppliers.push(getData.data);
-  });
+
+  // const [suppliers, setSuppliers] = useState('');
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/supplier/all")
+      .then(getSuppliers => {
+        // setSuppliers(getSuppliers.data);
+        console.log(getSuppliers)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+
+
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
@@ -156,7 +170,7 @@ export default function SupplersTable() {
         >
           <h3>Edit Supplier</h3>
         </ModalHeader>
-        <ModalBody><EditSupplier row={modalId}/></ModalBody>
+        <ModalBody><EditSupplier row={modalId} /></ModalBody>
       </Modal>
     </div>
   );

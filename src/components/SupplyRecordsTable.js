@@ -58,9 +58,9 @@ const supplyrecords = [
 
 export default function SupplyRecordsTable() {
 
-  axios.get("").then((getData) => {
-    supplyrecords.push(getData.data);
-  });
+  // axios.get("").then((getData) => {
+  //   supplyrecords.push(getData.data);
+  // });
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);

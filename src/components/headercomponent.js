@@ -4,7 +4,7 @@ import { Navbar, NavbarBrand, Nav, NavItem, Button } from "reactstrap";
 import "../styles/headercomponent.css";
 
 export default function Header() {
-  const name = "Supply Management System";
+  const name = "Supplier Management System";
   return (
     <header>
       <Navbar dark expand="md" className="ml-5">
@@ -14,7 +14,7 @@ export default function Header() {
               <Image
                 roundedCircle
                 fluid
-                src="/assets/images/logo.jpg"
+                src="/assets/images/logo_new.png"
                 alt="logo.jpg"
               />
             </div>

@@ -11,7 +11,6 @@ export default function AddSupplier() {
   const [date, setDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-
   const validateDate = (value) => {
     
     if ((new Date(value) <= new Date())) {
@@ -22,17 +21,22 @@ export default function AddSupplier() {
     }
   }
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/$',
-    data: {
-      name : name,
-      email : email,
-      contact : contact,
-      address : address,
-      date : date
+  const sendData = () => {
+    const url = '../../server/src/controller/supplierController'
+    const data = {
+        name : name,
+        email : email,
+        contact : contact,
+        address : address,
+        date : date
     }
+    axios.post(url,data).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   };
+  
 
   return (
     <div className="Container-fluid shadow-2-strong">
@@ -73,7 +77,8 @@ export default function AddSupplier() {
         </FormGroup>
 
         <Button color="primary"
-        onClick={axios(sendData)}> Submit </Button>
+        onClick={sendData}> Submit </Button>
+        
       </Form>
     </div>
   );

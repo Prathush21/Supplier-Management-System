@@ -46,9 +46,9 @@ const supplymanagers = [
 
 export default function SupplyManagersTable() {
 
-  axios.get("").then((getData) => {
-    supplymanagers.push(getData.data);
-  });  
+  // axios.get("").then((getData) => {
+  //   supplymanagers.push(getData.data);
+  // });  
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);

@@ -3,6 +3,7 @@ const db = require("../db/db");
 const addSupplier = (req, res) => {
   try {
     const supplier = req.body;
+    console.log(supplier);
     supplierSql =
       "INSERT INTO Supplier (name, email,Joined_date,photo) VALUES (?, ?, ?, ?);";
     db.query(
@@ -70,6 +71,7 @@ const getSuppliers = (req, res) => {
       "SELECT * FROM Supplier INNER JOIN Address ON Supplier.sID=Address.supplierID";
     db.query(supplierSql, [req.params.id], (err, result) => {
       res.send(result);
+      console.log(result)
     });
   } catch (error) {
     res.status(400).send(error);

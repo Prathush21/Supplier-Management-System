@@ -79,9 +79,9 @@ class Storage extends Component {
       },
     ];
 
-    axios.get("").then((getData) => {
-      storage.push(getData.data);
-    });
+    // axios.get("").then((getData) => {
+    //   storage.push(getData.data);
+    // });
 
     return (
       <React.Fragment>

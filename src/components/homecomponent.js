@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Home() {
-  const name = "Supply Management System";
+  const name = "Supplier Management System";
   return (
     <div className="Container-fluid shadow-2-strong">
       <div className="row justify-content-center">
@@ -12,7 +12,7 @@ export default function Home() {
       <br></br>
       <div className="row d-flex align-items-center justify-content-center">
         <img
-          src="/assets/images/logo.jpg"
+          src="/assets/images/logo_new.png"
           className="img-fluid shadow-2-strong"
           alt=""
           style={{ maxWidth: "30rem"}}
