@@ -8,7 +8,7 @@ export default function AddSupplier() {
   const [email, setEmail] = useState('');
   const [contact, setContactNumber] = useState('');
   const [address, setAddress] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
   const validateDate = (value) => {

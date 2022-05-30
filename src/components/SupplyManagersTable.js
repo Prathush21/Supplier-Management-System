@@ -46,7 +46,7 @@ const COLUMNS = [
 
 export default function SupplyManagersTable() {
 
-  const [supplymanagers, setSupplyManagers] = useState('');
+  const [supplymanagers, setSupplyManagers] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/supplier/getManagers")

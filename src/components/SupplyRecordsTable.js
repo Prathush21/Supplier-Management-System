@@ -58,7 +58,7 @@ const COLUMNS = [
 
 export default function SupplyRecordsTable() {
 
-  const [supplyrecords, setSupplyRecords] = useState('');
+  const [supplyrecords, setSupplyRecords] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/supplyRecords/all")

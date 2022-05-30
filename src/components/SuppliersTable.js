@@ -55,7 +55,7 @@ const COLUMNS = [
 
 export default function SupplersTable() {
 
-  const [suppliers, setSuppliers] = useState('');
+  const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/supplier/all")
@@ -63,11 +63,9 @@ export default function SupplersTable() {
         setSuppliers(getSuppliers.data);
         console.log(getSuppliers)
       }).catch(err => {
-        console.log(err)
+        console.log('err')
       })
   }, [])
-
-
 
 
   const [modalIsOpen, setModalIsOpen] = useState(false);

@@ -7,7 +7,7 @@ export default function AddSupplyManager() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contactNo, setContactNo] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(null);
 
   const sendData = () => {
     const url = 'http://localhost:3000/main/suppliers/addSupplyManager'

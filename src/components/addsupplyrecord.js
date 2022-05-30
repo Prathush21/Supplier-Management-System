@@ -8,7 +8,7 @@ export default function AddSupplRecord() {
   const [sup_ID, setSupplyID] = useState('');
   const [unit_Prize, setUnitPrice] = useState('');
   const [amount, setAmount] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(null);
   const [type, setType] = useState('');
   const [availability, setAvailability] = useState('');
 
