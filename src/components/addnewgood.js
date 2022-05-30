@@ -10,15 +10,17 @@ export default function AddGood() {
 
   const sendData = () => {
     const url = 'http://localhost:3000/supplyRecord/createGood'
+
     const data = {
       typename : typename,
       unit : unit,
       image : image,
     }
-    axios.post(url,data).then((res) => {
-      console.log(res)
+    axios.post(url, data)
+    .then((res) => {
+      console.log("response", res)
     }).catch(err => {
-      console.log(err)
+      console.log("error::::", err)
     })
   };
 
