@@ -10,7 +10,7 @@ export default function EditUsername() {
 
 
   const sendData = () => {
-    const url = 'http://localhost:3000/'
+    const url = 'http://localhost:3000/' //Edit Username
 
     const data = {
       oldusername : oldusername,
@@ -48,7 +48,7 @@ export default function EditUsername() {
         </FormGroup>
 
         <Button color="primary"
-        onClick={axios(sendData)}> Submit </Button>
+        onClick={sendData}> Submit </Button>
       </Form>
     </div>
   );

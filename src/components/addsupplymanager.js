@@ -64,7 +64,7 @@ export default function AddSupplyManager() {
             onChange={(e) => setDate(e.target.value)}
           />
         </FormGroup>
-        <Button color="primary" onClick={axios(sendData)}>
+        <Button color="primary" onClick={sendData}>
           {" "}
           Submit{" "}
         </Button>

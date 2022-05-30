@@ -77,7 +77,7 @@ export default function EditDetails() {
 
      
         <Button color="primary"
-        onClick={axios(sendData)}> Update </Button>
+        onClick={sendData}> Update </Button>
       </Form>
     </div>
   );

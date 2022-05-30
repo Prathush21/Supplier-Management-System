@@ -37,15 +37,13 @@ export default function AddSupplier() {
     })
   };
   
-
   return (
     <div className="Container-fluid shadow-2-strong">
       <Form className="form">
         <FormGroup>
           <Label for="name">Name</Label>
           <Input type="text" name="name" id="exampleName" required='true'
-          onChange={(e) => setName(e.target.value)}
-          />
+          onChange={(e) => setName(e.target.value)}/>
         </FormGroup>
 
         <FormGroup>

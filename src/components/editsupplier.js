@@ -102,7 +102,7 @@ export default function EditSupplier(props) {
         </FormGroup>
 
         <Button color="primary"
-        onClick={axios(sendData)}> Submit </Button>
+        onClick={sendData}> Submit </Button>
       </Form>
     </div>
   );

@@ -1,11 +1,14 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import React from "react";
+import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import "../styles/editstorage.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function EditStorage(props) {
+  const [unitprize, setUnitPrize] = useState('');
+  const [stockamount, setStockAmount] = useState('')
+
   const storage = [
     {
       id: 1,
@@ -50,6 +53,22 @@ export default function EditStorage(props) {
     console.log(err)
   })
 
+
+  const sendData = () => {
+    const url = 'http://localhost:3000/supplyRecord/' //Edit Supplier
+
+    const data = {
+      unitprize : unitprize,
+      stockamount : stockamount
+    }
+    axios.post(url, data)
+    .then((res) => {
+      console.log("response", res)
+    }).catch(err => {
+      console.log("error::::", err)
+    })
+  };
+  
   const params = useParams();
   const dataID = props.id;
   const data = storage.filter((s) => s.id === parseInt(dataID, 10))[0];
@@ -67,6 +86,7 @@ export default function EditStorage(props) {
                 id="typename"
                 readOnly
                 value={data.typename}
+                
               />
             </FormGroup>
 
@@ -99,6 +119,7 @@ export default function EditStorage(props) {
                 name="unitPrice"
                 id="unitPrice"
                 placeholder={data.unitprize}
+                onChange={(e) => setUnitPrize(e.target.value)}
               />
             </FormGroup>
 
@@ -109,10 +130,12 @@ export default function EditStorage(props) {
                 name="stockAmount"
                 id="stockAmount"
                 placeholder={data.stockamount}
+                onChange={(e) => setStockAmount(e.target.value)}
               />
             </FormGroup>
 
-            <Button color="primary"> Submit </Button>
+            <Button color="primary"
+            onClick={sendData}> Submit </Button>
           </Form>
         </div>
       </div>
