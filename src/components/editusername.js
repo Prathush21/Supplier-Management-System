@@ -8,14 +8,21 @@ export default function EditUsername() {
   const [newusername, setNewusername] = useState('');
   const [reusername, setReusername] = useState('');
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/$',
-    data: {
+
+  const sendData = () => {
+    const url = 'http://localhost:3000/'
+
+    const data = {
       oldusername : oldusername,
       newusername : newusername,
       reusername : reusername
     }
+    axios.post(url, data)
+    .then((res) => {
+      console.log("response", res)
+    }).catch(err => {
+      console.log("error::::", err)
+    })
   };
 
   return (

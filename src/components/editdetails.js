@@ -19,18 +19,29 @@ export default function EditDetails() {
     },
   ];
 
-  axios.get('').then((getData) => {
-    userDetails.push(getData.data);
-  });
+  axios.get("http://localhost:3000/") //Edit Page
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/$',
-    data: {
+  .then(getUserDetails => {
+    userDetails.append(getUserDetails.data);
+    console.log(getUserDetails)
+  }).catch(err => {
+    console.log(err)
+  })
+
+  const sendData = () => {
+    const url = 'http://localhost:3000/'  //EDIT DETAILS
+
+    const data = {
       name : name,
       email : email,
       contactNumber : contactNumber
     }
+    axios.post(url, data)
+    .then((res) => {
+      console.log("response", res)
+    }).catch(err => {
+      console.log("error::::", err)
+    })
   };
 
   useEffect(() => {

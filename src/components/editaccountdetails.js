@@ -49,9 +49,13 @@ class EditAccountDetails extends Component {
       },
     ];
 
-    axios.get("").then((getData) => {
-      userDetails.push(getData.data);
-    });
+    axios.get("http://localhost:3000/") //Edit Page
+    .then(getUserDetails => {
+      userDetails.append(getUserDetails.data);
+      console.log(getUserDetails)
+    }).catch(err => {
+      console.log(err)
+    })
 
     return (
       <React.Fragment>

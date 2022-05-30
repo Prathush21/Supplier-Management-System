@@ -42,9 +42,13 @@ export default function EditStorage(props) {
     },
   ];
 
-  axios.get("").then((getData) => {
-    storage.push(getData.data);
-  });
+  axios.get("http://localhost:3000/") //Edit storage
+  .then(getUserDetails => {
+    storage.append(getUserDetails.data);
+    console.log(getUserDetails)
+  }).catch(err => {
+    console.log(err)
+  })
 
   const params = useParams();
   const dataID = props.id;

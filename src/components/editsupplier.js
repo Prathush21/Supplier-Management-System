@@ -33,7 +33,6 @@ export default function EditSupplier(props) {
 
     const data = suppliers[props.row];
 
-
   const validateDate = (value) => {
     
     if ((new Date(value) <= new Date())) {
@@ -44,16 +43,24 @@ export default function EditSupplier(props) {
     }
   }
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/$',
-    data: {
+
+
+  const sendData = () => {
+    const url = 'http://localhost:3000/supplyRecord/' //Edit Supplier
+
+    const data = {
       name : name,
       email : email,
       contact : contact,
       address : address,
       date : date
     }
+    axios.post(url, data)
+    .then((res) => {
+      console.log("response", res)
+    }).catch(err => {
+      console.log("error::::", err)
+    })
   };
 
   return (

@@ -17,7 +17,4 @@ router.patch("/edit/:srId", editSupplyRecord);
 router.delete("/remove/:id", deleteSupplyRecordrByID);
 
 
-
-
-
 module.exports.supplyRecordRouter = router;

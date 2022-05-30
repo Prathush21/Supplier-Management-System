@@ -8,16 +8,21 @@ export default function EditPassword() {
   const [newpass, setNewPass] = useState('');
   const [repass, setRePass] = useState('');
 
-  const sendData = {
-    method: 'post',
-    url: '../server/src/controller/$',
-    data: {
+  const sendData = () => {
+    const url = 'http://localhost:3000/'  //EDIT PASSWORD
+
+    const data = {
       oldpass : oldpass,
       newpass : newpass,
       repass : repass
     }
+    axios.post(url, data)
+    .then((res) => {
+      console.log("response", res)
+    }).catch(err => {
+      console.log("error::::", err)
+    })
   };
-
 
   return (
     <div className="Container-fluid shadow-2-strong">
