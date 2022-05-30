@@ -6,9 +6,20 @@ import {
   MDBNavbarItem,
 } from "mdb-react-ui-kit";
 import {Button} from "reactstrap";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../utils/auth";
 
 export default function Header() {
+  const auth = useAuth()
+  const navigate = useNavigate()
+
   const name = "Supplier Management System";
+
+  const handleLogout = () => {
+    auth.logout()
+    navigate('/')
+  }
+
   return (
     <>
       <MDBNavbar className="navigationBar">
@@ -23,7 +34,12 @@ export default function Header() {
             <h1 className="header1">{name}</h1>
           </MDBNavbarBrand>
           <MDBNavbarItem>
-            <Button color="light">
+          <NavLink style={{ color:"#fff" }} className="nav-link" to="editaccountdetails">
+             {auth.user}
+            </NavLink>
+          </MDBNavbarItem>
+          <MDBNavbarItem>
+            <Button color="light" onClick={handleLogout}>
               <span className="fa fa-sign-out fa-lg"></span> Logout
             </Button>
           </MDBNavbarItem>
