@@ -44,9 +44,10 @@ export default function EditSupplier(props) {
   }
 
 
-
   const sendData = () => {
-    const url = 'http://localhost:3000/supplyRecord/' //Edit Supplier
+
+
+    const url = 'http://localhost:3000/supplyRecord/edit/:id' //Edit Supplier
 
     const data = {
       name : name,

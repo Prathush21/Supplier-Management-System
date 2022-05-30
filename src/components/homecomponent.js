@@ -17,6 +17,12 @@ export default function Home() {
           alt=""
           style={{ maxWidth: "30rem"}}
         />
+        <p 
+        style={{ maxWidth: "30rem"}}>The purpose of the supplier management system is to ease 
+          supplier management and to create a user friendly, convenient 
+          and easy to use web application for supplier managers who are 
+          responsible for managing supplies for their company.
+        </p>
       </div>
     </div>
   );
