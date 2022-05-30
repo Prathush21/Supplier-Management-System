@@ -9,7 +9,6 @@ import {
 export default function NavigationBar() {
   return (
     <Navbar dark>
-      <div >
         <Nav navbar>
           <hr></hr>
           <NavItem>
@@ -55,7 +54,6 @@ export default function NavigationBar() {
           </NavItem>
           <hr></hr>
         </Nav>
-      </div>
     </Navbar>
   );
 }

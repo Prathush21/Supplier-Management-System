@@ -3,6 +3,10 @@ body{
   margin: 0;
 }
 
+li {
+  list-style: none;
+}
+
 .header{
   background-color: aquamarine;
 }
@@ -21,7 +25,7 @@ body{
 }
 
 .main{
-  height: 100vh;
+  height: 90vh;
 }
 
 hr{
