@@ -128,7 +128,7 @@ class Storage extends Component {
           <ModalHeader toggle={this.toggleModal}>
             <h3> Edit Storage </h3>
           </ModalHeader>
-          <ModalBody>{ <EditStorage id={this.state.id}/> }</ModalBody>
+          <ModalBody>{ <EditStorage id={this.state.id} storage= {storage}/> }</ModalBody>
         </Modal>
       </React.Fragment>
     );
