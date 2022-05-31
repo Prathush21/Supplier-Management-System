@@ -82,7 +82,7 @@ export default function EditSupplyRecords(props) {
 
         <FormGroup>
           <Label for="unitprice">Unit Price</Label>
-          <Input type="unitprice" name="unitprice" id="exampleunitprice" placeholder={data.unitprice} required='true'
+          <Input type="number" step={0.01} name="unitprice" id="exampleunitprice" placeholder={data.unitprice} required='true'
           onChange={(e) => setUnitPrice(e.target.value)}/>
         </FormGroup>
 
