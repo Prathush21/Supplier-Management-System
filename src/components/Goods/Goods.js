@@ -9,8 +9,8 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import "../styles/table.css";
-import AddGood from "./addnewgood"
+import "../../styles/styles_2.css";
+import AddGood from "./AddNewGood"
 import axios from "axios";
 
 class Good extends Component {

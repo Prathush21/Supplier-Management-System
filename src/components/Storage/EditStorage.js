@@ -1,6 +1,6 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import React, { useState,useEffect } from "react";
-import "../styles/editstorage.css";
+import "../../styles/styles_1.css";
 import axios from "axios";
 
 export default function EditStorage(props) {

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
-import { Checkbox } from "./checkbox";
+import { Checkbox } from "../Utils/checkbox";
+import EditSupplier from "./EditSupplier";
 
 const COLUMNS = [
   {
@@ -22,17 +23,24 @@ const COLUMNS = [
     accessor: "contactno",
   },
   {
+    Header: "Address",
+    accessor: "address",
+  },
+  {
     Header: "Joined Date",
     accessor: "joineddate",
   },
 ];
 
-// const supplymanagers = [
+
+
+// const suppliers = [
 //   {
 //     id: 100,
 //     name: "Kamal",
 //     email: "kamal@gmail.com",
 //     contactno: "0759862565",
+//     address: "Kandy Road, Kurunegala",
 //     joineddate: "2015-10-18",
 //   },
 //   {
@@ -40,23 +48,25 @@ const COLUMNS = [
 //     name: "Nimal",
 //     email: "nimal@gmail.com",
 //     contactno: "0759862565",
+//     address: "Kandy Road, Kurunegala",
 //     joineddate: "2015-10-18",
 //   },
 // ];
 
-export default function SupplyManagersTable() {
+export default function SupplersTable() {
 
-  const [supplymanagers, setSupplyManagers] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/supplier/getManagers")
-      .then(getManagers => {
-        setSupplyManagers(getManagers.data);
-        console.log(getManagers)
+    axios.get("http://localhost:3000/supplier/all")
+      .then(getSuppliers => {
+        setSuppliers(getSuppliers.data);
+        console.log(getSuppliers)
       }).catch(err => {
-        console.log(err)
+        console.log('err')
       })
   }, [])
+
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
@@ -87,7 +97,7 @@ export default function SupplyManagersTable() {
   } = useTable(
     {
       columns: COLUMNS,
-      data: supplymanagers,
+      data: suppliers,
     },
     useRowSelect,
     (hooks) => {
@@ -106,9 +116,11 @@ export default function SupplyManagersTable() {
           {
             id: "edit",
             Cell: ({ row }) => (
-              <Button outline color="dark" onClick={() => viewModal(row.id)}>Edit</Button>
+              <Button outline color="dark" onClick={() => viewModal(row.id)}>
+                Edit
+              </Button>
             ),
-          }, 
+          },
         ];
       });
     }
@@ -151,10 +163,12 @@ export default function SupplyManagersTable() {
         </tbody>
       </Table>
       <Modal isOpen={modalIsOpen}>
-        <ModalHeader close={<Button close onClick={setModalIsOpenToFalse}></Button>}>
-          <h3>Edit Supply Manager</h3>
+        <ModalHeader
+          close={<Button close onClick={setModalIsOpenToFalse}></Button>}
+        >
+          <h3>Edit Supplier</h3>
         </ModalHeader>
-        <ModalBody>{modalId}</ModalBody>
+        <ModalBody><EditSupplier row={modalId} /></ModalBody>
       </Modal>
     </div>
   );

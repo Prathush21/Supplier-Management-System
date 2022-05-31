@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
-import "../styles/supplyrecords.css";
-import EditUsername from "./editusername";
-import EditPassword from "./editpassword";
-import EditDetails from "./editdetails";
+import EditUsername from "./EditUsername";
+import EditPassword from "./EditPassword";
+import EditDetails from "./EditDetails";
 import axios from "axios";
+import '../../styles/styles_1.css';
 
 class EditAccountDetails extends Component {
   constructor(props) {

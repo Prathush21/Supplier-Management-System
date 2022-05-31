@@ -7,7 +7,7 @@ import {
 } from "mdb-react-ui-kit";
 import { Button } from "reactstrap";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../utils/auth";
+import { useAuth } from "../../utils/auth";
 
 export default function Header() {
   const auth = useAuth();
