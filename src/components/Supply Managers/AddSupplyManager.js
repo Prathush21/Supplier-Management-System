@@ -1,10 +1,10 @@
-import { Button, Form, FormGroup, Input, Label,} from "reactstrap";
-import "../styles/supplyrecords.css";
 import React, { useState, useEffect } from "react";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import "../../styles/styles_2.css";
 import axios from "axios";
 
-export default function AddSupplier() {
-  const initialValues = {name:'', email:'', contact:'', address:'', date:null};
+export default function AddSupplyManager() {
+  const initialValues = {name:'', email:'', contactNo:'', date:null};
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
@@ -41,27 +41,26 @@ export default function AddSupplier() {
       errors.email = 'Invalid Email Address';
     }
 
-    if(!reContact.test(values.contact)){
-      errors.contact = 'Invalid Contact Number'
+    if(!reContact.test(values.contactNo)){
+      errors.contactNo = 'Invalid Contact Number'
     }
     
     return errors;
   }
 
 
-
   const sendData = () => {
-      const url = 'http://localhost:3000/supplier/create'
-      axios.post(url,data).then((res) => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })      
- };
-  
+    const url = 'http://localhost:3000/main/suppliers/addSupplyManager'
+    axios.post(url,data).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  };
+
   return (
     <div className="Container-fluid shadow-2-strong">
-      <Form className="form" onSubmit={handleSubmit}>
+      <Form className="form"  onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="name">Name</Label>
           <Input type="text" name="name" id="name"  required={true}
@@ -69,25 +68,18 @@ export default function AddSupplier() {
           <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.name}</p>
 
         </FormGroup>
-
         <FormGroup>
-          <Label for="email">Email Address</Label>
+          <Label for="exampleEmail">Email Address</Label>
           <Input type="email" name="email" id="email" required={true}
           onChange={handleChange} invalid={(formErrors.email === 'Invalid Email Address')} />
           <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.email}</p>
         </FormGroup>
 
         <FormGroup>
-          <Label for="contact">Contact Number</Label>
-          <Input type="text" name="contact" id="contact" required={true}
-          onChange={handleChange} invalid={(formErrors.contact === 'Invalid Contact Number')}/>
-          <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contact}</p>
-        </FormGroup>
-
-        <FormGroup>
-          <Label for="address">Address</Label>
-          <Input type="text" name="address" id="address" required={true}
-          onChange={handleChange}/>
+          <Label for="ContactNo">Contact Number</Label>
+          <Input type="text" name="contactNo" id="contactNo" required={true}
+          onChange={handleChange} invalid={(formErrors.contactNo === 'Invalid Contact Number')}/>
+          <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contactNo}</p>
         </FormGroup>
 
         <FormGroup>
@@ -96,8 +88,9 @@ export default function AddSupplier() {
           onChange={handleChange}/>
         </FormGroup>
 
-        <Button type='submit' color="primary"> Submit </Button>
-
+        <Button type='submit' color="primary">
+          Submit
+        </Button>
       </Form>
     </div>
   );

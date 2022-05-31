@@ -1,7 +1,7 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import "../styles/supplyrecords.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import '../../styles/styles_1.css';
 
 export default function EditDetails() {
 

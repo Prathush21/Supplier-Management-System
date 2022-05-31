@@ -1,5 +1,5 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import "../styles/supplyrecords.css";
+import '../../styles/styles_1.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 

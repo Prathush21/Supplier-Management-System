@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState  } from "react";
+import React, { Component,} from "react";
 import {
   MDBCard,
   MDBCardBody,
@@ -9,10 +9,10 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import "../styles/table.css";
-import EditStorage from './editstorage';
+import "../../styles/styles_2.css";
+import EditStorage from './EditStorage';
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 
 class Storage extends Component {
   constructor(props) {

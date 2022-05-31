@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MDBNavbarToggler, MDBCollapse } from "mdb-react-ui-kit";
-import NavigationBar from "./navbarcomponent";
+import NavigationBar from "./NavbarComponent";
 
 export default function NavigationComponent() {
   const [showNavExternal, setShowNavExternal] = useState(false);

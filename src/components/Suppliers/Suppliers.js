@@ -1,9 +1,9 @@
 import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
-import "../styles/table.css";
+import "../../styles/styles_2.css";
 import { MDBRow, MDBCol, MDBInput } from "mdbreact";
 import React, { Component } from "react";
-import AddSupplier from "./addsupplier";
-import EditSupplier from "./editsupplier"
+import AddSupplier from "./AddSupplier";
+import EditSupplier from "./EditSupplier"
 import { Link } from "react-router-dom";
 
 import axios from "axios";

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { MDBInput, } from "mdbreact";
-import { useRowSelect, useTable } from "react-table";
 import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
-import "../styles/table.css";
-import AddSupplyManager from "./addsupplymanager";
-import SupplyManagersTable from "./SupplyManagersTable";
+import "../../styles/styles_2.css";
+import AddSupplRecord from "./AddSupplyRecord";
+import axios from "axios";
+import SupplyRecordsTable from "./SupplyRecordsTable";
 
-class SupplyManagers extends Component {
+class SupplyRecords extends Component {
   constructor(props) {
     super(props);
 
@@ -23,38 +22,27 @@ class SupplyManagers extends Component {
   }
 
   render() {
-    
+
     return (
       <React.Fragment>
         <div className="Container-fluid shadow-2-strong">
-          <h2>Supply Managers </h2>
+          <h2>Supply Records </h2>
           <br></br>
           <Button color="light" onClick={this.toggleModal}>
-            Add New Supply Manager
+            Add New Record
           </Button>
           <Button color="dark" style={{ marginLeft: ".5rem" }}>
             Delete Record
           </Button>
-          <br></br>
-          <br></br>
-          <div className="search-box">
-            <div className="row">
-              <div className="col-9">
-                <MDBInput hint="Search" type="text" id="search" />
-              </div>
-              <div className="col-3">
-                <Button outline color="primary">Search</Button>
-              </div>
-            </div>
-          </div>
-          <SupplyManagersTable/>
+          <br></br> <br></br> <br></br>
+          <SupplyRecordsTable />
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>
-            <h3>New Supply Manager </h3>{" "}
+            <h3>New Supply Record </h3>
           </ModalHeader>
           <ModalBody>
-            <AddSupplyManager />
+            <AddSupplRecord />
           </ModalBody>
         </Modal>
       </React.Fragment>
@@ -62,4 +50,4 @@ class SupplyManagers extends Component {
   }
 }
 
-export default SupplyManagers;
+export default SupplyRecords;

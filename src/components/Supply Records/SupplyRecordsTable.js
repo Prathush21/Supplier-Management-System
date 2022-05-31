@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
-import { Checkbox } from "./checkbox";
-import EditSupplier from "./editsupplier";
+import { Checkbox } from "../Utils/checkbox";
 
 const COLUMNS = [
   {
@@ -11,62 +10,84 @@ const COLUMNS = [
     accessor: "id",
   },
   {
-    Header: "Name",
-    accessor: "name",
+    Header: "Supplier ID",
+    accessor: "supplierID",
   },
   {
-    Header: "Email",
-    accessor: "email",
+    Header: "Unit Price",
+    accessor: "unitprice",
   },
   {
-    Header: "Contact Number",
-    accessor: "contactno",
+    Header: "Amount",
+    accessor: "amount",
   },
   {
-    Header: "Address",
-    accessor: "address",
+    Header: "Type",
+    accessor: "type",
   },
   {
-    Header: "Joined Date",
-    accessor: "joineddate",
+    Header: "Availability",
+    accessor: "availability",
+  },
+  {
+    Header: "Received Date",
+    accessor: "receiveddate",
   },
 ];
 
+const supplyrecords = [
+  {
+    id: 100,
+    supplierID: "175",
+    unitprice: 75,
+    amount: 10000,
+    type: "1",
+    availability: "yes",
+    receiveddate: "2015-10-18",
+  },
+  {
+    id: 100,
+    supplierID: "175",
+    unitprice: 75,
+    amount: 10000,
+    type: "1",
+    availability: "yes",
+    receiveddate: "2015-10-18",
+  },
+];
 
+export default function SupplyRecordsTable() {
 
-// const suppliers = [
-//   {
-//     id: 100,
-//     name: "Kamal",
-//     email: "kamal@gmail.com",
-//     contactno: "0759862565",
-//     address: "Kandy Road, Kurunegala",
-//     joineddate: "2015-10-18",
-//   },
-//   {
-//     id: 100,
-//     name: "Nimal",
-//     email: "nimal@gmail.com",
-//     contactno: "0759862565",
-//     address: "Kandy Road, Kurunegala",
-//     joineddate: "2015-10-18",
-//   },
-// ];
-
-export default function SupplersTable() {
-
-  const [suppliers, setSuppliers] = useState([]);
+  const [supplyrecords, setSupplyRecords] = useState([
+    {
+      id: 100,
+      supplierID: "175",
+      unitprice: 75,
+      amount: 10000,
+      type: "1",
+      availability: "yes",
+      receiveddate: "2015-10-18",
+    },
+    {
+      id: 100,
+      supplierID: "175",
+      unitprice: 75,
+      amount: 10000,
+      type: "1",
+      availability: "yes",
+      receiveddate: "2015-10-18",
+    },
+  ]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/supplier/all")
-      .then(getSuppliers => {
-        setSuppliers(getSuppliers.data);
-        console.log(getSuppliers)
+    axios.get("http://localhost:3000/supplyRecords/all")
+      .then(getRecords => {
+        setSupplyRecords(getRecords.data);
+        console.log(getRecords)
       }).catch(err => {
-        console.log('err')
+        console.log(err)
       })
   }, [])
-
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
@@ -97,7 +118,7 @@ export default function SupplersTable() {
   } = useTable(
     {
       columns: COLUMNS,
-      data: suppliers,
+      data: supplyrecords,
     },
     useRowSelect,
     (hooks) => {
@@ -116,11 +137,9 @@ export default function SupplersTable() {
           {
             id: "edit",
             Cell: ({ row }) => (
-              <Button outline color="dark" onClick={() => viewModal(row.id)}>
-                Edit
-              </Button>
+              <Button outline color="dark" onClick={() => viewModal(row.id)}>Edit</Button>
             ),
-          },
+          }, 
         ];
       });
     }
@@ -163,12 +182,10 @@ export default function SupplersTable() {
         </tbody>
       </Table>
       <Modal isOpen={modalIsOpen}>
-        <ModalHeader
-          close={<Button close onClick={setModalIsOpenToFalse}></Button>}
-        >
-          <h3>Edit Supplier</h3>
+        <ModalHeader close={<Button close onClick={setModalIsOpenToFalse}></Button>}>
+          <h3>Edit Supply Record</h3>
         </ModalHeader>
-        <ModalBody><EditSupplier row={modalId} /></ModalBody>
+        <ModalBody>{modalId}</ModalBody>
       </Modal>
     </div>
   );

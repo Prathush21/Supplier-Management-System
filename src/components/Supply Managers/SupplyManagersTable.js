@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
-import { Checkbox } from "./checkbox";
+import { Checkbox } from "../Utils/checkbox";
 
 const COLUMNS = [
   {
@@ -10,61 +10,49 @@ const COLUMNS = [
     accessor: "id",
   },
   {
-    Header: "Supplier ID",
-    accessor: "supplierID",
+    Header: "Name",
+    accessor: "name",
   },
   {
-    Header: "Unit Price",
-    accessor: "unitprice",
+    Header: "Email",
+    accessor: "email",
   },
   {
-    Header: "Amount",
-    accessor: "amount",
+    Header: "Contact Number",
+    accessor: "contactno",
   },
   {
-    Header: "Type",
-    accessor: "type",
-  },
-  {
-    Header: "Availability",
-    accessor: "availability",
-  },
-  {
-    Header: "Received Date",
-    accessor: "receiveddate",
+    Header: "Joined Date",
+    accessor: "joineddate",
   },
 ];
 
-// const supplyrecords = [
+// const supplymanagers = [
 //   {
 //     id: 100,
-//     supplierID: "175",
-//     unitprice: 75,
-//     amount: 10000,
-//     type: "1",
-//     availability: "yes",
-//     receiveddate: "2015-10-18",
+//     name: "Kamal",
+//     email: "kamal@gmail.com",
+//     contactno: "0759862565",
+//     joineddate: "2015-10-18",
 //   },
 //   {
 //     id: 100,
-//     supplierID: "175",
-//     unitprice: 75,
-//     amount: 10000,
-//     type: "1",
-//     availability: "yes",
-//     receiveddate: "2015-10-18",
+//     name: "Nimal",
+//     email: "nimal@gmail.com",
+//     contactno: "0759862565",
+//     joineddate: "2015-10-18",
 //   },
 // ];
 
-export default function SupplyRecordsTable() {
+export default function SupplyManagersTable() {
 
-  const [supplyrecords, setSupplyRecords] = useState([]);
+  const [supplymanagers, setSupplyManagers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/supplyRecords/all")
-      .then(getRecords => {
-        setSupplyRecords(getRecords.data);
-        console.log(getRecords)
+    axios.get("http://localhost:3000/supplier/getManagers")
+      .then(getManagers => {
+        setSupplyManagers(getManagers.data);
+        console.log(getManagers)
       }).catch(err => {
         console.log(err)
       })
@@ -99,7 +87,7 @@ export default function SupplyRecordsTable() {
   } = useTable(
     {
       columns: COLUMNS,
-      data: supplyrecords,
+      data: supplymanagers,
     },
     useRowSelect,
     (hooks) => {

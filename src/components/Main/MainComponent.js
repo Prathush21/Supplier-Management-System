@@ -3,7 +3,7 @@ import {} from "reactstrap";
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import NavigationComponent from "./ResponsiveNavbar";
-import { useAuth } from "../utils/auth";
+import { useAuth } from "../../utils/auth";
 
 export default function Main() {
 
