@@ -3,6 +3,7 @@ import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
 import { Checkbox } from "../Utils/checkbox";
+import EditSupplyManager from "./EditSupplyManager";
 
 const COLUMNS = [
   {
@@ -19,34 +20,33 @@ const COLUMNS = [
   },
   {
     Header: "Contact Number",
-    accessor: "contactno",
+    accessor: "contactNo",
   },
   {
     Header: "Joined Date",
-    accessor: "joineddate",
+    accessor: "date",
   },
 ];
 
-// const supplymanagers = [
-//   {
-//     id: 100,
-//     name: "Kamal",
-//     email: "kamal@gmail.com",
-//     contactno: "0759862565",
-//     joineddate: "2015-10-18",
-//   },
-//   {
-//     id: 100,
-//     name: "Nimal",
-//     email: "nimal@gmail.com",
-//     contactno: "0759862565",
-//     joineddate: "2015-10-18",
-//   },
-// ];
 
 export default function SupplyManagersTable() {
 
-  const [supplymanagers, setSupplyManagers] = useState([]);
+  const [supplymanagers, setSupplyManagers] = useState([
+    {
+      id: 100,
+      name: "Kamal",
+      email: "kamal@gmail.com",
+      contactNo: "0759862565",
+      date: "2015-10-18",
+    },
+    {
+      id: 100,
+      name: "Nimal",
+      email: "nimal@gmail.com",
+      contactNo: "0759862565",
+      date: "2015-10-18",
+    },
+  ]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/supplier/getManagers")
@@ -154,7 +154,7 @@ export default function SupplyManagersTable() {
         <ModalHeader close={<Button close onClick={setModalIsOpenToFalse}></Button>}>
           <h3>Edit Supply Manager</h3>
         </ModalHeader>
-        <ModalBody>{modalId}</ModalBody>
+        <ModalBody><EditSupplyManager row={modalId} supplymanagers={supplymanagers}/></ModalBody>
       </Modal>
     </div>
   );

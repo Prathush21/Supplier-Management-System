@@ -20,7 +20,7 @@ const COLUMNS = [
   },
   {
     Header: "Contact Number",
-    accessor: "contactno",
+    accessor: "contact",
   },
   {
     Header: "Address",
@@ -28,34 +28,31 @@ const COLUMNS = [
   },
   {
     Header: "Joined Date",
-    accessor: "joineddate",
+    accessor: "date",
   },
 ];
 
 
-
-// const suppliers = [
-//   {
-//     id: 100,
-//     name: "Kamal",
-//     email: "kamal@gmail.com",
-//     contactno: "0759862565",
-//     address: "Kandy Road, Kurunegala",
-//     joineddate: "2015-10-18",
-//   },
-//   {
-//     id: 100,
-//     name: "Nimal",
-//     email: "nimal@gmail.com",
-//     contactno: "0759862565",
-//     address: "Kandy Road, Kurunegala",
-//     joineddate: "2015-10-18",
-//   },
-// ];
-
 export default function SupplersTable() {
 
-  const [suppliers, setSuppliers] = useState([]);
+  const [suppliers, setSuppliers] = useState([
+    {
+      id: 100,
+      name: "Kamal",
+      email: "kamal@gmail.com",
+      contact: "0759862565",
+      address: "Kandy Road, Kurunegala",
+      date: "2015-10-18",
+    },
+    {
+      id: 100,
+      name: "Nimal",
+      email: "nimal@gmail.com",
+      contact: "0759862565",
+      address: "Kandy Road, Kurunegala",
+      date: "2015-10-18",
+    },
+  ]);
 
   useEffect(() => {
     axios.get("http://localhost:3000/supplier/all")
@@ -168,7 +165,7 @@ export default function SupplersTable() {
         >
           <h3>Edit Supplier</h3>
         </ModalHeader>
-        <ModalBody><EditSupplier row={modalId} /></ModalBody>
+        <ModalBody><EditSupplier row={modalId} suppliers={suppliers}/></ModalBody>
       </Modal>
     </div>
   );

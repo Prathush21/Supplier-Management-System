@@ -1,67 +1,22 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import '../../styles/styles_1.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function EditSupplyRecords(props) {
-  
-  const [supplierid, setSupplierId] = useState('');
-  const [unitprice, setUnitPrice] = useState('');
-  const [amount, setAmount] = useState('');
-  const [type, setType] = useState('');
-  const [availability, setAvailability] = useState('');
-  const [receiveddate, setReceivedDate] = useState('');
+ 
+  const supplyrecords = props.supplyrecords;
+  const initialValues = supplyrecords[props.row];
+  const [formValues,setformValues] = useState(initialValues)
+  const [isSubmit,setIsSubmit] = useState(false);
+  const [formErrors, setformErrors] = useState({})
+  const [data, setData] = useState(null);
 
-  const [errorMessage, setErrorMessage] = useState('')
-
-  
-  const supplyrecords = [
-    {
-      id: 100,
-      supplierid: 1250,
-      unitprice: 20,
-      amount: 10000,
-      type: 'kg',
-      availability: "yes",
-      receiveddate: "2015-10-18",
-    },
-    {
-      id: 100,
-      supplierid: 1250,
-      unitprice: 20,
-      amount: 10000,
-      type: 'kg',
-      availability: "yes",
-      receiveddate: "2015-10-18",
-    },
-  ];
-
-    const data = supplyrecords[props.row];
-    setId(data.id);
-
-  const validateDate = (value) => {
-    
-    if ((new Date(value) <= new Date())) {
-      setDate(value);
-      setErrorMessage('')
-    } else {
-      setErrorMessage('Enter Valid Date!')
-    }
-  }
 
   const sendData = () => {
 
     const url = 'http://localhost:3000/supplyRecord/edit/:id' //Edit Supplier
 
-    const data = {
-        id: id,
-        supplierid: supplierid,
-        unitprice: unitprice,
-        amount: amount,
-        type: type,
-        availability: availability,
-        receiveddate: receiveddate,
-    }
     axios.post(url, data)
     .then((res) => {
       console.log("response", res)
@@ -70,48 +25,105 @@ export default function EditSupplyRecords(props) {
     })
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setformValues({...formValues, [name]:value});
+  }
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setformErrors(validate(formValues));
+    setIsSubmit(true);  
+    setData(formValues);
+  }
+
+  useEffect(() => {
+
+    if(Object.keys(formErrors).length === 0 && isSubmit){
+        sendData()
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors = {}
+
+    if (isNaN(values.sup_ID)) {
+      errors.sup_ID = "Supplier ID is numeric !";
+    }
+
+    return errors;
+  } 
+
   return (
     <div className="Container-fluid">
-      <Form className="form">
+      <Form className="form" onSubmit={handleSubmit}>
+      <FormGroup>
+          <Label for="sup_ID">Supplier ID</Label>
+          <Input
+            type="text"
+            name="sup_ID"
+            id="sup_ID"
+            required={true}
+            value={formValues.sup_ID}
+            invalid={formErrors.sup_ID === "Supplier ID is numeric !"}
+            onChange={handleChange}
+          />
+          <p class="fst-italic fw-bolder" style={{ color: "#f93154" }}>
+            {formErrors.sup_ID}
+          </p>
+        </FormGroup>
+
         <FormGroup>
-          <Label for="supplierid">Supplier ID</Label>
-          <Input type="text" name="supplierid" id="examplesupplierid" placeholder={data.supplierid}  required='true'
-          onChange={(e) => setSupplierId(e.target.value)}
+          <Label for="unit_Prize">Unit Price</Label>
+          <Input
+            type="number"
+            step="0.01"
+            name="unit_Prize"
+            id="unit_Prize"
+            value={formValues.unit_Prize}
+            required={true}
+            onChange={handleChange}
           />
         </FormGroup>
 
         <FormGroup>
-          <Label for="unitprice">Unit Price</Label>
-          <Input type="number" step={0.01} name="unitprice" id="exampleunitprice" placeholder={data.unitprice} required='true'
-          onChange={(e) => setUnitPrice(e.target.value)}/>
-        </FormGroup>
-
-        <FormGroup>
-          <Label for="amount">Amount</Label>
-          <Input type="number" step ="0.01" name="amount" id="exampleamount"  placeholder={data.amount} required='true'
-          onChange={(e) => setAmount(e.target.value)}/>
+          <Label for="amount">amount</Label>
+          <Input
+            type="number"
+            step="0.01"
+            name="amount"
+            id="amount"
+            value={formValues.amount}
+            required={true}
+            onChange={handleChange}
+          />
         </FormGroup>
 
         <FormGroup>
           <Label for="type">Type</Label>
-          <Input type="text" name="type" id="exampletype" placeholder={data.type} required='true' 
-          onChange={(e) => setType(e.target.value)}/>
+          <Input type="text" name="type" id="exampletype" value={formValues.type} readOnly />
         </FormGroup>
 
         <FormGroup>
           <Label for="type">Availability</Label>
-          <Input type="text" name="availability" id="exampleavailability" placeholder={data.availability} required='true'
-          onChange={(e) => setAvailability(e.target.value)}/>
+          <Input type="text" name="availability" id="exampleavailability" value={formValues.availability} required='true'
+          onChange={handleChange}/>
         </FormGroup>
 
         <FormGroup>
-          <Label for="type">ReceivedDate</Label>
-          <Input type="date" name="receivedDate" id="examplereceivedDate" placeholder={data.receiveddate} required='true' 
-          onChange={(e) => setReceivedDate(e.target.value)}/>
+          <Label for="date">Received Date</Label>
+          <Input
+            type="date"
+            name="date"
+            id="date"
+            value={formValues.date}
+            required={true}
+            onChange={handleChange}
+          />
         </FormGroup>
 
-        <Button color="primary"
-        onClick={sendData}> Submit </Button>
+        <Button color="primary" type="submit"> Submit </Button>
       </Form>
     </div>
   );

@@ -50,6 +50,7 @@ export default function AddSupplyManager() {
 
 
   const sendData = () => {
+
     const url = 'http://localhost:3000/main/suppliers/addSupplyManager'
     axios.post(url,data).then((res) => {
       console.log(res)
@@ -63,28 +64,28 @@ export default function AddSupplyManager() {
       <Form className="form"  onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="name">Name</Label>
-          <Input type="text" name="name" id="name"  required={true}
+          <Input type="text" name="name" id="name" value={formValues.name} required={true}
           onChange={handleChange} invalid={(formErrors.name === 'Name must be at least 3 characters')}/>
           <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.name}</p>
 
         </FormGroup>
         <FormGroup>
           <Label for="exampleEmail">Email Address</Label>
-          <Input type="email" name="email" id="email" required={true}
+          <Input type="email" name="email" id="email" value={formValues.email}  required={true}
           onChange={handleChange} invalid={(formErrors.email === 'Invalid Email Address')} />
           <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.email}</p>
         </FormGroup>
 
         <FormGroup>
           <Label for="ContactNo">Contact Number</Label>
-          <Input type="text" name="contactNo" id="contactNo" required={true}
+          <Input type="text" name="contactNo" id="contactNo" value={formValues.contactNo} required={true}
           onChange={handleChange} invalid={(formErrors.contactNo === 'Invalid Contact Number')}/>
           <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contactNo}</p>
         </FormGroup>
 
         <FormGroup>
           <Label for="date">Joined Date</Label>
-          <Input type="date" name="date" id="date" required={true}
+          <Input type="date" name="date" id="date" value={formValues.date} required={true}
           onChange={handleChange}/>
         </FormGroup>
 

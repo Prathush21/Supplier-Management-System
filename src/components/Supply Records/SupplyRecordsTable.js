@@ -3,6 +3,7 @@ import { useRowSelect, useTable } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
 import { Checkbox } from "../Utils/checkbox";
+import EditSupplyRecords from "./EditSupplyRecord";
 
 const COLUMNS = [
   {
@@ -11,11 +12,11 @@ const COLUMNS = [
   },
   {
     Header: "Supplier ID",
-    accessor: "supplierID",
+    accessor: "sup_ID",
   },
   {
     Header: "Unit Price",
-    accessor: "unitprice",
+    accessor: "unit_Prize",
   },
   {
     Header: "Amount",
@@ -31,51 +32,31 @@ const COLUMNS = [
   },
   {
     Header: "Received Date",
-    accessor: "receiveddate",
+    accessor: "date",
   },
 ];
 
-const supplyrecords = [
-  {
-    id: 100,
-    supplierID: "175",
-    unitprice: 75,
-    amount: 10000,
-    type: "1",
-    availability: "yes",
-    receiveddate: "2015-10-18",
-  },
-  {
-    id: 100,
-    supplierID: "175",
-    unitprice: 75,
-    amount: 10000,
-    type: "1",
-    availability: "yes",
-    receiveddate: "2015-10-18",
-  },
-];
 
 export default function SupplyRecordsTable() {
 
   const [supplyrecords, setSupplyRecords] = useState([
     {
       id: 100,
-      supplierID: "175",
-      unitprice: 75,
+      sup_ID: "175",
+      unit_Prize: 75,
       amount: 10000,
       type: "1",
       availability: "yes",
-      receiveddate: "2015-10-18",
+      date: "2015-10-18",
     },
     {
       id: 100,
-      supplierID: "175",
-      unitprice: 75,
+      sup_ID: "175",
+      unit_Prize: 75,
       amount: 10000,
       type: "1",
       availability: "yes",
-      receiveddate: "2015-10-18",
+      date: "2015-10-18",
     },
   ]);
 
@@ -185,7 +166,7 @@ export default function SupplyRecordsTable() {
         <ModalHeader close={<Button close onClick={setModalIsOpenToFalse}></Button>}>
           <h3>Edit Supply Record</h3>
         </ModalHeader>
-        <ModalBody>{modalId}</ModalBody>
+        <ModalBody><EditSupplyRecords row={modalId} supplyrecords={supplyrecords}/></ModalBody>
       </Modal>
     </div>
   );
