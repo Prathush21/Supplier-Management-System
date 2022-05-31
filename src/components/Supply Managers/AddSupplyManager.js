@@ -50,8 +50,7 @@ export default function AddSupplyManager() {
 
 
   const sendData = () => {
-
-    const url = 'http://localhost:3000/main/suppliers/addSupplyManager'
+    const url = "/main/suppliers/addSupplyManager"
     axios.post(url,data).then((res) => {
       console.log(res)
     }).catch(err => {

@@ -20,7 +20,7 @@ export default function EditDetails() {
     },
   ];
 
-  axios.get("http://localhost:3000/") //Edit Page
+  axios.get("/manager/update") //Edit Page
 
   .then(getUserDetails => {
     userDetails.append(getUserDetails.data);
@@ -30,7 +30,7 @@ export default function EditDetails() {
   })
 
   const sendData = () => {
-    const url = 'http://localhost:3000/'  //EDIT DETAILS
+    const url = '/manager/update'  //EDIT DETAILS
 
     const data = {
       id : id,

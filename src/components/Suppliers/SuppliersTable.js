@@ -55,7 +55,7 @@ export default function SupplersTable() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/supplier/all")
+    axios.get("/supplier/all")
       .then(getSuppliers => {
         setSuppliers(getSuppliers.data);
         console.log(getSuppliers)

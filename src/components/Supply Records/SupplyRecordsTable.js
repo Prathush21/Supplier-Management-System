@@ -61,7 +61,7 @@ export default function SupplyRecordsTable() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/supplyRecords/all")
+    axios.get("/supplyRecords/all")
       .then(getRecords => {
         setSupplyRecords(getRecords.data);
         console.log(getRecords)

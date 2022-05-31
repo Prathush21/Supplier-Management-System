@@ -49,7 +49,7 @@ export default function SupplyManagersTable() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/supplier/getManagers")
+    axios.get("/supplier/getManagers")
       .then(getManagers => {
         setSupplyManagers(getManagers.data);
         console.log(getManagers)

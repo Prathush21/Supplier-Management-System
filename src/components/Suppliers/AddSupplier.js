@@ -3,6 +3,7 @@ import '../../styles/styles_1.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
 export default function AddSupplier() {
   const initialValues = {name:'', email:'', contact:'', address:'', date:null};
   const [formValues,setformValues] = useState(initialValues)
@@ -48,10 +49,8 @@ export default function AddSupplier() {
     return errors;
   }
 
-
-
   const sendData = () => {
-      const url = 'http://localhost:3000/supplier/create'
+      const url = "/supplier/create"
       axios.post(url,data).then((res) => {
         console.log(res)
       }).catch(err => {

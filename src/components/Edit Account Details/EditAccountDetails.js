@@ -49,7 +49,7 @@ class EditAccountDetails extends Component {
       },
     ];
 
-    axios.get("http://localhost:3000/") //Edit Page
+    axios.get("/") //Edit Page
     .then(getUserDetails => {
       userDetails.append(getUserDetails.data);
       console.log(getUserDetails)
