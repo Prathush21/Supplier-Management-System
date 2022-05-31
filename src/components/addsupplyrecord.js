@@ -1,68 +1,114 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import "../styles/supplyrecords.css";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
-import axios from 'axios';
+import axios from "axios";
 
 export default function AddSupplRecord() {
-  const [sup_ID, setSupplyID] = useState('');
-  const [unit_Prize, setUnitPrice] = useState('');
-  const [amount, setAmount] = useState('');
-  const [date, setDate] = useState(null);
-  const [type, setType] = useState('');
-  const [availability, setAvailability] = useState('');
+  const initialValues = {
+    sup_ID: "",
+    unit_Prize: "",
+    amount: "",
+    date: null,
+    type: "",
+    availability: "",
+  };
+  const [formValues, setformValues] = useState(initialValues);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [formErrors, setformErrors] = useState({});
+  const [data, setData] = useState(null);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setformValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setformErrors(validate(formValues));
+    setIsSubmit(true);
+    setData(formValues);
+  };
+
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      sendData();
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (isNaN(values.sup_ID)) {
+      errors.sup_ID = "Supplier ID is numeric !";
+    }
+
+    return errors;
+  };
 
   const sendData = () => {
-  const url = 'http://localhost:3000/supplyRecord/create'
-  const data = {
-    sup_ID : sup_ID,
-    unit_Prize : unit_Prize,
-    amount : amount,
-    type : type,
-    date : date,
-    availability : availability
-  }
-  
-  axios.post(url,data)
-  .then((res) => {
-    console.log(res)
-  }).catch(err => {
-    console.log(err)
-  })
+    const url = "http://localhost:3000/supplyRecord/create";
+    axios
+      .post(url, data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div className="Container-fluid shadow-2-strong">
-      <Form className="form">
+      <Form className="form" onSubmit={handleSubmit}>
         <FormGroup>
-          <Label for="supplID">Supplier ID</Label>
-          <Input 
-          type="text" 
-          name="supplID" 
-          id="supplID" 
-          onChange={(e) => setSupplyID(e.target.value)}/>
+          <Label for="sup_ID">Supplier ID</Label>
+          <Input
+            type="text"
+            name="sup_ID"
+            id="sup_ID"
+            required={true}
+            invalid={formErrors.sup_ID === "Supplier ID is numeric !"}
+            onChange={handleChange}
+          />
+          <p class="fst-italic fw-bolder" style={{ color: "#f93154" }}>
+            {formErrors.sup_ID}
+          </p>
         </FormGroup>
 
         <FormGroup>
-          <Label for="UnitPrice">Unit Price</Label>
-          <Input type="number" 
-          step="0.01" 
-          name="unitprice" 
-          id="unitprice" 
-          onChange={(e) => setUnitPrice(e.target.value)}/>
+          <Label for="unit_Prize">Unit Price</Label>
+          <Input
+            type="number"
+            step="0.01"
+            name="unit_Prize"
+            id="unit_Prize"
+            required={true}
+            onChange={handleChange}
+          />
         </FormGroup>
 
         <FormGroup>
-          <Label for="Amount">Amount</Label>
-          <Input type="number" step="0.01" name="amount" id="amount" 
-          onChange={(e) => setAmount(e.target.value)}/>
+          <Label for="amount">amount</Label>
+          <Input
+            type="number"
+            step="0.01"
+            name="amount"
+            id="amount"
+            required={true}
+            onChange={handleChange}
+          />
         </FormGroup>
 
         <FormGroup>
           <Label for="date">Received Date</Label>
-          <Input type="date" name="receivedddate" id="receiveddate" 
-          onChange={(e) => setDate(e.target.value)}/>
+          <Input
+            type="date"
+            name="date"
+            id="date"
+            required={true}
+            onChange={handleChange}
+          />
         </FormGroup>
         <FormGroup>
           <Label for="type">Type</Label>
@@ -70,15 +116,14 @@ export default function AddSupplRecord() {
           <DropdownButton
             alignRight
             title="Select type"
-            id="dropdown-menu-align-right"
+            id="type"
             variant="light"
-            onChange={(e) => setType(e.target.value)}
+            required={true}
+            onChange={handleChange}
           >
             <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
             <Dropdown.Item eventKey="option-2">option-2</Dropdown.Item>
             <Dropdown.Item eventKey="option-3">option 3</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item eventKey="some link">some link</Dropdown.Item>
           </DropdownButton>
         </FormGroup>
         <FormGroup>
@@ -87,9 +132,10 @@ export default function AddSupplRecord() {
           <DropdownButton
             alignRight
             title="Select Availability"
-            id="dropdown-menu-align-right"
+            id="availability"
             variant="light"
-            onChange={(e) => setAvailability(e.target.value)}
+            required={true}
+            onChange={handleChange}
           >
             <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
             <Dropdown.Item eventKey="option-2">option-2</Dropdown.Item>
@@ -97,9 +143,10 @@ export default function AddSupplRecord() {
           </DropdownButton>
         </FormGroup>
 
-        <Button 
-        color="primary"
-        onClick={sendData}> Submit </Button>
+        <Button color="primary" type="submit">
+          {" "}
+          Submit{" "}
+        </Button>
       </Form>
     </div>
   );

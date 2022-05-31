@@ -1,84 +1,72 @@
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import React, {useState} from "react";
-import { useParams } from "react-router-dom";
+import React, { useState,useEffect } from "react";
 import "../styles/editstorage.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function EditStorage(props) {
-  const [unitprize, setUnitPrize] = useState('');
-  const [stockamount, setStockAmount] = useState('')
+  const storage = props.storage;
 
-  const storage = [
-    {
-      id: 1,
-      typeid: 100,
-      typename: "type 1",
-      unittype: "kg",
-      unitprize: "475.00",
-      image: "/assets/images/login.jpg",
-      stockamount: 25,
-      refilledDate: "2022/05/27",
-      availability: "available",
-    },
-    {
-      id: 2,
-      typeid: 200,
-      typename: "type 2",
-      unittype: "kg",
-      unitprize: "475.00",
-      image: "/assets/images/login.jpg",
-      stockamount: 25,
-      refilledDate: "2022/05/27",
-      availability: "available",
-    },
-    {
-      id: 3,
-      typeid: 300,
-      typename: "type 3",
-      unittype: "kg",
-      unitprize: "475.00",
-      image: "/assets/images/login.jpg",
-      stockamount: 25,
-      refilledDate: "2022/05/27",
-      availability: "available",
-    },
-  ];
+  const dataID = props.id;
+  const initialValues = storage.filter((s) => s.id === parseInt(dataID, 10))[0];
+  const [formValues,setformValues] = useState(initialValues)
+  const [isSubmit,setIsSubmit] = useState(false);
+  const [formErrors, setformErrors] = useState({})
+  const [data, setData] = useState(null);
 
-  axios.get("http://localhost:3000/") //Edit storage
-  .then(getUserDetails => {
-    storage.append(getUserDetails.data);
-    console.log(getUserDetails)
-  }).catch(err => {
-    console.log(err)
-  })
-
+  axios
+    .get("http://localhost:3000/") //Edit storage
+    .then((getUserDetails) => {
+      storage.append(getUserDetails.data);
+      console.log(getUserDetails);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   const sendData = () => {
-    const url = 'http://localhost:3000/supplyRecord/' //Edit Supplier
+    const url = "http://localhost:3000/supplyRecord/"; //Edit Supplier
 
-    const data = {
-      id : dataID,
-      unitprize : unitprize,
-      stockamount : stockamount
-    }
-    axios.post(url, data)
-    .then((res) => {
-      console.log("response", res)
-    }).catch(err => {
-      console.log("error::::", err)
-    })
+   axios
+      .post(url, data)
+      .then((res) => {
+        console.log("response", res);
+      })
+      .catch((err) => {
+        console.log("error::::", err);
+      });
   };
-  
-  const params = useParams();
-  const dataID = props.id;
-  const data = storage.filter((s) => s.id === parseInt(dataID, 10))[0];
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setformValues({...formValues, [name]:value});
+  }
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setformErrors(validate(formValues));
+    setIsSubmit(true);  
+    setData(formValues);
+  }
+
+  useEffect(() => {
+
+    if(Object.keys(formErrors).length === 0 && isSubmit){
+        sendData()
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors = {}
+   
+    return errors;
+  }  
 
   return (
     <div className="Container-fluid shadow-2-strong">
       <div className="row">
         <div className="col-6 offset-1">
-          <Form className="form">
+          <Form className="form"  onSubmit={handleSubmit}>
             <FormGroup>
               <Label for="typename">Type Name</Label>
               <Input
@@ -86,8 +74,7 @@ export default function EditStorage(props) {
                 name="typename"
                 id="typename"
                 readOnly
-                value={data.typename}
-                
+                value={formValues.typename}
               />
             </FormGroup>
 
@@ -98,7 +85,7 @@ export default function EditStorage(props) {
                 name="unit"
                 id="unit"
                 readOnly
-                value={data.unittype}
+                value={formValues.unittype}
               />
             </FormGroup>
 
@@ -109,34 +96,38 @@ export default function EditStorage(props) {
                 name="refilledDate"
                 id="refilledDate"
                 readOnly
-                value={data.refilledDate}
+                value={formValues.refilledDate}
               />
             </FormGroup>
 
             <FormGroup>
               <Label for="unitPrice">Unit Price</Label>
               <Input
-                type="text"
+                type="number"
+                step="0.01"
                 name="unitPrice"
                 id="unitPrice"
-                placeholder={data.unitprize}
-                onChange={(e) => setUnitPrize(e.target.value)}
+                placeholder={formValues.unitprize}
+                onChange={handleChange}
               />
             </FormGroup>
 
             <FormGroup>
               <Label for="stockAmount">Stock Amount </Label>
               <Input
-                type="text"
+                type="number"
+                step="0.01"
                 name="stockAmount"
                 id="stockAmount"
-                placeholder={data.stockamount}
-                onChange={(e) => setStockAmount(e.target.value)}
+                placeholder={formValues.stockamount}
+                onChange={handleChange}
               />
             </FormGroup>
 
-            <Button color="primary"
-            onClick={sendData}> Submit </Button>
+            <Button color="primary" type="submit">
+              {" "}
+              Submit{" "}
+            </Button>
           </Form>
         </div>
       </div>

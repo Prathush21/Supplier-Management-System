@@ -1,4 +1,4 @@
-import { Button, Form, FormGroup, Input, Label, FormFeedback,FormText } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label,} from "reactstrap";
 import "../styles/supplyrecords.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -17,9 +17,7 @@ export default function AddSupplier() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
     setformErrors(validate(formValues));
-    console.log(formErrors)
     setIsSubmit(true);  
     setData(formValues);
   }
@@ -74,7 +72,7 @@ export default function AddSupplier() {
 
         <FormGroup>
           <Label for="email">Email Address</Label>
-          <Input type="text" name="email" id="email" required={true}
+          <Input type="email" name="email" id="email" required={true}
           onChange={handleChange} invalid={(formErrors.email === 'Invalid Email Address')} />
           <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.email}</p>
         </FormGroup>
