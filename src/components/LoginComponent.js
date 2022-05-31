@@ -6,7 +6,6 @@ import {
   FormGroup,
   Label,
   Input,
-  FormFeedback,
 } from "reactstrap";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 import { useAuth } from "../utils/auth";
@@ -38,10 +37,9 @@ export default function Login() {
   }
 
   useEffect(() => {
-    console.log(formErrors);
+
     if(Object.keys(formErrors).length === 0 && isSubmit){
-      auth.login({user,password})
-      navigate('/main')
+      handleLogin()
     }
   }, [formErrors]);
 
@@ -59,7 +57,6 @@ export default function Login() {
 
   const handleLogin = () => {
       auth.login({user,password})
-      console.log();
       navigate('/main')
   }
 
