@@ -35,26 +35,26 @@ const COLUMNS = [
   },
 ];
 
-const supplyrecords = [
-  {
-    id: 100,
-    supplierID: "175",
-    unitprice: 75,
-    amount: 10000,
-    type: "1",
-    availability: "yes",
-    receiveddate: "2015-10-18",
-  },
-  {
-    id: 100,
-    supplierID: "175",
-    unitprice: 75,
-    amount: 10000,
-    type: "1",
-    availability: "yes",
-    receiveddate: "2015-10-18",
-  },
-];
+// const supplyrecords = [
+//   {
+//     id: 100,
+//     supplierID: "175",
+//     unitprice: 75,
+//     amount: 10000,
+//     type: "1",
+//     availability: "yes",
+//     receiveddate: "2015-10-18",
+//   },
+//   {
+//     id: 100,
+//     supplierID: "175",
+//     unitprice: 75,
+//     amount: 10000,
+//     type: "1",
+//     availability: "yes",
+//     receiveddate: "2015-10-18",
+//   },
+// ];
 
 export default function SupplyRecordsTable() {
 
@@ -80,7 +80,7 @@ export default function SupplyRecordsTable() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/supplyRecords/all")
+    axios.get("/supplyRecords/all")
       .then(getRecords => {
         setSupplyRecords(getRecords.data);
         console.log(getRecords)

@@ -49,8 +49,6 @@ export default function AddSupplier() {
     return errors;
   }
 
-
-
   const sendData = () => {
       const url = "/supplier/create"
       axios.post(url,data).then((res) => {

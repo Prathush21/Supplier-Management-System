@@ -58,7 +58,7 @@ class Good extends Component {
     ];
 
     
-    axios.get("http://localhost:3000/supplyRecord/all")
+    axios.get("/supplyRecord/all")
       .then(getGoods => {
         goods.append(getGoods.data);
         console.log(getGoods)

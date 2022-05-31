@@ -5,6 +5,7 @@ import AddSupplRecord from "./AddSupplyRecord";
 import axios from "axios";
 import SupplyRecordsTable from "./SupplyRecordsTable";
 
+const data = [];
 class SupplyRecords extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,21 @@ class SupplyRecords extends Component {
     });
   }
 
+  
+  
+
+  sendData = () => {
+    const url = '/supplyRecord/remove/';
+    axios
+      .post(url, data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   render() {
 
     return (
@@ -31,11 +47,13 @@ class SupplyRecords extends Component {
           <Button color="light" onClick={this.toggleModal}>
             Add New Record
           </Button>
-          <Button color="dark" style={{ marginLeft: ".5rem" }}>
+          <Button color="dark" style={{ marginLeft: ".5rem" }}
+           onClick={this.toggleModal}>
             Delete Record
           </Button>
           <br></br> <br></br> <br></br>
           <SupplyRecordsTable />
+          {/* {data = SupplyRecordsTable.selectedrows} */}
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>

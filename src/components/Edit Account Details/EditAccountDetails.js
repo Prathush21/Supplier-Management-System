@@ -49,7 +49,7 @@ class EditAccountDetails extends Component {
       },
     ];
 
-    axios.get("http://"+process.env.HOST+":"+process.env.PORT+"/") //Edit Page
+    axios.get("/") //Edit Page
     .then(getUserDetails => {
       userDetails.append(getUserDetails.data);
       console.log(getUserDetails)

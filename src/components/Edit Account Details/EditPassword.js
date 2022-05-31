@@ -9,7 +9,7 @@ export default function EditPassword() {
   const [repass, setRePass] = useState('');
 
   const sendData = () => {
-    const url = 'http://localhost:3000/'  //EDIT PASSWORD
+    const url = '/'  //EDIT PASSWORD
 
     const data = {
       oldpass : oldpass,
