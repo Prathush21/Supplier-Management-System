@@ -12,11 +12,9 @@ export default function EditSupplier(props) {
   const [formErrors, setformErrors] = useState({})
   const [data, setData] = useState(null);
 
-
-
   const sendData = () => {
 
-    const url = 'http://localhost:8087supplyRecord/edit/:id' 
+    const url = 'http://localhost:8087/supplyRecord/edit/:id' 
 
     axios.post(url, data)
     .then((res) => {
