@@ -20,14 +20,14 @@ export default function EditDetails() {
     },
   ];
 
-  axios.get("/manager/update") //Edit Page
+  // axios.get("/manager/update") //Edit Page
 
-  .then(getUserDetails => {
-    userDetails.append(getUserDetails.data);
-    console.log(getUserDetails)
-  }).catch(err => {
-    console.log(err)
-  })
+  // .then(getUserDetails => {
+  //   userDetails.append(getUserDetails.data);
+  //   console.log(getUserDetails)
+  // }).catch(err => {
+  //   console.log(err)
+  // })
 
   const sendData = () => {
     const url = 'http://localhost:8087/manager/update'  //EDIT DETAILS

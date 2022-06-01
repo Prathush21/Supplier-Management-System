@@ -44,7 +44,7 @@ export default function AddGood() {
   }
 
   const sendData = () => {
-    const url = "http://localhost:8087/supplyRecord/createGood"
+    const url = "http://localhost:8087/storage/addgood"
     axios.post(url, data)
     .then((res) => {
       console.log("response", res)

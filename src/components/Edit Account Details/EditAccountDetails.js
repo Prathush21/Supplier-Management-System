@@ -60,7 +60,7 @@ class EditAccountDetails extends Component {
     return (
       <React.Fragment>
         <div className="Container-fluid shadow-2-strong">
-          <h2>Edit Account Information</h2>
+          <h2>Account Details</h2>
           <br></br>
           <div className="row">
             <div className="col-sm-12 col-md-auto mb-2 align-content-center">

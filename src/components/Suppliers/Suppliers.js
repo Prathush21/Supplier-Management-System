@@ -6,7 +6,6 @@ import AddSupplier from "./AddSupplier";
 import EditSupplier from "./EditSupplier"
 import { Link } from "react-router-dom";
 
-import axios from "axios";
 import { getValue } from "@testing-library/user-event/dist/utils";
 import SupplersTable from "./SuppliersTable";
 

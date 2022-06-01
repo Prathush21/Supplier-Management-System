@@ -78,7 +78,7 @@ class Storage extends Component {
       },
     ];
 
-    axios.get("http://localhost:8087/")
+    axios.get("http://localhost:8087/storage/all")
       .then(getItem => {
         storage.append(getItem.data);
         console.log(getItem)

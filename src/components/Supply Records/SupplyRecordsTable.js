@@ -71,27 +71,6 @@ export default function SupplyRecordsTable() {
   }, [])
 
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:8087/supplier/all")
-  //     .then(getSuppliers => {
-  //       const data_arr = [];
-  //       getSuppliers.data.data.forEach(element => {
-  //         const data = element;
-  //         data.address = data.lane1 + ',' + 
-  //         data.lane2 + ',' + 
-  //         data.city + ',' + 
-  //         data.district
-  //         // data.joined_date = joined_date.
-
-  //         data_arr.push(data);
-  //       });
-  //       setSuppliers(data_arr);
-  //       console.log(data_arr)
-  //     }).catch(err => {
-  //       console.log('err')
-  //     })
-  // }, [])
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
 

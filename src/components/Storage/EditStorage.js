@@ -13,15 +13,15 @@ export default function EditStorage(props) {
   const [formErrors, setformErrors] = useState({})
   const [data, setData] = useState(null);
 
-  axios
-    .get("http://localhost:8087/") //Edit storage
-    .then((getUserDetails) => {
-      storage.append(getUserDetails.data);
-      console.log(getUserDetails);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // axios
+  //   .get("http://localhost:8087/storage/update") //Edit storage
+  //   .then((getUserDetails) => {
+  //     storage.append(getUserDetails.data);
+  //     console.log(getUserDetails);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 
   const sendData = () => {
     const url = "http://localhost:8087/supplyRecord/"; //Edit Supplier

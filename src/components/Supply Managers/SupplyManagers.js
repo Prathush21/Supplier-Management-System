@@ -22,6 +22,15 @@ class SupplyManagers extends Component {
     });
   }
 
+  deleteRecords(records) {
+    const url = "http://localhost:8087/manager/delete"
+    axios.post(url,records).then((res) => {
+      console.log(records)
+    }).catch(err => {
+      console.log(err)
+    })
+  };
+
   render() {
     
     return (
@@ -32,7 +41,8 @@ class SupplyManagers extends Component {
           <Button color="light" onClick={this.toggleModal}>
             Add New Supply Manager
           </Button>
-          <Button color="dark" style={{ marginLeft: ".5rem" }}>
+          <Button color="dark" style={{ marginLeft: ".5rem" }}
+          onClick={deleteRecords(SupplyManagersTable.getDeletingRecords)}>  //TOCLARIFY!!!!
             Delete Record
           </Button>
           <br></br>

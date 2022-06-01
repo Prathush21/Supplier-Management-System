@@ -29,6 +29,9 @@ const COLUMNS = [
 ];
 
 
+
+
+
 export default function SupplyManagersTable() {
 
   const [supplymanagers, setSupplyManagers] = useState([
@@ -49,7 +52,7 @@ export default function SupplyManagersTable() {
   ]);
 
   useEffect(() => {
-    axios.get("http://localhost:8087/supplier/getManagers")
+    axios.get("http://localhost:8087/manager/all")
       .then(getManagers => {
         setSupplyManagers(getManagers.data);
         console.log(getManagers)
@@ -68,6 +71,10 @@ export default function SupplyManagersTable() {
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
   };
+
+  const getDeletingRecords = () => {
+    return(selectedrows);
+  }
 
   function viewModal(Id) {
     console.log(Id);

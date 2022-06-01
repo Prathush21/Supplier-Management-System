@@ -49,7 +49,7 @@ export default function NavigationBar() {
           <hr></hr>
           <NavItem>
             <NavLink style={{ color:"#fff" }} className="nav-link" to="editaccountdetails">
-            <span className="fa fa-cogs fa-lg"></span> EDIT ACCOUNT DETAILS
+            <span className="fa fa-cogs fa-lg"></span> ACCOUNT DETAILS
             </NavLink>
           </NavItem>
           <hr></hr>
