@@ -14,7 +14,7 @@ export default function EditStorage(props) {
   const [data, setData] = useState(null);
 
   axios
-    .get("/") //Edit storage
+    .get("http://localhost:8087/") //Edit storage
     .then((getUserDetails) => {
       storage.append(getUserDetails.data);
       console.log(getUserDetails);
@@ -24,7 +24,7 @@ export default function EditStorage(props) {
     });
 
   const sendData = () => {
-    const url = "supplyRecord/"; //Edit Supplier
+    const url = "http://localhost:8087/supplyRecord/"; //Edit Supplier
 
    axios
       .post(url, data)

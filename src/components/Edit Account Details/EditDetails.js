@@ -30,7 +30,7 @@ export default function EditDetails() {
   })
 
   const sendData = () => {
-    const url = '/manager/update'  //EDIT DETAILS
+    const url = 'http://localhost:8087/manager/update'  //EDIT DETAILS
 
     const data = {
       id : id,

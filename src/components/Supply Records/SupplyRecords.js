@@ -22,9 +22,6 @@ class SupplyRecords extends Component {
     });
   }
 
-  
-  
-
   sendData = () => {
     const url = '/supplyRecord/remove/';
     axios

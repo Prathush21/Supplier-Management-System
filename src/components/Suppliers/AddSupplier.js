@@ -50,7 +50,7 @@ export default function AddSupplier() {
   }
 
   const sendData = () => {
-      const url = "/supplier/create"
+      const url = "http://localhost:8087/supplier/create"
       axios.post(url,data).then((res) => {
         console.log(res)
       }).catch(err => {

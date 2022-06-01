@@ -47,7 +47,7 @@ export default function AddSupplRecord() {
   };
 
   const sendData = () => {
-    const url = '/supplyRecord/create';
+    const url = 'http://localhost:8087/supplyRecord/create';
     axios
       .post(url, data)
       .then((res) => {

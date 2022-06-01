@@ -10,7 +10,7 @@ export default function EditUsername() {
 
 
   const sendData = () => {
-    const url = 'http://localhost:3000/' //Edit Username
+    const url = 'http://localhost:8087/manager/update' //Edit Username
 
     const data = {
       oldusername : oldusername,

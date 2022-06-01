@@ -11,11 +11,11 @@ const COLUMNS = [
   },
   {
     Header: "Supplier ID",
-    accessor: "supplierID",
+    accessor: "supplier_id",
   },
   {
     Header: "Unit Price",
-    accessor: "unitprice",
+    accessor: "unit_prize",
   },
   {
     Header: "Amount",
@@ -31,7 +31,7 @@ const COLUMNS = [
   },
   {
     Header: "Received Date",
-    accessor: "receiveddate",
+    accessor: "received_date",
   },
 ];
 
@@ -80,14 +80,36 @@ export default function SupplyRecordsTable() {
   ]);
 
   useEffect(() => {
-    axios.get("/supplyRecords/all")
+    axios.get("http://localhost:8087/supplyRecord/all")
       .then(getRecords => {
-        setSupplyRecords(getRecords.data);
-        console.log(getRecords)
+        setSupplyRecords(getRecords.data.data);
+        console.log(getRecords.data.data)
       }).catch(err => {
         console.log(err)
       })
   }, [])
+
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:8087/supplier/all")
+  //     .then(getSuppliers => {
+  //       const data_arr = [];
+  //       getSuppliers.data.data.forEach(element => {
+  //         const data = element;
+  //         data.address = data.lane1 + ',' + 
+  //         data.lane2 + ',' + 
+  //         data.city + ',' + 
+  //         data.district
+  //         // data.joined_date = joined_date.
+
+  //         data_arr.push(data);
+  //       });
+  //       setSuppliers(data_arr);
+  //       console.log(data_arr)
+  //     }).catch(err => {
+  //       console.log('err')
+  //     })
+  // }, [])
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);

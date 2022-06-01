@@ -20,7 +20,7 @@ const COLUMNS = [
   },
   {
     Header: "Contact Number",
-    accessor: "contactno",
+    accessor: "Contact_Number",
   },
   {
     Header: "Address",
@@ -28,7 +28,7 @@ const COLUMNS = [
   },
   {
     Header: "Joined Date",
-    accessor: "joineddate",
+    accessor: "joined_date",
   },
 ];
 
@@ -57,11 +57,23 @@ export default function SupplersTable() {
 
   const [suppliers, setSuppliers] = useState([]);
 
+
   useEffect(() => {
-    axios.get("/supplier/all")
+    axios.get("http://localhost:8087/supplier/all")
       .then(getSuppliers => {
-        setSuppliers(getSuppliers.data);
-        console.log(getSuppliers)
+        const data_arr = [];
+        getSuppliers.data.data.forEach(element => {
+          const data = element;
+          data.address = data.lane1 + ',' + 
+          data.lane2 + ',' + 
+          data.city + ',' + 
+          data.district
+          // data.joined_date = joined_date.
+
+          data_arr.push(data);
+        });
+        setSuppliers(data_arr);
+        console.log(data_arr)
       }).catch(err => {
         console.log('err')
       })
