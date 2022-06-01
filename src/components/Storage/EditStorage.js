@@ -58,7 +58,7 @@ export default function EditStorage(props) {
 
   const validate = (values) => {
     const errors = {}
-   
+ 
     return errors;
   }  
 
@@ -98,6 +98,7 @@ export default function EditStorage(props) {
                 readOnly
                 value={formValues.refilledDate}
               />
+
             </FormGroup>
 
             <FormGroup>

@@ -43,6 +43,11 @@ export default function AddSupplRecord() {
       errors.sup_ID = "Supplier ID is numeric !";
     }
 
+    // if ((new Date(values.date) <= new Date())) {
+    //   errors.date = 'Enter Valid Date!';
+    // }
+
+
     return errors;
   };
 
@@ -68,6 +73,7 @@ export default function AddSupplRecord() {
             name="sup_ID"
             id="sup_ID"
             required={true}
+            value={formValues.sup_ID}
             invalid={formErrors.sup_ID === "Supplier ID is numeric !"}
             onChange={handleChange}
           />
@@ -83,6 +89,7 @@ export default function AddSupplRecord() {
             step="0.01"
             name="unit_Prize"
             id="unit_Prize"
+            value={formValues.unit_Prize}
             required={true}
             onChange={handleChange}
           />
@@ -95,6 +102,7 @@ export default function AddSupplRecord() {
             step="0.01"
             name="amount"
             id="amount"
+            value={formValues.amount}
             required={true}
             onChange={handleChange}
           />
@@ -106,6 +114,7 @@ export default function AddSupplRecord() {
             type="date"
             name="date"
             id="date"
+            value={formValues.date}
             required={true}
             onChange={handleChange}
           />
