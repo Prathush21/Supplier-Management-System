@@ -5,6 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
 import "../../styles/styles_2.css";
 import AddSupplyManager from "./AddSupplyManager";
 import SupplyManagersTable from "./SupplyManagersTable";
+import axios from "axios";
 
 class SupplyManagers extends Component {
   constructor(props) {
@@ -22,14 +23,14 @@ class SupplyManagers extends Component {
     });
   }
 
-  deleteRecords(records) {
-    const url = "http://localhost:8087/manager/delete"
-    axios.post(url,records).then((res) => {
-      console.log(records)
-    }).catch(err => {
-      console.log(err)
-    })
-  };
+  // deleteRecords(records) {
+  //   const url = "http://localhost:8087/manager/delete"
+  //   axios.post(url,records).then((res) => {
+  //     console.log(records)
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  // };
 
   render() {
     
@@ -42,7 +43,8 @@ class SupplyManagers extends Component {
             Add New Supply Manager
           </Button>
           <Button color="dark" style={{ marginLeft: ".5rem" }}
-          onClick={deleteRecords(SupplyManagersTable.getDeletingRecords)}>  //TOCLARIFY!!!!
+          // onClick={deleteRecords(SupplyManagersTable.getDeletingRecords)}
+          >  //TOCLARIFY!!!!
             Delete Record
           </Button>
           <br></br>
