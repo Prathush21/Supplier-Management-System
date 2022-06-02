@@ -35,27 +35,27 @@ const COLUMNS = [
 export default function SupplyManagersTable() {
 
   const [supplymanagers, setSupplyManagers] = useState([
-    {
-      id: 100,
-      name: "Kamal",
-      email: "kamal@gmail.com",
-      contactNo: "0759862565",
-      date: "2015-10-18",
-    },
-    {
-      id: 100,
-      name: "Nimal",
-      email: "nimal@gmail.com",
-      contactNo: "0759862565",
-      date: "2015-10-18",
-    },
+    // {
+    //   id: 100,
+    //   name: "Kamal",
+    //   email: "kamal@gmail.com",
+    //   contactNo: "0759862565",
+    //   date: "2015-10-18",
+    // },
+    // {
+    //   id: 100,
+    //   name: "Nimal",
+    //   email: "nimal@gmail.com",
+    //   contactNo: "0759862565",
+    //   date: "2015-10-18",
+    // },
   ]);
 
   useEffect(() => {
     axios.get("http://localhost:8087/manager/all")
       .then(getManagers => {
-        setSupplyManagers(getManagers.data);
-        console.log(getManagers)
+        setSupplyManagers(getManagers.data.data);
+        console.log(getManagers.data.data)
       }).catch(err => {
         console.log(err)
       })

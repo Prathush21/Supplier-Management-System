@@ -40,24 +40,24 @@ const COLUMNS = [
 export default function SupplyRecordsTable() {
 
   const [supplyrecords, setSupplyRecords] = useState([
-    {
-      id: 100,
-      sup_ID: "175",
-      unit_Prize: 75,
-      amount: 10000,
-      type: "1",
-      availability: "yes",
-      date: "2015-10-18",
-    },
-    {
-      id: 100,
-      sup_ID: "175",
-      unit_Prize: 75,
-      amount: 10000,
-      type: "1",
-      availability: "yes",
-      date: "2015-10-18",
-    },
+    // {
+    //   id: 100,
+    //   sup_ID: "175",
+    //   unit_Prize: 75,
+    //   amount: 10000,
+    //   type: "1",
+    //   availability: "yes",
+    //   date: "2015-10-18",
+    // },
+    // {
+    //   id: 100,
+    //   sup_ID: "175",
+    //   unit_Prize: 75,
+    //   amount: 10000,
+    //   type: "1",
+    //   availability: "yes",
+    //   date: "2015-10-18",
+    // },
   ]);
 
   useEffect(() => {

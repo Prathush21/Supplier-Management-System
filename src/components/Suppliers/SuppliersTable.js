@@ -36,22 +36,22 @@ const COLUMNS = [
 export default function SupplersTable() {
 
   const [suppliers, setSuppliers] = useState([
-    {
-      id: 100,
-      name: "Kamal",
-      email: "kamal@gmail.com",
-      contact: "0759862565",
-      address: "Kandy Road, Kurunegala",
-      date: "2015-10-18",
-    },
-    {
-      id: 100,
-      name: "Nimal",
-      email: "nimal@gmail.com",
-      contact: "0759862565",
-      address: "Kandy Road, Kurunegala",
-      date: "2015-10-18",
-    },
+    // {
+    //   id: 100,
+    //   name: "Kamal",
+    //   email: "kamal@gmail.com",
+    //   contact: "0759862565",
+    //   address: "Kandy Road, Kurunegala",
+    //   date: "2015-10-18",
+    // },
+    // {
+    //   id: 100,
+    //   name: "Nimal",
+    //   email: "nimal@gmail.com",
+    //   contact: "0759862565",
+    //   address: "Kandy Road, Kurunegala",
+    //   date: "2015-10-18",
+    // },
   ]);
 
 

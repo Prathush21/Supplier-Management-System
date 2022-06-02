@@ -43,45 +43,45 @@ class Storage extends Component {
 
   render() {
     const storage = [
-      {
-        id: 1,
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        unitprize: "475.00",
-        image: "/assets/images/login.jpg",
-        stockamount: 25,
-        refilledDate: "2022/05/27",
-        availability: "available",
-      },
-      {
-        id: 2,
-        typeid: 200,
-        typename: "type 1",
-        unittype: "kg",
-        unitprize: "475.00",
-        image: "/assets/images/login.jpg",
-        stockamount: 25,
-        refilledDate: "2022/05/27",
-        availability: "available",
-      },
-      {
-        id: 3,
-        typeid: 300,
-        typename: "type 1",
-        unittype: "kg",
-        unitprize: "475.00",
-        image: "/assets/images/login.jpg",
-        stockamount: 25,
-        refilledDate: "2022/05/27",
-        availability: "available",
-      },
+      // {
+      //   id: 1,
+      //   typeid: 100,
+      //   typename: "type 1",
+      //   unittype: "kg",
+      //   unitprize: "475.00",
+      //   image: "/assets/images/login.jpg",
+      //   stockamount: 25,
+      //   refilledDate: "2022/05/27",
+      //   availability: "available",
+      // },
+      // {
+      //   id: 2,
+      //   typeid: 200,
+      //   typename: "type 1",
+      //   unittype: "kg",
+      //   unitprize: "475.00",
+      //   image: "/assets/images/login.jpg",
+      //   stockamount: 25,
+      //   refilledDate: "2022/05/27",
+      //   availability: "available",
+      // },
+      // {
+      //   id: 3,
+      //   typeid: 300,
+      //   typename: "type 1",
+      //   unittype: "kg",
+      //   unitprize: "475.00",
+      //   image: "/assets/images/login.jpg",
+      //   stockamount: 25,
+      //   refilledDate: "2022/05/27",
+      //   availability: "available",
+      // },
     ];
 
     axios.get("http://localhost:8087/storage/all")
       .then(getItem => {
-        storage.append(getItem.data);
-        console.log(getItem)
+        storage.append(getItem.data.data);
+        console.log(getItem.data.data)
       }).catch(err => {
         console.log(err)
       })

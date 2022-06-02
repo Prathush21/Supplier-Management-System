@@ -31,30 +31,30 @@ class Good extends Component {
 
   render() {
     const goods = [
-      {
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        image: "/assets/images/login.jpg",
-      },
-      {
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        image: "/assets/images/login.jpg",
-      },
-      {
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        image: "/assets/images/login.jpg",
-      },
-      {
-        typeid: 100,
-        typename: "type 1",
-        unittype: "kg",
-        image: "/assets/images/login.jpg",
-      },
+      // {
+      //   typeid: 100,
+      //   typename: "type 1",
+      //   unittype: "kg",
+      //   image: "/assets/images/login.jpg",
+      // },
+      // {
+      //   typeid: 100,
+      //   typename: "type 1",
+      //   unittype: "kg",
+      //   image: "/assets/images/login.jpg",
+      // },
+      // {
+      //   typeid: 100,
+      //   typename: "type 1",
+      //   unittype: "kg",
+      //   image: "/assets/images/login.jpg",
+      // },
+      // {
+      //   typeid: 100,
+      //   typename: "type 1",
+      //   unittype: "kg",
+      //   image: "/assets/images/login.jpg",
+      // },
     ];
 
     
