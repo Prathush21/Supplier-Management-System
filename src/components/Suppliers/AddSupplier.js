@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 export default function AddSupplier() {
-  const initialValues = {name:'', email:'', contact:'', address:'', date:null};
+  const initialValues = {name:'', email:'', contact:'', address:'', joined_date:''};
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
@@ -54,7 +54,7 @@ export default function AddSupplier() {
       console.log(data)
       
       axios.post(url,data).then((res) => {
-        console.log(res)
+        console.log("res", res)
       }).catch(err => {
         console.log(err)
       })      
@@ -92,8 +92,8 @@ export default function AddSupplier() {
         </FormGroup>
 
         <FormGroup>
-          <Label for="date">Joined Date</Label>
-          <Input type="date" name="date" id="date" required={true}
+          <Label for="joined_date">Joined Date</Label>
+          <Input type="date" name="joined_date" id="joined_date" required={true}
           onChange={handleChange}/>
         </FormGroup>
 

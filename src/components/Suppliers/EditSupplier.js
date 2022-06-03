@@ -13,11 +13,13 @@ export default function EditSupplier(props) {
   const [data, setData] = useState(null);
 
   const sendData = () => {
-    console.log("formValues", formValues)
-    const ID = formValues.id;
+    const joined = data.joined_date
+    data.joined_date = joined.slice(0,10)
+    const ID = data.id;
     const url = `http://localhost:8087/supplier/edit/${ID}` 
 
-    axios.post(url, formValues)
+    console.log(data)
+    axios.post(url, data)
     .then((res) => {
       console.log("response", res)
     }).catch(err => {

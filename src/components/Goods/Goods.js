@@ -20,6 +20,7 @@ class Good extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.state = {
       isModalOpen: false,
+      goods : []
     };
   }
 
@@ -30,38 +31,13 @@ class Good extends Component {
   }
 
   render() {
-    const goods = [
-      // {
-      //   typeid: 100,
-      //   typename: "type 1",
-      //   unittype: "kg",
-      //   image: "/assets/images/login.jpg",
-      // },
-      // {
-      //   typeid: 100,
-      //   typename: "type 1",
-      //   unittype: "kg",
-      //   image: "/assets/images/login.jpg",
-      // },
-      // {
-      //   typeid: 100,
-      //   typename: "type 1",
-      //   unittype: "kg",
-      //   image: "/assets/images/login.jpg",
-      // },
-      // {
-      //   typeid: 100,
-      //   typename: "type 1",
-      //   unittype: "kg",
-      //   image: "/assets/images/login.jpg",
-      // },
-    ];
-
     
-    axios.get("http://localhost:8087/storage/allgoods")
+    axios.get("http://localhost:8087/good/allgoods")
       .then(getGoods => {
-        goods.push(getGoods.data.data);
-        console.log(getGoods.data.data)
+        // console.log(getGoods.data.data)
+        this.setState({goods: getGoods.data.data})
+        // console.log(goods[0])
+        
       }).catch(err => {
         console.log(err)
       })
@@ -77,22 +53,22 @@ class Good extends Component {
         <br></br>
 
         <MDBRow>
-          {goods.map((good, index) => (
+          {this.state.goods.map((good, index) => (
             <MDBCol sm="4">
-              <MDBCard key={good.typeid} className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
+              <MDBCard key={good.id} className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
                 <MDBCardBody style={{ borderRadius: "5px" }}>
-                  <MDBCardImage
+                  {/* <MDBCardImage
                     className="img-fluid"
                     src={good.image}
                     alt="..."
                     position="top"
-                  ></MDBCardImage>
+                  ></MDBCardImage> */}
 
-                  <MDBCardTitle>{good.typename}</MDBCardTitle>
+                  <MDBCardTitle>{good.type}</MDBCardTitle>
                   <MDBCardText>
-                    ID : <b>{good.typeid}</b>
+                    ID : <b>{good.id}</b>
                     <br></br>
-                    Unit : {good.unittype}
+                    Unit : {good.unit}
                   </MDBCardText>
                 </MDBCardBody>
               </MDBCard>

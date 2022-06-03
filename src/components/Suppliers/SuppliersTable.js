@@ -21,7 +21,7 @@ const COLUMNS = [
   },
   {
     Header: "Contact Number",
-    accessor: "Contact_Number",
+    accessor: "contact",
   },
   {
     Header: "Address",

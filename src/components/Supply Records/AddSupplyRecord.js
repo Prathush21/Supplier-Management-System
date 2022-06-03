@@ -7,7 +7,7 @@ import axios from "axios";
 export default function AddSupplRecord() {
   const initialValues = {
     sup_ID: "",
-    unit_Prize: "",
+    unit_prize: "",
     amount: "",
     date: null,
     type: "",
@@ -22,6 +22,19 @@ export default function AddSupplRecord() {
     const { name, value } = e.target;
     setformValues({ ...formValues, [name]: value });
   };
+
+  const [supplyrecords, setSupplyRecords] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8087/supplier/all")
+      .then(getRecords => {
+        console.log(getRecords.data.data)
+        setSupplyRecords(getRecords.data.data);
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,13 +96,13 @@ export default function AddSupplRecord() {
         </FormGroup>
 
         <FormGroup>
-          <Label for="unit_Prize">Unit Price</Label>
+          <Label for="unit_prize">Unit Price</Label>
           <Input
             type="number"
             step="0.01"
-            name="unit_Prize"
-            id="unit_Prize"
-            value={formValues.unit_Prize}
+            name="unit_prize"
+            id="unit_prize"
+            value={formValues.unit_prize}
             required={true}
             onChange={handleChange}
           />
@@ -130,12 +143,12 @@ export default function AddSupplRecord() {
             required={true}
             onChange={handleChange}
           >
-            <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
-            <Dropdown.Item eventKey="option-2">option-2</Dropdown.Item>
-            <Dropdown.Item eventKey="option-3">option 3</Dropdown.Item>
+            <Dropdown.Item eventKey="option-1">sugar</Dropdown.Item>
+            <Dropdown.Item eventKey="option-2">dhal</Dropdown.Item>
           </DropdownButton>
         </FormGroup>
-        <FormGroup>
+        
+        {/* <FormGroup>
           <Label for="availability">Availability</Label>
 
           <DropdownButton
@@ -146,11 +159,10 @@ export default function AddSupplRecord() {
             required={true}
             onChange={handleChange}
           >
-            <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
-            <Dropdown.Item eventKey="option-2">option-2</Dropdown.Item>
-            <Dropdown.Item eventKey="option-3">option 3</Dropdown.Item>
+            <Dropdown.Item eventKey="option-1">0</Dropdown.Item>
+            <Dropdown.Item eventKey="option-2">1</Dropdown.Item>
           </DropdownButton>
-        </FormGroup>
+        </FormGroup> */}
 
         <Button color="primary" type="submit">
           {" "}

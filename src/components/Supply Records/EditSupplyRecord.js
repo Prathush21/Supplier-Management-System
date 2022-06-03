@@ -14,10 +14,11 @@ export default function EditSupplyRecords(props) {
 
 
   const sendData = () => {
-
-    const url = 'http://localhost:8087/supplyRecord/edit/:id' //Edit Supplier
-
-    axios.post(url, data)
+    console.log(data)
+    const received = data.received_date
+    data.received_date = received.slice(0,10)
+    const url = `http://localhost:8087/supplyRecord/edit/${data.id}` //Edit Supplier
+    axios.patch(url, data)
     .then((res) => {
       console.log("response", res)
     }).catch(err => {
@@ -48,8 +49,8 @@ export default function EditSupplyRecords(props) {
   const validate = (values) => {
     const errors = {}
 
-    if (isNaN(values.sup_ID)) {
-      errors.sup_ID = "Supplier ID is numeric !";
+    if (isNaN(values.supplier_id)) {
+      errors.supplier_id = "Supplier ID is numeric !";
     }
 
     return errors;
@@ -59,18 +60,16 @@ export default function EditSupplyRecords(props) {
     <div className="Container-fluid">
       <Form className="form" onSubmit={handleSubmit}>
       <FormGroup>
-          <Label for="sup_ID">Supplier ID</Label>
+          <Label for="supplier_id">Supplier ID</Label>
           <Input
             type="text"
-            name="sup_ID"
-            id="sup_ID"
-            required={true}
-            value={formValues.sup_ID}
-            invalid={formErrors.sup_ID === "Supplier ID is numeric !"}
-            onChange={handleChange}
+            name="supplier_id"
+            id="supplier_id"
+            readOnly
+            value={formValues.supplier_id}
           />
           <p class="fst-italic fw-bolder" style={{ color: "#f93154" }}>
-            {formErrors.sup_ID}
+            {formErrors.supplier_id}
           </p>
         </FormGroup>
 
@@ -79,9 +78,9 @@ export default function EditSupplyRecords(props) {
           <Input
             type="number"
             step="0.01"
-            name="unit_Prize"
-            id="unit_Prize"
-            value={formValues.unit_Prize}
+            name="unit_prize"
+            id="unit_prize"
+            value={formValues.unit_prize}
             required={true}
             onChange={handleChange}
           />
@@ -114,10 +113,10 @@ export default function EditSupplyRecords(props) {
         <FormGroup>
           <Label for="date">Received Date</Label>
           <Input
-            type="date"
-            name="date"
+            type="received_date"
+            name="received_date"
             id="date"
-            value={formValues.date}
+            value={formValues.received_date}
             required={true}
             onChange={handleChange}
           />
