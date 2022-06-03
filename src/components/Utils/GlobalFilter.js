@@ -1,6 +1,5 @@
 import React from "react";
 import { MDBInput } from "mdbreact";
-import { Button } from "reactstrap";
 
 export const GlobalFilter = ({ filter, setFilter }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../../styles/styles_2.css";
 import AddSupplRecord from "./AddSupplyRecord";
 import axios from "axios";
@@ -44,13 +44,8 @@ class SupplyRecords extends Component {
           <Button color="light" onClick={this.toggleModal}>
             Add New Record
           </Button>
-          <Button color="dark" style={{ marginLeft: ".5rem" }}
-           onClick={this.toggleModal}>
-            Delete Record
-          </Button>
           <br></br> <br></br> <br></br>
           <SupplyRecordsTable />
-          {/* {data = SupplyRecordsTable.selectedrows} */}
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>

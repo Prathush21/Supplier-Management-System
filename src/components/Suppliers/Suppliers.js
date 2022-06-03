@@ -1,12 +1,7 @@
-import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody} from "reactstrap";
 import "../../styles/styles_2.css";
-import { MDBRow, MDBCol, MDBInput } from "mdbreact";
 import React, { Component } from "react";
 import AddSupplier from "./AddSupplier";
-import EditSupplier from "./EditSupplier"
-import { Link } from "react-router-dom";
-
-import { getValue } from "@testing-library/user-event/dist/utils";
 import SupplersTable from "./SuppliersTable";
 
 class Suppliers extends Component {
@@ -46,9 +41,6 @@ class Suppliers extends Component {
           <br></br>
           <Button color="light" onClick={this.toggleModal}>
             Add New Supplier
-          </Button>
-          <Button color="dark" style={{ marginLeft: ".5rem" }}>
-            Delete Supplier
           </Button>
           <br></br>
           <br></br>

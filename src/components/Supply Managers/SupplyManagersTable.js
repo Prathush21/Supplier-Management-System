@@ -31,20 +31,20 @@ const COLUMNS = [
 
 export default function SupplyManagersTable() {
   const [supplymanagers, setSupplyManagers] = useState([
-    {
-      id: 100,
-      name: "Kamal",
-      email: "kamal@gmail.com",
-      contactNo: "0759862565",
-      date: "2015-10-18",
-    },
-    {
-      id: 100,
-      name: "Nimal",
-      email: "nimal@gmail.com",
-      contactNo: "0759862565",
-      date: "2015-10-18",
-    },
+    // {
+    //   id: 100,
+    //   name: "Kamal",
+    //   email: "kamal@gmail.com",
+    //   contactNo: "0759862565",
+    //   date: "2015-10-18",
+    // },
+    // {
+    //   id: 100,
+    //   name: "Nimal",
+    //   email: "nimal@gmail.com",
+    //   contactNo: "0759862565",
+    //   date: "2015-10-18",
+    // },
   ]);
 
   useEffect(() => {
@@ -129,6 +129,11 @@ export default function SupplyManagersTable() {
 
   return (
     <React.Fragment>
+      <Button color="dark">Delete Supply Manager</Button>
+      {/* {data = SupplyRecordsTable.selectedrows} */}
+      {/* // onClick={deleteRecords(SupplyManagersTable.getDeletingRecords)} */}
+      <br></br>
+      <br></br>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div>
         <Table

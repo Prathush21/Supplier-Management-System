@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { MDBInput, } from "mdbreact";
-import { useRowSelect, useTable } from "react-table";
-import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../../styles/styles_2.css";
 import AddSupplyManager from "./AddSupplyManager";
 import SupplyManagersTable from "./SupplyManagersTable";
@@ -41,11 +39,6 @@ class SupplyManagers extends Component {
           <br></br>
           <Button color="light" onClick={this.toggleModal}>
             Add New Supply Manager
-          </Button>
-          <Button color="dark" style={{ marginLeft: ".5rem" }}
-          // onClick={deleteRecords(SupplyManagersTable.getDeletingRecords)}
-          >  //TOCLARIFY!!!!
-            Delete Record
           </Button>
           <br></br>
           <br></br>

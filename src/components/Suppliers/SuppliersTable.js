@@ -33,9 +33,7 @@ const COLUMNS = [
   },
 ];
 
-
 export default function SupplersTable() {
-
   const [suppliers, setSuppliers] = useState([
     // {
     //   id: 100,
@@ -55,28 +53,27 @@ export default function SupplersTable() {
     // },
   ]);
 
-
   useEffect(() => {
-    axios.get("http://localhost:8087/supplier/all")
-      .then(getSuppliers => {
+    axios
+      .get("http://localhost:8087/supplier/all")
+      .then((getSuppliers) => {
         // const data_arr = [];
         // getSuppliers.data.data.forEach(element => {
-          // const data = element;
-          // data.address = data.lane1 + ',' + 
-          // data.lane2 + ',' + 
-          // data.city + ',' + 
-          // data.district
-          // // data.joined_date = joined_date.
+        // const data = element;
+        // data.address = data.lane1 + ',' +
+        // data.lane2 + ',' +
+        // data.city + ',' +
+        // data.district
+        // // data.joined_date = joined_date.
 
-          // data_arr.push(data); 
-          setSuppliers(getSuppliers.data.data);
-          console.log(getSuppliers.data.data)
-        
-      }).catch(err => {
-        console.log(err)
+        // data_arr.push(data);
+        setSuppliers(getSuppliers.data.data);
+        console.log(getSuppliers.data.data);
       })
-  }, [])
-
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
@@ -143,49 +140,57 @@ export default function SupplersTable() {
 
   return (
     <React.Fragment>
-    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-    <div>
-      <Table
-        responsive
-        striped
-        bordered
-        hover
-        className="Mytable"
-        {...getTableProps()}
-      >
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      <Modal isOpen={modalIsOpen}>
-        <ModalHeader
-          close={<Button close onClick={setModalIsOpenToFalse}></Button>}
+      <Button color="dark">Delete Supplier</Button>
+      {/* {data = SupplyRecordsTable.selectedrows} */}
+      <br></br>
+      <br></br>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <div>
+        <Table
+          responsive
+          striped
+          bordered
+          hover
+          className="Mytable"
+          {...getTableProps()}
         >
-          <h3>Edit Supplier</h3>
-        </ModalHeader>
-        <ModalBody><EditSupplier row={modalId} suppliers={suppliers}/></ModalBody>
-      </Modal>
-    </div>
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+        <Modal isOpen={modalIsOpen}>
+          <ModalHeader
+            close={<Button close onClick={setModalIsOpenToFalse}></Button>}
+          >
+            <h3>Edit Supplier</h3>
+          </ModalHeader>
+          <ModalBody>
+            <EditSupplier row={modalId} suppliers={suppliers} />
+          </ModalBody>
+        </Modal>
+      </div>
     </React.Fragment>
   );
 }
