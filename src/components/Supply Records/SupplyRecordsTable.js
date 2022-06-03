@@ -4,6 +4,7 @@ import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
 import { Checkbox } from "../Utils/checkbox";
 import EditSupplyRecords from "./EditSupplyRecord";
+import { GlobalFilter } from "../Utils/GlobalFilter";
 
 const COLUMNS = [
   {
@@ -97,6 +98,8 @@ export default function SupplyRecordsTable() {
     rows,
     prepareRow,
     selectedFlatRows,
+    state,
+    setGlobalFilter,
   } = useTable(
     {
       columns: COLUMNS,
@@ -128,8 +131,11 @@ export default function SupplyRecordsTable() {
   );
 
   const selectedrows = selectedFlatRows.map((row) => row.original);
+  const { globalFilter } = state;
 
   return (
+    <React.Fragment>
+    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
     <div>
       <Table
         responsive
@@ -170,5 +176,6 @@ export default function SupplyRecordsTable() {
         <ModalBody><EditSupplyRecords row={modalId} supplyrecords={supplyrecords}/></ModalBody>
       </Modal>
     </div>
+    </React.Fragment>
   );
 }

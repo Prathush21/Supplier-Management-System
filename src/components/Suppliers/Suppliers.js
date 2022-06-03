@@ -52,16 +52,6 @@ class Suppliers extends Component {
           </Button>
           <br></br>
           <br></br>
-          <div className="search-box">
-            <div className="row">
-              <div className="col-9">
-                <MDBInput hint="Search" type="text" id="search" />
-              </div>
-              <div className="col-3">
-                <Button outline color="primary">Search</Button>
-              </div>
-            </div>
-          </div>
           <SupplersTable/>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
