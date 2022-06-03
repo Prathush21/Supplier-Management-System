@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRowSelect, useTable } from "react-table";
+import { useRowSelect, useTable, useGlobalFilter } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
 import { Checkbox } from "../Utils/checkbox";
@@ -105,7 +105,7 @@ export default function SupplyRecordsTable() {
       columns: COLUMNS,
       data: supplyrecords,
     },
-    useRowSelect,
+    useRowSelect, useGlobalFilter,
     (hooks) => {
       hooks.visibleColumns.push((columns) => {
         return [
