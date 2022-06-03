@@ -51,6 +51,8 @@ export default function AddSupplier() {
 
   const sendData = () => {
       const url = "http://localhost:8087/supplier/create"
+      console.log(data)
+      
       axios.post(url,data).then((res) => {
         console.log(res)
       }).catch(err => {
