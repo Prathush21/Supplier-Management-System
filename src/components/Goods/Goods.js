@@ -31,7 +31,6 @@ class Good extends Component {
   }
 
   render() {
-    
     axios.get("http://localhost:8087/good/allgoods")
       .then(getGoods => {
         // console.log(getGoods.data.data)

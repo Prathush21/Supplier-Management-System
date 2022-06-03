@@ -17,6 +17,7 @@ class EditAccountDetails extends Component {
       editDetails: false,
       editPassword: false,
       editUsername: false,
+      userDetails: []
     };
   }
 
@@ -39,19 +40,10 @@ class EditAccountDetails extends Component {
   }
 
   render() {
-    const userDetails = [
-      {
-        id: 1,
-        name: "Lokesh Kanagaraj",
-        username: "lokesh24",
-        email: "example@gmail.com",
-        contactNumber: "0768582163",
-      },
-    ];
-
-    axios.get("http://localhost:8087/") //Edit Page
+    
+    axios.get("http://localhost:8087/manager/profile") //Edit Page
     .then(getUserDetails => {
-      userDetails.append(getUserDetails.data);
+      this.setState({userDetails: getUserDetails.data.data[0]});
       console.log(getUserDetails)
     }).catch(err => {
       console.log(err)
@@ -98,29 +90,36 @@ class EditAccountDetails extends Component {
                 <td colSpan={5}>
                   <b>Name</b>
                 </td>
-                <td>{userDetails[0].name}</td>
-              </tr>
-              <br></br>
-              <tr>
-                <td colSpan={5}>
-                  <b>Username</b>
-                </td>
-                <td>{userDetails[0].username}</td>
+                <td>{this.state.userDetails.name}</td>
               </tr>
               <br></br>
               <tr>
                 <td colSpan={5}>
                   <b>Email Address</b>
                 </td>
-                <td>{userDetails[0].email}</td>
+                <td>{this.state.userDetails.email}</td>
+              </tr>
+              <br></br>
+              <tr>
+                <td colSpan={5}>
+                  <b>Address</b>
+                </td>
+                <td>{this.state.userDetails.address}</td>
               </tr>
               <br></br>
               <tr>
                 <td colSpan={5}>
                   <b>Contact Number</b>
                 </td>
-                <td>{userDetails[0].contactNumber}</td>
+                <td>{this.state.userDetails.contact}</td>
               </tr>
+              <tr>
+                <td colSpan={5}>
+                  <b>Joined Date</b>
+                </td>
+                <td>{this.state.userDetails.join_date}</td>
+              </tr>
+
             </tbody>
           </Table>
         </div>

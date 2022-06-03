@@ -19,7 +19,8 @@ class Storage extends Component {
     super(props);
     this.state = {
       isModalOpen: false,
-      id:0
+      id:0,
+      storage: []
     };
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -42,46 +43,10 @@ class Storage extends Component {
   }
 
   render() {
-    const storage = [
-      // {
-      //   id: 1,
-      //   typeid: 100,
-      //   typename: "type 1",
-      //   unittype: "kg",
-      //   unitprize: "475.00",
-      //   image: "/assets/images/login.jpg",
-      //   stockamount: 25,
-      //   refilledDate: "2022/05/27",
-      //   availability: "available",
-      // },
-      // {
-      //   id: 2,
-      //   typeid: 200,
-      //   typename: "type 1",
-      //   unittype: "kg",
-      //   unitprize: "475.00",
-      //   image: "/assets/images/login.jpg",
-      //   stockamount: 25,
-      //   refilledDate: "2022/05/27",
-      //   availability: "available",
-      // },
-      // {
-      //   id: 3,
-      //   typeid: 300,
-      //   typename: "type 1",
-      //   unittype: "kg",
-      //   unitprize: "475.00",
-      //   image: "/assets/images/login.jpg",
-      //   stockamount: 25,
-      //   refilledDate: "2022/05/27",
-      //   availability: "available",
-      // },
-    ];
-
     axios.get("http://localhost:8087/storage/all")
       .then(getItem => {
-        storage.append(getItem.data.data);
-        console.log(getItem.data.data)
+        // console.log(getItem.data.data)
+        this.setState({storage: getItem.data.data})
       }).catch(err => {
         console.log(err)
       })
@@ -92,29 +57,28 @@ class Storage extends Component {
           <h2>Storage </h2>
           <br></br>
           <MDBRow>
-            {storage.map((good, index) => (
+            {this.state.storage.map((good, index) => (
               <MDBCol sm="4">
                 <center>
                   <MDBCard key={good.id} className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
                     <MDBCardBody className="shadow-5 hover-overlay" style={{ borderRadius: "5px" }}>
-                      <MDBCardTitle>{good.typename}</MDBCardTitle>
+                      <MDBCardTitle>{good.type}</MDBCardTitle>
                       <MDBCardText>
-                        <b>{good.unitprize}</b>
-                        <br></br>Unit : {good.unittype}
+                        <b>{good.unit_price}</b>
+                        <br></br>Unit : {good.unit}
                       </MDBCardText>
-                      <MDBCardImage
+                      {/* <MDBCardImage
                         className="img-fluid"
                         src={good.image}
                         alt="..."
                         position="top"
-                      ></MDBCardImage>
+                      ></MDBCardImage> */}
                       <br></br>
                       <MDBCardText>
-                        Stock Amount : <b>{good.stockamount}</b>
+                        Stock Amount : <b>{good.stock_amount}</b>
                         <br></br>
-                        Last Refilled Date : {good.refilledDate}
+                        Last Refilled Date : {good.last_refilled_date}
                         <br></br>
-                        Availability Status : {good.availability}
                       </MDBCardText>
                         <Button outline color="dark" onClick={() => this.viewModal(good.id)}>Edit</Button>
                     </MDBCardBody>
@@ -128,7 +92,7 @@ class Storage extends Component {
           <ModalHeader toggle={this.toggleModal}>
             <h3> Edit Storage </h3>
           </ModalHeader>
-          <ModalBody>{ <EditStorage id={this.state.id} storage= {storage}/> }</ModalBody>
+          <ModalBody>{ <EditStorage id={this.state.id} storage= {this.state.storage}/> }</ModalBody>
         </Modal>
       </React.Fragment>
     );

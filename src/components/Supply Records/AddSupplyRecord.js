@@ -79,6 +79,7 @@ export default function AddSupplRecord() {
   return (
     <div className="Container-fluid shadow-2-strong">
       <Form className="form" onSubmit={handleSubmit}>
+        
         <FormGroup>
           <Label for="sup_ID">Supplier ID</Label>
           <Input
@@ -135,7 +136,7 @@ export default function AddSupplRecord() {
         <FormGroup>
           <Label for="type">Type</Label>
 
-          <DropdownButton
+          <select
             alignRight
             title="Select type"
             id="type"
@@ -143,27 +144,10 @@ export default function AddSupplRecord() {
             required={true}
             onChange={handleChange}
           >
-            <Dropdown.Item eventKey="option-1">sugar</Dropdown.Item>
-            <Dropdown.Item eventKey="option-2">dhal</Dropdown.Item>
-          </DropdownButton>
+            
+          </select>
+
         </FormGroup>
-        
-        {/* <FormGroup>
-          <Label for="availability">Availability</Label>
-
-          <DropdownButton
-            alignRight
-            title="Select Availability"
-            id="availability"
-            variant="light"
-            required={true}
-            onChange={handleChange}
-          >
-            <Dropdown.Item eventKey="option-1">0</Dropdown.Item>
-            <Dropdown.Item eventKey="option-2">1</Dropdown.Item>
-          </DropdownButton>
-        </FormGroup> */}
-
         <Button color="primary" type="submit">
           {" "}
           Submit{" "}
