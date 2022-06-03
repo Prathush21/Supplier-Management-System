@@ -20,14 +20,38 @@ class Good extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.state = {
       isModalOpen: false,
+      id: 0,
       goods : []
     };
+    this.getDeleteID = this.getDeleteID.bind(this);
   }
 
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
+  }
+
+  delete () {
+    
+  };
+
+  getDeleteID(Id){
+    {
+      this.setState(
+        {id : Id}
+      )
+      
+      if (this.state.id != 0) {
+        const id = this.state.id
+        const url = `http://localhost:8087/user/supply-delete/${id}`
+        axios.post(url, id).then((res) => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      }
+    }
   }
 
   render() {
@@ -40,6 +64,9 @@ class Good extends Component {
       }).catch(err => {
         console.log(err)
       })
+
+      
+    
 
     return (
       <React.Fragment>
@@ -69,6 +96,8 @@ class Good extends Component {
                     <br></br>
                     Unit : {good.unit}
                   </MDBCardText>
+                  <Button outline color="dark"
+                  onClick={() => this.getDeleteID(good.id)}>Delete</Button>
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

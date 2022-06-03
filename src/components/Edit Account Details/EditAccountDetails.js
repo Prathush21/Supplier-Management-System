@@ -44,7 +44,6 @@ class EditAccountDetails extends Component {
     axios.get("http://localhost:8087/manager/profile") //Edit Page
     .then(getUserDetails => {
       this.setState({userDetails: getUserDetails.data.data[0]});
-      console.log(getUserDetails)
     }).catch(err => {
       console.log(err)
     })

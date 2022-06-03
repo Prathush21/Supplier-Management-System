@@ -34,39 +34,12 @@ const COLUMNS = [
 ];
 
 export default function SupplersTable() {
-  const [suppliers, setSuppliers] = useState([
-    // {
-    //   id: 100,
-    //   name: "Kamal",
-    //   email: "kamal@gmail.com",
-    //   contact: "0759862565",
-    //   address: "Kandy Road, Kurunegala",
-    //   date: "2015-10-18",
-    // },
-    // {
-    //   id: 100,
-    //   name: "Nimal",
-    //   email: "nimal@gmail.com",
-    //   contact: "0759862565",
-    //   address: "Kandy Road, Kurunegala",
-    //   date: "2015-10-18",
-    // },
-  ]);
+  const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:8087/supplier/all")
       .then((getSuppliers) => {
-        // const data_arr = [];
-        // getSuppliers.data.data.forEach(element => {
-        // const data = element;
-        // data.address = data.lane1 + ',' +
-        // data.lane2 + ',' +
-        // data.city + ',' +
-        // data.district
-        // // data.joined_date = joined_date.
-
-        // data_arr.push(data);
         setSuppliers(getSuppliers.data.data);
         console.log(getSuppliers.data.data);
       })
@@ -74,6 +47,9 @@ export default function SupplersTable() {
         console.log(err);
       });
   }, []);
+
+  
+
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
@@ -138,9 +114,20 @@ export default function SupplersTable() {
   const selectedrows = selectedFlatRows.map((row) => row.original);
   const { globalFilter } = state;
 
+  const deleteRecords = () => {
+    console.log(selectedrows)
+    const url = 'http://localhost:8087/supplier/remove'
+    axios.post(url, selectedrows).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  };
+
   return (
     <React.Fragment>
-      <Button color="dark">Delete Supplier</Button>
+      <Button color="dark"
+      onClick={deleteRecords}>Delete Supplier</Button>
       {/* {data = SupplyRecordsTable.selectedrows} */}
       <br></br>
       <br></br>

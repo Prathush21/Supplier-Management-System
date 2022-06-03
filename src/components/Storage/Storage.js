@@ -45,7 +45,6 @@ class Storage extends Component {
   render() {
     axios.get("http://localhost:8087/storage/all")
       .then(getItem => {
-        // console.log(getItem.data.data)
         this.setState({storage: getItem.data.data})
       }).catch(err => {
         console.log(err)

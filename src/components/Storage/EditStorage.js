@@ -13,18 +13,8 @@ export default function EditStorage(props) {
   const [formErrors, setformErrors] = useState({})
   const [data, setData] = useState(null);
 
-  // axios
-  //   .get("http://localhost:8087/storage/update") //Edit storage
-  //   .then((getUserDetails) => {
-  //     storage.append(getUserDetails.data);
-  //     console.log(getUserDetails);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
   const sendData = () => {
-    const url = "http://localhost:8087/supplyRecord/"; //Edit Supplier
+    const url = `http://localhost:8087/storage/update/${data.id}`;
 
    axios
       .post(url, data)
@@ -71,10 +61,10 @@ export default function EditStorage(props) {
               <Label for="typename">Type Name</Label>
               <Input
                 type="text"
-                name="typename"
-                id="typename"
+                name="type"
+                id="type"
                 readOnly
-                value={formValues.typename}
+                value={formValues.type}
               />
             </FormGroup>
 
@@ -85,7 +75,7 @@ export default function EditStorage(props) {
                 name="unit"
                 id="unit"
                 readOnly
-                value={formValues.unittype}
+                value={formValues.unit}
               />
             </FormGroup>
 
@@ -93,34 +83,34 @@ export default function EditStorage(props) {
               <Label for="refilledDate">Last Refilled Date</Label>
               <Input
                 type="text"
-                name="refilledDate"
-                id="refilledDate"
+                name="last_refilled_date"
+                id="last_refilled_date"
                 readOnly
-                value={formValues.refilledDate}
+                value={formValues.last_refilled_date}
               />
 
             </FormGroup>
 
             <FormGroup>
-              <Label for="unitPrice">Unit Price</Label>
+              <Label for="unit_price">Unit Price</Label>
               <Input
                 type="number"
                 step="0.01"
-                name="unitPrice"
-                id="unitPrice"
-                placeholder={formValues.unitprize}
+                name="unit_price"
+                id="unit_price"
+                value={formValues.unit_price}
                 onChange={handleChange}
               />
             </FormGroup>
 
             <FormGroup>
-              <Label for="stockAmount">Stock Amount </Label>
+              <Label for="stock_amount">Stock Amount </Label>
               <Input
                 type="number"
                 step="0.01"
-                name="stockAmount"
-                id="stockAmount"
-                placeholder={formValues.stockamount}
+                name="stock_amount"
+                id="stock_amount"
+                value={formValues.stock_amount}
                 onChange={handleChange}
               />
             </FormGroup>

@@ -9,7 +9,7 @@ export default function AddSupplRecord() {
     sup_ID: "",
     unit_prize: "",
     amount: "",
-    date: null,
+    received_date: null,
     type: "",
     availability: "",
   };
@@ -24,16 +24,46 @@ export default function AddSupplRecord() {
   };
 
   const [supplyrecords, setSupplyRecords] = useState([]);
+  const [types, setTypes] = useState([]);
+
+  
 
   useEffect(() => {
     axios.get("http://localhost:8087/supplier/all")
       .then(getRecords => {
-        console.log(getRecords.data.data)
+        // console.log(getRecords.data.data)
         setSupplyRecords(getRecords.data.data);
       }).catch(err => {
         console.log(err)
       })
   }, [])
+
+  useEffect(() => {
+    axios.get("http://localhost:8087/good/alltypes")
+      .then(getGoods => {
+        // console.log(getGoods.data.data)
+        setTypes(getGoods.data.data)
+        
+      }).catch(err => {
+        console.log(err)
+      })
+  })
+
+
+  const dropdown1 = supplyrecords.map((o) => {
+    return(
+      <option value={o.id}>{o.name} - {o.id}</option>
+    );
+  })
+  
+  const dropdown2 = types.map((o) => {
+    return(
+      <option value={o.type}>{o.type}</option>
+    );
+  })
+
+  
+
 
 
   const handleSubmit = (e) => {
@@ -79,21 +109,20 @@ export default function AddSupplRecord() {
   return (
     <div className="Container-fluid shadow-2-strong">
       <Form className="form" onSubmit={handleSubmit}>
-        
+
         <FormGroup>
           <Label for="sup_ID">Supplier ID</Label>
-          <Input
-            type="text"
+          <select
             name="sup_ID"
             id="sup_ID"
             required={true}
-            value={formValues.sup_ID}
-            invalid={formErrors.sup_ID === "Supplier ID is numeric !"}
             onChange={handleChange}
-          />
-          <p class="fst-italic fw-bolder" style={{ color: "#f93154" }}>
-            {formErrors.sup_ID}
-          </p>
+            className='form-select'
+            value={formValues.sup_ID}
+          >
+            {dropdown1}
+          </select>
+
         </FormGroup>
 
         <FormGroup>
@@ -126,9 +155,9 @@ export default function AddSupplRecord() {
           <Label for="date">Received Date</Label>
           <Input
             type="date"
-            name="date"
-            id="date"
-            value={formValues.date}
+            name="received_date"
+            id="received_date"
+            value={formValues.received_date}
             required={true}
             onChange={handleChange}
           />
@@ -137,14 +166,14 @@ export default function AddSupplRecord() {
           <Label for="type">Type</Label>
 
           <select
-            alignRight
-            title="Select type"
+            name="type"
             id="type"
-            variant="light"
             required={true}
             onChange={handleChange}
+            className='form-select'
+            value={formValues.type}
           >
-            
+            {dropdown2}
           </select>
 
         </FormGroup>

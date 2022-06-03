@@ -21,14 +21,6 @@ class SupplyManagers extends Component {
     });
   }
 
-  // deleteRecords(records) {
-  //   const url = "http://localhost:8087/user/manager-delete/:id"
-  //   axios.post(url,records).then((res) => {
-  //     console.log(records)
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  // };
 
   render() {
     

@@ -52,7 +52,6 @@ export default function SupplyRecordsTable() {
       })
   }, [])
 
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
 

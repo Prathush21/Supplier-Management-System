@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function AddGood() {
-  const initialValues = {typename:'', unit:'', image:''};
+  const initialValues = {type:'', unit:'', image:''};
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
@@ -32,13 +32,13 @@ export default function AddGood() {
   const validate = (values) => {
     const errors = {}
     
-    if ((values.typename).length > 15 ){
-      errors.typename = 'Type Name must be at most 15 characters';
-    }
+    // if ((values.type).length > 15 ){
+    //   errors.type = 'Type Name must be at most 15 characters';
+    // }
 
-    if ((values.unit).length > 10 ){
-      errors.unit = 'Unit must be at most 10 characters';
-    }
+    // if ((values.unit).length > 10 ){
+    //   errors.unit = 'Unit must be at most 10 characters';
+    // }
     
     return errors;
   }
@@ -57,10 +57,10 @@ export default function AddGood() {
     <div className="Container-fluid shadow-2-strong">
       <Form className="form" onSubmit={handleSubmit}>
         <FormGroup>
-          <Label for="typename">Type Name</Label>
-          <Input type="text" name="typename" id="typename" required={true}
-           onChange={handleChange} invalid={(formErrors.typename === 'Type Name must be at most 15 characters')}/>
-            <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.typename}</p>
+          <Label for="type">Type Name</Label>
+          <Input type="text" name="type" id="type" required={true}
+           onChange={handleChange} invalid={(formErrors.type === 'Type Name must be at most 15 characters')}/>
+            <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.type}</p>
         </FormGroup>
 
         <FormGroup>
@@ -70,8 +70,8 @@ export default function AddGood() {
             <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.unit}</p>
         </FormGroup>
         <FormGroup>
-          <Label for="image">Image</Label>
-          <Input type="file" name="image" id="image" 
+          <Label for="unit_price">Unit Price</Label>
+          <Input type="text" name="unit_price" id="unit_price" 
            onChange={handleChange} />
         </FormGroup>
 

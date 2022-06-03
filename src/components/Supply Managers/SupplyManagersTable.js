@@ -44,6 +44,17 @@ export default function SupplyManagersTable() {
       });
   }, []);
 
+  
+  const deleteRecords = () => {
+    const url = 'http://localhost:8087/user/manager-delete'
+    console.log(selectedrows)
+    axios.post(url, selectedrows).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  };
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
 
@@ -112,11 +123,14 @@ export default function SupplyManagersTable() {
   const selectedrows = selectedFlatRows.map((row) => row.original);
   const { globalFilter } = state;
 
+
+
   return (
     <React.Fragment>
-      <Button color="dark">Delete Supply Manager</Button>
-      {/* {data = SupplyRecordsTable.selectedrows} */}
-      {/* // onClick={deleteRecords(SupplyManagersTable.getDeletingRecords)} */}
+      <Button color="dark"
+      onClick={deleteRecords}
+      >Delete Supply Manager</Button>
+      
       <br></br>
       <br></br>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
