@@ -13,10 +13,11 @@ export default function EditSupplier(props) {
   const [data, setData] = useState(null);
 
   const sendData = () => {
+    console.log("formValues", formValues)
+    const ID = formValues.id;
+    const url = `http://localhost:8087/supplier/edit/${ID}` 
 
-    const url = 'http://localhost:8087/supplyRecord/edit/:id' 
-
-    axios.post(url, data)
+    axios.post(url, formValues)
     .then((res) => {
       console.log("response", res)
     }).catch(err => {
@@ -36,14 +37,14 @@ export default function EditSupplier(props) {
     setIsSubmit(true);  
     setData(formValues);
   }
-
+  
   useEffect(() => {
-
+    
     if(Object.keys(formErrors).length === 0 && isSubmit){
-        sendData()
+      sendData()
     }
   }, [formErrors]);
-
+  
   const validate = (values) => {
     const errors = {}
     const reContact = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
@@ -55,13 +56,14 @@ export default function EditSupplier(props) {
     if(!reEmail.test(values.email)){
       errors.email = 'Invalid Email Address';
     }
-
+    
     if(!reContact.test(values.contact)){
       errors.contact = 'Invalid Contact Number'
     }
     return errors;
   } 
-
+  
+  // console.log(formValues)
   return (
     <div className="Container-fluid">
       <Form className="form" onSubmit={handleSubmit}>
@@ -94,8 +96,10 @@ export default function EditSupplier(props) {
         </FormGroup>
 
         <FormGroup>
-          <Label for="date">Joined Date</Label>
-          <Input type="date" name="date" id="date" value={formValues.date} required={true}
+          <Label for="joined_date">Joined Date</Label>
+          <Input type="text" name="joined_date" id="joined_date" 
+          readOnly
+          value={formValues.joined_date} required={true}
           onChange={handleChange}/>
         </FormGroup>
 
