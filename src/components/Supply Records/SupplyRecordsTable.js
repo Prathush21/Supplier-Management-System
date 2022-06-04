@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useRowSelect, useTable, useGlobalFilter } from "react-table";
+import { useTable, useGlobalFilter } from "react-table";
 import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
-import { Checkbox } from "../Utils/checkbox";
 import EditSupplyRecords from "./EditSupplyRecord";
 import { GlobalFilter } from "../Utils/GlobalFilter";
 
@@ -77,7 +76,6 @@ export default function SupplyRecordsTable() {
     headerGroups,
     rows,
     prepareRow,
-    selectedFlatRows,
     state,
     setGlobalFilter,
   } = useTable(
@@ -85,19 +83,10 @@ export default function SupplyRecordsTable() {
       columns: COLUMNS,
       data: supplyrecords,
     },
-    useRowSelect, useGlobalFilter,
+     useGlobalFilter,
     (hooks) => {
       hooks.visibleColumns.push((columns) => {
         return [
-          {
-            id: "selection",
-            Header: ({ getToggleAllRowsSelectedProps }) => (
-              <Checkbox {...getToggleAllRowsSelectedProps()} />
-            ),
-            Cell: ({ row }) => (
-              <Checkbox {...row.getToggleRowSelectedProps()} />
-            ),
-          },
           ...columns,
           {
             id: "edit",
@@ -110,7 +99,6 @@ export default function SupplyRecordsTable() {
     }
   );
 
-  const selectedrows = selectedFlatRows.map((row) => row.original);
   const { globalFilter } = state;
 
   return (
