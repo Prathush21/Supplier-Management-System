@@ -8,6 +8,8 @@ export default function EditStorage(props) {
 
   const dataID = props.id;
   const initialValues = storage.filter((s) => s.id === parseInt(dataID, 10))[0];
+  const date = initialValues.last_refilled_date
+  initialValues.last_refilled_date = date.slice(0,10)
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})

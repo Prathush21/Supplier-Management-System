@@ -13,7 +13,7 @@ export default function EditAccountDetails () {
       email : 'piumini.19@cse.mrt.ac.lk',
       address : 'Kandy rd, Kurunegala',
       contact : '0714290810',
-      join_date : '2022-01-01'
+      join_date : '2022-01-01werjhgfdsfghjkijhgbfv'
 
 });
 
@@ -30,6 +30,9 @@ export default function EditAccountDetails () {
     // .then(getUserDetails => {
     //   // this.setState({userDetails: getUserDetails.data.data[0]});
     //   setUserDetails(getUserDetails.data.data[0]);
+
+        const joined = userDetails.join_date
+        userDetails.join_date = joined.slice(0,10)
     // }).catch(err => {
     //   console.log(err)
     // })

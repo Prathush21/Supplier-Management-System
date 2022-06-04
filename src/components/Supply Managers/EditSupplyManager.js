@@ -7,6 +7,8 @@ export default function EditSupplyManager(props) {
   const supplymanagers = props.supplymanagers;
 
   const initialValues = supplymanagers[props.row];
+  const joined = initialValues.join_date
+  initialValues.join_date = joined.slice(0,10)
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})

@@ -1,4 +1,4 @@
-import React, { Component,} from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBCard,
   MDBCardBody,
@@ -10,92 +10,124 @@ import {
 } from "mdb-react-ui-kit";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../../styles/styles_2.css";
-import EditStorage from './EditStorage';
+import EditStorage from "./EditStorage";
 import axios from "axios";
 
+export default function Storage() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalId, setModalId] = useState(0);
+  const [storage, setStorage] = useState([
+    {
+      id:1,
+      type:'type 1',
+      unit : 'kg',
+      unit_price : 40,
+      stock_amount : 90,
+      last_refilled_date : '2022-10-12-600pMoouuu'
+    },
+    {
+      id:2,
+      type:'type 2',
+      unit : 'kg',
+      unit_price : 40,
+      stock_amount : 90,
+      last_refilled_date : '2022-10-12-600pMoouuu'
+    }
+  ]);
 
-class Storage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isModalOpen: false,
-      id:0,
-      storage: []
-    };
 
-    this.toggleModal = this.toggleModal.bind(this);
-    this.viewModal = this.viewModal.bind(this);
-  }
+  const setModalIsOpenToTrue = () => {
+    setModalIsOpen(true);
+  };
 
-  toggleModal() {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
-  }
+  const setModalIsOpenToFalse = () => {
+    setModalIsOpen(false);
+  };
 
-  viewModal(Id){
-    this.setState(this.toggleModal);
-    if (this.state.isModalOpen === false) {
-      this.setState(
-        {id : Id}
-      )
+  function viewModal(Id) {
+    console.log(Id);
+    setModalIsOpenToTrue();
+    if (modalIsOpen === false) {
+      setModalId(Id);
     }
   }
 
-  render() {
-    axios.get("http://localhost:8087/storage/all")
-      .then(getItem => {
-        this.setState({storage: getItem.data.data})
-      }).catch(err => {
-        console.log(err)
-      })
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:8087/storage/all")
+  //     .then((getItem) => {
+  //       setStorage(getItem.data.data );
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
-    return (
-      <React.Fragment>
-        <div className="Container-fluid shadow-2-strong">
-          <h2>Storage </h2>
-          <br></br>
-          <MDBRow>
-            {this.state.storage.map((good, index) => (
-              <MDBCol sm="4">
-                <center>
-                  <MDBCard key={good.id} className="shadow-5" style={{ margin: "0.5rem", border:"0px",  backgroundColor: "rgba(95, 106, 230, 0.33)"}}>
-                    <MDBCardBody className="shadow-5 hover-overlay" style={{ borderRadius: "5px" }}>
-                      <MDBCardTitle>{good.type}</MDBCardTitle>
-                      <MDBCardText>
-                        <b>{good.unit_price}</b>
-                        <br></br>Unit : {good.unit}
-                      </MDBCardText>
-                      {/* <MDBCardImage
+
+  return (
+    <React.Fragment>
+      <div className="Container-fluid shadow-2-strong">
+        <h2>Storage</h2>
+        <br></br>
+        <MDBRow>
+          {storage.map((good, index) => (
+            <MDBCol sm="4">
+              <center>
+                <MDBCard
+                  key={good.id}
+                  className="shadow-5"
+                  style={{
+                    margin: "0.5rem",
+                    border: "0px",
+                    backgroundColor: "rgba(95, 106, 230, 0.33)",
+                  }}
+                >
+                  <MDBCardBody
+                    className="shadow-5 hover-overlay"
+                    style={{ borderRadius: "5px" }}
+                  >
+                    <MDBCardTitle>{good.type}</MDBCardTitle>
+                    <MDBCardText>
+                      <b>{good.unit_price}</b>
+                      <br></br>Unit : {good.unit}
+                    </MDBCardText>
+                    {/* <MDBCardImage
                         className="img-fluid"
                         src={good.image}
                         alt="..."
                         position="top"
                       ></MDBCardImage> */}
+                    <br></br>
+                    <MDBCardText>
+                      Stock Amount : <b>{good.stock_amount}</b>
                       <br></br>
-                      <MDBCardText>
-                        Stock Amount : <b>{good.stock_amount}</b>
-                        <br></br>
-                        Last Refilled Date : {good.last_refilled_date}
-                        <br></br>
-                      </MDBCardText>
-                        <Button outline color="dark" onClick={() => this.viewModal(good.id)}>Edit</Button>
-                    </MDBCardBody>
-                  </MDBCard>
-                </center>
-              </MDBCol>
-            ))}
-          </MDBRow>
-        </div>
-        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>
-            <h3> Edit Storage </h3>
-          </ModalHeader>
-          <ModalBody>{ <EditStorage id={this.state.id} storage= {this.state.storage}/> }</ModalBody>
-        </Modal>
-      </React.Fragment>
-    );
-  }
+                      Last Refilled Date : {good.last_refilled_date.slice(0,10)}
+                      <br></br>
+                    </MDBCardText>
+                    <Button
+                      outline
+                      color="dark"
+                      onClick={() => viewModal(good.id)}
+                    >
+                      Edit
+                    </Button>
+                  </MDBCardBody>
+                </MDBCard>
+              </center>
+            </MDBCol>
+          ))}
+        </MDBRow>
+      </div>
+      <Modal isOpen={modalIsOpen}>
+        <ModalHeader
+          close={<Button close onClick={setModalIsOpenToFalse}></Button>}
+        >
+          <h3> Edit Storage </h3>
+        </ModalHeader>
+        <ModalBody>
+          {<EditStorage id={modalId} storage={storage} />}
+        </ModalBody>
+      </Modal>
+    </React.Fragment>
+  );
 }
-
-export default Storage;

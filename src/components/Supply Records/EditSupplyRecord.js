@@ -7,6 +7,8 @@ export default function EditSupplyRecords(props) {
  
   const supplyrecords = props.supplyrecords;
   const initialValues = supplyrecords[props.row];
+  const joined = initialValues.received_date
+  initialValues.received_date = joined.slice(0,10)
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})

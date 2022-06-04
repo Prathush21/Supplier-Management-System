@@ -7,14 +7,14 @@ export default function EditSupplier(props) {
   const suppliers = props.suppliers;
 
   const initialValues = suppliers[props.row];
+  const joined = initialValues.joined_date
+  initialValues.joined_date = joined.slice(0,10)
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
   const [data, setData] = useState(null);
 
   const sendData = () => {
-    const joined = data.joined_date
-    data.joined_date = joined.slice(0,10)
     const ID = data.id;
     const url = `http://localhost:8087/supplier/edit/${ID}` 
 
