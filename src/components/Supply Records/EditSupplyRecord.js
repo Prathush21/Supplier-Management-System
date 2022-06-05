@@ -1,4 +1,4 @@
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import '../../styles/styles_1.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -13,6 +13,17 @@ export default function EditSupplyRecords(props) {
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
   const [data, setData] = useState(null);
+  const [show, setShow] = useState(false);
+  const [alertColor, setAlertColor] = useState('')
+  const [alertMessage, setAlertMessage] = useState('')
+
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
 
 
   const sendData = () => {
@@ -23,8 +34,14 @@ export default function EditSupplyRecords(props) {
     axios.patch(url, data)
     .then((res) => {
       console.log("response", res)
+      setAlertColor("info");
+      setAlertMessage("Successfully added.");
+      setShowToTrue();
     }).catch(err => {
       console.log("error::::", err)
+      setAlertColor("danger");
+      setAlertMessage("Error!");
+      setShowToTrue();
     })
   };
 
@@ -59,6 +76,10 @@ export default function EditSupplyRecords(props) {
   } 
 
   return (
+    <React.Fragment>
+    <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
+      <p>{alertMessage}</p>
+    </Alert>
     <div className="Container-fluid">
       <Form className="form" onSubmit={handleSubmit}>
       <FormGroup>
@@ -127,5 +148,6 @@ export default function EditSupplyRecords(props) {
         <Button color="primary" type="submit"> Submit </Button>
       </Form>
     </div>
+        </React.Fragment>
   );
 }

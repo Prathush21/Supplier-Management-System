@@ -1,4 +1,4 @@
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import '../../styles/styles_1.css';
 import React, { useState, useEffect } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
@@ -17,6 +17,18 @@ export default function AddSupplRecord() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({});
   const [data, setData] = useState(null);
+  const [show, setShow] = useState(false);
+  const [alertColor, setAlertColor] = useState('')
+  const [alertMessage, setAlertMessage] = useState('')
+
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -100,13 +112,23 @@ export default function AddSupplRecord() {
       .post(url, data)
       .then((res) => {
         console.log(res);
+        setAlertColor("info");
+        setAlertMessage("Successfully added.");
+        setShowToTrue();
       })
       .catch((err) => {
         console.log(err);
+        setAlertColor("danger");
+        setAlertMessage("Error!");
+        setShowToTrue();
       });
   };
 
   return (
+    <React.Fragment>
+    <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
+      <p>{alertMessage}</p>
+    </Alert>
     <div className="Container-fluid shadow-2-strong">
       <Form className="form" onSubmit={handleSubmit}>
 
@@ -183,5 +205,6 @@ export default function AddSupplRecord() {
         </Button>
       </Form>
     </div>
+    </React.Fragment>
   );
 }
