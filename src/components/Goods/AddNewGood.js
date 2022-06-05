@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function AddGood() {
-  const initialValues = {type:'', unit:'', image:''};
+  const initialValues = {type:'', unit:'', unit_price:''};
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
@@ -58,12 +58,12 @@ export default function AddGood() {
     const url = "http://localhost:8087/storage/addgood"
     axios.post(url, data)
     .then((res) => {
-      console.log("response", res)
+      //console.log("response", res)
       setAlertColor("info");
       setAlertMessage("Successfully added.");
       setShowToTrue();
     }).catch(err => {
-      console.log("error::::", err)
+      //console.log("error:", err)
       setAlertColor("danger");
       setAlertMessage("Error!");
       setShowToTrue();

@@ -32,9 +32,8 @@ export default function EditStorage(props) {
    axios
       .post(url, data)
       .then((res) => {
-        console.log("response", res);
         setAlertColor("info");
-        setAlertMessage("Successfully added.");
+        setAlertMessage(res.data.message);
         setShowToTrue();
       })
       .catch((err) => {

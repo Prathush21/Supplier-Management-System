@@ -43,14 +43,11 @@ export default function SupplersTable() {
         setSuppliers(getSuppliers.data.data);
         const joined = suppliers.joined_date
         suppliers.joined_date = joined.slice(0,10)
-        console.log(getSuppliers.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  
 
 
   const [modalIsOpen, setModalIsOpen] = useState(false);

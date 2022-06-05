@@ -4,7 +4,7 @@ import "../../styles/styles_2.css";
 import axios from "axios";
 
 export default function AddSupplyManager() {
-  const initialValues = {name:'', email:'', contactNo:'', date:null};
+  const initialValues = {name:'', email:'', contact:'', date:null};
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
@@ -20,12 +20,14 @@ export default function AddSupplyManager() {
     setformErrors(validate(formValues));
     setIsSubmit(true);  
     setData(formValues);
+    console.log(data)
   }
 
   useEffect(() => {
 
     if(Object.keys(formErrors).length === 0 && isSubmit){
         sendData()
+        
     }
   }, [formErrors]);
 
@@ -41,8 +43,8 @@ export default function AddSupplyManager() {
       errors.email = 'Invalid Email Address';
     }
 
-    if(!reContact.test(values.contactNo)){
-      errors.contactNo = 'Invalid Contact Number'
+    if(!reContact.test(values.contact)){
+      errors.contact = 'Invalid Contact Number'
     }
     
     return errors;
@@ -50,7 +52,9 @@ export default function AddSupplyManager() {
 
 
   const sendData = () => {
+    console.log(data)
     const url = "http://localhost:8087/user/signup"
+    
     axios.post(url,data).then((res) => {
       console.log(res)
     }).catch(err => {
@@ -77,9 +81,9 @@ export default function AddSupplyManager() {
 
         <FormGroup>
           <Label for="ContactNo">Contact Number</Label>
-          <Input type="text" name="contactNo" id="contactNo" value={formValues.contactNo} required={true}
-          onChange={handleChange} invalid={(formErrors.contactNo === 'Invalid Contact Number')}/>
-          <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contactNo}</p>
+          <Input type="text" name="contact" id="contact" value={formValues.contact} required={true}
+          onChange={handleChange} invalid={(formErrors.contact === 'Invalid Contact Number')}/>
+          <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contact}</p>
         </FormGroup>
 
         <FormGroup>

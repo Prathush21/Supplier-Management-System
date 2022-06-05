@@ -16,16 +16,6 @@ import axios from "axios";
 export default function Good() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [goods, setGoods] = useState([
-    {
-      id: 1,
-      type: "type 1",
-      unit: "kg",
-    },
-    {
-      id: 2,
-      type: "type 2",
-      unit: "kg",
-    },
   ]);
 
   const setModalIsOpenToTrue = () => {

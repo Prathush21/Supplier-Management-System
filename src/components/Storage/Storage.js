@@ -17,22 +17,6 @@ export default function Storage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(0);
   const [storage, setStorage] = useState([
-    {
-      id:1,
-      type:'type 1',
-      unit : 'kg',
-      unit_price : 40,
-      stock_amount : 90,
-      last_refilled_date : '2022-10-12-600pMoouuu'
-    },
-    {
-      id:2,
-      type:'type 2',
-      unit : 'kg',
-      unit_price : 40,
-      stock_amount : 90,
-      last_refilled_date : '2022-10-12-600pMoouuu'
-    }
   ]);
 
 
@@ -45,24 +29,20 @@ export default function Storage() {
   };
 
   function viewModal(Id) {
-    console.log(Id);
     setModalIsOpenToTrue();
     if (modalIsOpen === false) {
       setModalId(Id);
     }
   }
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8087/storage/all")
-  //     .then((getItem) => {
-  //       setStorage(getItem.data.data );
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
+  axios
+    .get("http://localhost:8087/storage/all")
+    .then((getItem) => {
+      setStorage(getItem.data.data );
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   return (
     <React.Fragment>

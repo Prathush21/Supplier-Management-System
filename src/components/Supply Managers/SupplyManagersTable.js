@@ -36,7 +36,6 @@ export default function SupplyManagersTable() {
     axios
       .get("http://localhost:8087/user/managers")
       .then((getManagers) => {
-        console.log(getManagers.data.data);
         setSupplyManagers(getManagers.data.data);
       })
       .catch((err) => {
@@ -47,7 +46,6 @@ export default function SupplyManagersTable() {
   
   const deleteRecords = () => {
     const url = 'http://localhost:8087/user/manager-delete'
-    console.log(selectedrows)
     axios.post(url, selectedrows).then((res) => {
       console.log(res)
     }).catch(err => {
