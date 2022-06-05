@@ -44,8 +44,6 @@ export default function SupplyRecordsTable() {
   axios.get("http://localhost:8087/supplyRecord/all")
     .then(getRecords => {
       setSupplyRecords(getRecords.data.data);
-      const joined = supplyrecords.received_date
-      supplyrecords.received_date = joined.date
     }).catch(err => {
       console.log(err)
     })

@@ -8,8 +8,6 @@ export default function EditStorage(props) {
 
   const dataID = props.id;
   const initialValues = storage.filter((s) => s.id === parseInt(dataID, 10))[0];
-  const date = initialValues.last_refilled_date
-  initialValues.last_refilled_date = date.slice(0,10)
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
@@ -37,10 +35,32 @@ export default function EditStorage(props) {
         setShowToTrue();
       })
       .catch((err) => {
-        //  console.log("error::::", err);
         setAlertColor("danger");
-        setAlertMessage("Error!");
-        setShowToTrue();
+        switch (err.request.status) {
+          case 400:
+            console.log(err.data.message);
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 401:
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       });
   };
 

@@ -57,8 +57,31 @@ export default function EditDetails(props) {
       .catch((err) => {
         console.log("error::::", err);
         setAlertColor("danger");
-        setAlertMessage("Error!");
-        setShowToTrue();
+        switch (err.request.status) {
+          case 400:
+            console.log(err.data.message);
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 401:
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       });
   };
 
@@ -140,17 +163,6 @@ export default function EditDetails(props) {
             <p class="fst-italic fw-bolder" style={{ color: "#f93154" }}>
               {formErrors.email}
             </p>
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="text">Address</Label>
-            <Input
-              type="text"
-              name="address"
-              id="address"
-              value={formValues.address}
-              onChange={handleChange}
-            />
           </FormGroup>
 
           <FormGroup>

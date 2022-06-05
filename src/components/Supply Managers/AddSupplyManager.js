@@ -72,8 +72,31 @@ export default function AddSupplyManager() {
       .catch((err) => {
         console.log(err);
         setAlertColor("danger");
-        setAlertMessage("Error!");
-        setShowToTrue();
+        switch (err.request.status) {
+          case 400:
+            console.log(err.data.message);
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 401:
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       });
   };
 

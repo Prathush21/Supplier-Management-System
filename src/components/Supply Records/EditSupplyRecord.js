@@ -7,8 +7,6 @@ export default function EditSupplyRecords(props) {
  
   const supplyrecords = props.supplyrecords;
   const initialValues = supplyrecords[props.row];
-  const joined = initialValues.received_date
-  initialValues.received_date = joined.slice(0,10)
   const [formValues,setformValues] = useState(initialValues)
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
@@ -27,21 +25,41 @@ export default function EditSupplyRecords(props) {
 
 
   const sendData = () => {
-    console.log(data)
-    const received = data.received_date
-    data.received_date = received.slice(0,10)
     const url = `http://localhost:8087/supplyRecord/edit/${data.id}` //Edit Supplier
     axios.patch(url, data)
     .then((res) => {
       console.log("response", res)
       setAlertColor("info");
-      setAlertMessage("Successfully added.");
+      setAlertMessage(res.data.message);
       setShowToTrue();
     }).catch(err => {
       console.log("error::::", err)
       setAlertColor("danger");
-      setAlertMessage("Error!");
-      setShowToTrue();
+      switch (err.request.status) {
+        case 400:
+          console.log(err.data.message);
+          setAlertMessage(err.data.message);
+          setShowToTrue();
+          break;
+        case 401:
+          setAlertMessage(err.data.message);
+          setShowToTrue();
+          break;
+        case 500:
+          setAlertMessage("Server Error!");
+          setShowToTrue();
+          break;
+        case 501:
+          setAlertMessage("Server Error!");
+          setShowToTrue();
+          break;
+        case 502:
+          setAlertMessage("Server Error!");
+          setShowToTrue();
+          break;
+        default:
+          break;
+      }
     })
   };
 
