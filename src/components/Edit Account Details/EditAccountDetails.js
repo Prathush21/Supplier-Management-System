@@ -65,13 +65,6 @@ export default function EditAccountDetails () {
               <br></br>
               <tr>
                 <td colSpan={5}>
-                  <b>Address</b>
-                </td>
-                <td>{userDetails.address}</td>
-              </tr>
-              <br></br>
-              <tr>
-                <td colSpan={5}>
                   <b>Contact Number</b>
                 </td>
                 <td>{userDetails.contact}</td>

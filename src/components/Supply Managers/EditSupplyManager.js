@@ -75,8 +75,8 @@ export default function EditSupplyManager(props) {
       errors.email = 'Invalid Email Address';
     }
 
-    if(!reContact.test(values.contactNo)){
-      errors.contactNo = 'Invalid Contact Number'
+    if(!reContact.test(values.contact)){
+      errors.contact = 'Invalid Contact Number'
     }
     
     return errors;
@@ -106,8 +106,8 @@ export default function EditSupplyManager(props) {
         <FormGroup>
           <Label for="ContactNo">Contact Number</Label>
           <Input type="text" name="contact" id="contact" value={formValues.contact}
-          onChange={handleChange} invalid={(formErrors.contactNo === 'Invalid Contact Number')}/>
-          <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contactNo}</p>
+          onChange={handleChange} invalid={(formErrors.contact === 'Invalid Contact Number')}/>
+          <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contact}</p>
         </FormGroup>
 
         <FormGroup>

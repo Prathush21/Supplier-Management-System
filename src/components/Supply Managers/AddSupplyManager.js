@@ -61,7 +61,6 @@ export default function AddSupplyManager() {
 
   const sendData = () => {
     const url = "http://localhost:8087/user/signup";
-    console.log(data)
     axios
       .post(url, data)
       .then((res) => {

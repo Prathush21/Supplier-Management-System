@@ -11,7 +11,22 @@ export const AuthProvider = ({children}) => {
         if(user && password){
             setUser(user)
             setPassword(password)
-            setRole('Admin')
+
+            data = [user, password]
+
+            axios
+                .post(url, data)
+                .then((res) => {
+                    if (res.status == 201) {
+                        setRole(res.data.role)
+                    } else{
+                        res.date.message
+                    }
+                })
+                .catch((err) => {
+                });
+
+            
         }
 
     }

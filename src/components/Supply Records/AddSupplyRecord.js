@@ -11,7 +11,7 @@ export default function AddSupplRecord() {
     amount: "",
     received_date: null,
     type: "",
-    availability: "",
+    availability: 1,
   };
   const [formValues, setformValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
