@@ -37,7 +37,7 @@ export default function EditStorage(props) {
         setShowToTrue();
       })
       .catch((err) => {
-        console.log("error::::", err);
+        //  console.log("error::::", err);
         setAlertColor("danger");
         setAlertMessage("Error!");
         setShowToTrue();

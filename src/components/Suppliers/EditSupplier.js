@@ -28,15 +28,13 @@ export default function EditSupplier(props) {
   const sendData = () => {
     const ID = data.id;
     const url = `http://localhost:8087/supplier/edit/${ID}` 
-    console.log(data)
     axios.post(url, data)
     .then((res) => {
-      console.log("response", res)
       setAlertColor("info");
       setAlertMessage("Successfully edited.");
       setShowToTrue();
     }).catch(err => {
-      console.log("error::::", err)
+      // console.log("error::::", err)
       setAlertColor("danger");
       setAlertMessage("Error!");
       setShowToTrue();

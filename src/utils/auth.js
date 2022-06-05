@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios"
 const AuthContext = createContext(null)
 
 export const AuthProvider = ({children}) => {
@@ -7,29 +7,33 @@ export const AuthProvider = ({children}) => {
     const [password, setPassword] = useState(null)
     const [role, setRole] = useState(null)
 
-    const login = ({user,password}) => {
-        if(user && password){
-            setUser(user)
-            setPassword(password)
-
-            data = [user, password]
-
-            axios
+    const login = ({user,password}) => 
+        new Promise((resolve, reject) => {
+            if(user && password){
+                const data = {
+                    email: user,
+                    password: password
+                }
+                    
+                const url = 'http://localhost:8087/user/login';
+                axios
                 .post(url, data)
                 .then((res) => {
-                    if (res.status == 201) {
+                    if (res.request.status == 200 || res.request.status == 201 ) {
                         setRole(res.data.role)
+                        setUser(user)
+                        setPassword(password)
+                        resolve(user)
                     } else{
-                        res.date.message
+                        reject(res.data.message)
                     }
                 })
                 .catch((err) => {
-                });
-
-            
-        }
-
-    }
+                    reject(err)
+                    console.log(err);
+                }) 
+            }   
+        })
 
     const logout = () => {
         setUser(null)

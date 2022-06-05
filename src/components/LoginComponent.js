@@ -55,9 +55,16 @@ export default function Login() {
   }
 
 
-  const handleLogin = () => {
-      auth.login({user,password})
-      navigate('/main')
+  const handleLogin = async () => {
+
+      auth.login({user,password}).then((email) => {
+        navigate('/main')
+      }
+        
+      ).catch((err) => {
+        console.log(err)
+      }
+      )
   }
 
   return (
