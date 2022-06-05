@@ -1,4 +1,4 @@
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import React, { useState,useEffect } from "react";
 import "../../styles/styles_1.css";
 import axios from "axios";
@@ -14,6 +14,17 @@ export default function EditStorage(props) {
   const [isSubmit,setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({})
   const [data, setData] = useState(null);
+  const [show, setShow] = useState(false);
+  const [alertColor, setAlertColor] = useState('')
+  const [alertMessage, setAlertMessage] = useState('')
+
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
 
   const sendData = () => {
     const url = `http://localhost:8087/storage/update/${data.id}`;
@@ -22,9 +33,15 @@ export default function EditStorage(props) {
       .post(url, data)
       .then((res) => {
         console.log("response", res);
+        setAlertColor("info");
+        setAlertMessage("Successfully added.");
+        setShowToTrue();
       })
       .catch((err) => {
         console.log("error::::", err);
+        setAlertColor("danger");
+        setAlertMessage("Error!");
+        setShowToTrue();
       });
   };
 
@@ -55,6 +72,10 @@ export default function EditStorage(props) {
   }  
 
   return (
+    <React.Fragment>
+    <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
+      <p>{alertMessage}</p>
+    </Alert>
     <div className="Container-fluid shadow-2-strong">
       <div className="row">
         <div className="col-6 offset-1">
@@ -125,5 +146,6 @@ export default function EditStorage(props) {
         </div>
       </div>
     </div>
+    </React.Fragment>
   );
 }

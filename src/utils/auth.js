@@ -11,7 +11,7 @@ export const AuthProvider = ({children}) => {
         if(user && password){
             setUser(user)
             setPassword(password)
-            setRole('Manager')
+            setRole('Admin')
         }
 
     }
