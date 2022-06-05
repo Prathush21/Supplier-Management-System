@@ -28,7 +28,6 @@ export default function EditSupplier(props) {
   const sendData = () => {
     const ID = data.id;
     const url = `http://localhost:8087/supplier/edit/${ID}` 
-
     console.log(data)
     axios.post(url, data)
     .then((res) => {

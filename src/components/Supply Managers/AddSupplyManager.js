@@ -4,7 +4,7 @@ import "../../styles/styles_2.css";
 import axios from "axios";
 
 export default function AddSupplyManager() {
-  const initialValues = { name: "", email: "", contact: "", date: null };
+  const initialValues = { name: "", email: "", contact: "", join_date: null };
   const [formValues, setformValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({});
@@ -61,6 +61,7 @@ export default function AddSupplyManager() {
 
   const sendData = () => {
     const url = "http://localhost:8087/user/signup";
+    console.log(data)
     axios
       .post(url, data)
       .then((res) => {
@@ -124,10 +125,10 @@ export default function AddSupplyManager() {
               value={formValues.contact}
               required={true}
               onChange={handleChange}
-              invalid={formErrors.contactNo === "Invalid Contact Number"}
+              invalid={formErrors.contact === "Invalid Contact Number"}
             />
             <p class="fst-italic fw-bolder" style={{ color: "#f93154" }}>
-              {formErrors.contactNo}
+              {formErrors.contact}
             </p>
           </FormGroup>
 
@@ -135,9 +136,9 @@ export default function AddSupplyManager() {
             <Label for="date">Joined Date</Label>
             <Input
               type="date"
-              name="date"
-              id="date"
-              value={formValues.date}
+              name="join_date"
+              id="join_date"
+              value={formValues.join_date}
               required={true}
               onChange={handleChange}
             />

@@ -28,7 +28,7 @@ export default function EditSupplyManager(props) {
 
   const sendData = () => {
 
-    const url = 'http://localhost:8087/supplyRecord/edit/:id' //Edit Supplier
+    const url = `http://localhost:8087/manager/update` //Edit Supplier
 
     axios.post(url, data)
     .then((res) => {
@@ -105,14 +105,14 @@ export default function EditSupplyManager(props) {
 
         <FormGroup>
           <Label for="ContactNo">Contact Number</Label>
-          <Input type="text" name="contactNo" id="contactNo" value={formValues.contactNo} required={true}
+          <Input type="text" name="contact" id="contact" value={formValues.contact}
           onChange={handleChange} invalid={(formErrors.contactNo === 'Invalid Contact Number')}/>
           <p class="fst-italic fw-bolder" style={{color:'#f93154'}}>{formErrors.contactNo}</p>
         </FormGroup>
 
         <FormGroup>
           <Label for="date">Joined Date</Label>
-          <Input type="date" name="date" id="date" value={formValues.date} required={true}
+          <Input type="date" name="join_date" id="join_date" value={formValues.join_date} 
           onChange={handleChange}/>
         </FormGroup>
 

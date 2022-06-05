@@ -41,8 +41,8 @@ export default function SupplersTable() {
       .get("http://localhost:8087/supplier/all")
       .then((getSuppliers) => {
         setSuppliers(getSuppliers.data.data);
-        const joined = suppliers.joined_date
-        suppliers.joined_date = joined.slice(0,10)
+        // const joined = suppliers.joined_date
+        // suppliers.joined_date = joined.slice(0,10)
       })
       .catch((err) => {
         console.log(err);

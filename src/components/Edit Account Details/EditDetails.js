@@ -96,7 +96,7 @@ export default function EditDetails(props) {
     if (!reContact.test(values.contact)) {
       errors.contact = "Invalid Contact Number";
     }
-    if (values.newpass.length < 8) {
+    if (!(values.newpass === '') && ! (values.repass === '') && values.newpass.length < 8) {
       errors.newpass = "Password must be at least 8 characters";
     }
     if (!(values.newpass === values.repass)) {

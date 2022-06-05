@@ -28,7 +28,7 @@ export default function EditStorage(props) {
 
   const sendData = () => {
     const url = `http://localhost:8087/storage/update/${data.id}`;
-
+    console.log(data)
    axios
       .post(url, data)
       .then((res) => {
