@@ -1,12 +1,12 @@
 import React from "react";
-import { MDBInput } from "mdbreact";
+import { Input } from "reactstrap";
 
 export const GlobalFilter = ({ filter, setFilter }) => {
   return (
     <div className="search-box align-items-center">
       <div className="row">
         <div className="col-9">
-          <MDBInput
+          <Input
             hint="Search"
             type="search"
             id="search"
