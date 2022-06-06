@@ -28,6 +28,7 @@ export default function Good() {
 
   function getDeleteID(Id) {
     const url = `http://localhost:8087/user/supply-delete/${Id}`;
+    
     axios
       .post(url, Id)
       .then((res) => {
@@ -49,7 +50,7 @@ export default function Good() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [goods]);
 
   return (
     <React.Fragment>

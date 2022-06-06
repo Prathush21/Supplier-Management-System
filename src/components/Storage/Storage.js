@@ -35,14 +35,16 @@ export default function Storage() {
     }
   }
 
-  axios
-    .get("http://localhost:8087/storage/all")
-    .then((getItem) => {
-      setStorage(getItem.data.data );
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  useEffect(() => {
+    axios
+      .get("http://localhost:8087/storage/all")
+      .then((getItem) => {
+        setStorage(getItem.data.data );
+      })
+      .catch((err) => {
+        //console.log(err);
+      });
+  }, [storage]);
 
   return (
     <React.Fragment>

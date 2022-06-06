@@ -41,25 +41,28 @@ export default function SupplyRecordsTable() {
 
   const [supplyrecords, setSupplyRecords] = useState([]);
 
-  axios.get("http://localhost:8087/supplyRecord/all")
-    .then(getRecords => {
-      setSupplyRecords(getRecords.data.data);
-      const joined = supplyrecords.received_date
-      supplyrecords.received_date = joined.date
-    }).catch(err => {
-      console.log(err)
-    })
+  useEffect(() => {
+    axios.get("http://localhost:8087/supplyRecord/all")
+      .then(getRecords => {
+        setSupplyRecords(getRecords.data.data);
+        const joined = supplyrecords.received_date
+        supplyrecords.received_date = joined.date
+      }).catch(err => {
+        console.log(err)
+      })
+  }, []);   
 
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
 
   const setModalIsOpenToTrue = () => {
-    setModalIsOpen(true);
+    setModalIsOpen(true)
   };
 
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
+    //window.location.reload(false);
   };
 
   function viewModal(Id) {

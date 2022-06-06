@@ -19,13 +19,9 @@ export default function EditAccountDetails () {
   };
 
     
-    axios.get("http://localhost:8087/manager/profile") //Edit Page
+    axios.get("http://localhost:8087/manager/profile") 
     .then(getUserDetails => {
-      // this.setState({userDetails: getUserDetails.data.data[0]});
       setUserDetails(getUserDetails.data.data[0]);
-
-        const joined = userDetails.join_date
-        userDetails.join_date = joined.slice(0,10)
     }).catch(err => {
       console.log(err)
     })

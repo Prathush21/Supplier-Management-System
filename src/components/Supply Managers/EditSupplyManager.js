@@ -32,12 +32,12 @@ export default function EditSupplyManager(props) {
 
     axios.post(url, data)
     .then((res) => {
-      console.log("response", res)
+      // console.log("response", res)
       setAlertColor("info");
       setAlertMessage("Successfully added.");
       setShowToTrue();
     }).catch(err => {
-      console.log("error::::", err)
+      // console.log("error::::", err)
       setAlertColor("danger");
       setAlertMessage("Error!");
       setShowToTrue();
@@ -112,8 +112,7 @@ export default function EditSupplyManager(props) {
 
         <FormGroup>
           <Label for="date">Joined Date</Label>
-          <Input type="date" name="join_date" id="join_date" value={formValues.join_date} 
-          onChange={handleChange}/>
+          <Input type="date" name="join_date" id="join_date" value={formValues.join_date} readOnly/>
         </FormGroup>
 
         <Button type='submit' color="primary">
