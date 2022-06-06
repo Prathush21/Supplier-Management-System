@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import "../../styles/styles_2.css";
 import axios from "axios";
+import {  useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 
 export default function AddSupplyManager() {
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const initialValues = { name: "", email: "", contact: "", join_date: null };
   const [formValues, setformValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -79,8 +85,9 @@ export default function AddSupplyManager() {
             setShowToTrue();
             break;
           case 401:
-            setAlertMessage(err.data.message);
-            setShowToTrue();
+            auth.logout();
+            auth.setAlert('Session Expired! Login Again')
+            navigate("/");
             break;
           case 500:
             setAlertMessage("Server Error!");

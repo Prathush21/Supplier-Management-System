@@ -2,8 +2,14 @@ import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import '../../styles/styles_1.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {  useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 
 export default function EditSupplier(props) {
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const suppliers = props.suppliers;
 
   const initialValues = suppliers[props.row];
@@ -40,8 +46,9 @@ export default function EditSupplier(props) {
           setShowToTrue();
           break;
         case 401:
-          setAlertMessage(err.data.message);
-          setShowToTrue();
+          auth.logout();
+          auth.setAlert('Session Expired! Login Again')
+          navigate("/");
           break;
         case 500:
           setAlertMessage("Server Error!");

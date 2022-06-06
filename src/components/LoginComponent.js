@@ -12,6 +12,8 @@ export default function Login() {
   const [formValues, setformValues] = useState(initialValues);
   const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setformErrors] = useState({});
+  const [show, setShow] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('')
 
   const auth = useAuth();
   const navigate = useNavigate();
@@ -53,7 +55,31 @@ export default function Login() {
         navigate("/main");
       })
       .catch((err) => {
-        console.log(err);
+        switch (err.request.status) {
+          case 400:
+             setAlertMessage(err.response.data.message);
+            setShow(true);
+            break;
+          case 401:
+            setAlertMessage(err.response.data.message);
+            setShow(true);
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShow(true);
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShow(true);
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShow(true);
+            break;
+          default:
+            break;
+        }
+
       });
   };
 
@@ -74,8 +100,8 @@ export default function Login() {
               <MDBCardBody>
                 <h1 className="">Supplier Management System</h1>
                 <br></br>
-                <Alert isOpen={false} color='danger'>
-                  <p>{}</p>
+                <Alert isOpen={auth.alertShow || show} color='danger'>
+                  <p>{auth.alertMessage || alertMessage}</p>
                 </Alert>
                 <div className="row">
                   <Form onSubmit={handleSubmit}>

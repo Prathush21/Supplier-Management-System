@@ -1,10 +1,15 @@
 import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import '../../styles/styles_1.css';
 import React, { useState, useEffect } from "react";
-import { DropdownButton, Dropdown } from "react-bootstrap";
+import {  useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 import axios from "axios";
 
 export default function AddSupplRecord() {
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+  
   const initialValues = {
     sup_ID: "",
     unit_prize: "",
@@ -133,8 +138,9 @@ export default function AddSupplRecord() {
             setShowToTrue();
             break;
           case 401:
-            setAlertMessage(err.data.message);
-            setShowToTrue();
+            auth.logout();
+            auth.setAlert('Session Expired! Login Again')
+            navigate("/");
             break;
           case 500:
             setAlertMessage("Server Error!");

@@ -42,7 +42,7 @@ export default function Storage() {
         setStorage(getItem.data.data );
       })
       .catch((err) => {
-        //console.log(err);
+
       });
   }, [storage]);
 

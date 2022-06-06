@@ -26,30 +26,17 @@ export default function Good() {
     setModalIsOpen(false);
   };
 
-  function getDeleteID(Id) {
-    const url = `http://localhost:8087/user/supply-delete/${Id}`;
-    
-    axios
-      .post(url, Id)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   useEffect(() => {
     axios
       .get("http://localhost:8087/good/allgoods")
 
       .then((getGoods) => {
-        // console.log(getGoods.data.data)
+
         setGoods(getGoods.data.data);
-        console.log(goods[0])
+
       })
       .catch((err) => {
-        console.log(err);
+
       });
   }, [goods]);
 

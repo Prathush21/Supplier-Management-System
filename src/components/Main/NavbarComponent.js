@@ -24,16 +24,16 @@ export default function NavigationBar() {
         <hr></hr>
         {auth.role === "Admin" && (
           <React.Fragment>
-          <NavItem>
-            <NavLink
-              style={{ color: "#fff" }}
-              className="nav-link"
-              to="supplymanagers"
-            >
-              <span className="fa fa-user fa-lg"></span> SUPPLY MANAGERS
-            </NavLink>
-          </NavItem>
-          <hr></hr>
+            <NavItem>
+              <NavLink
+                style={{ color: "#fff" }}
+                className="nav-link"
+                to="supplymanagers"
+              >
+                <span className="fa fa-user fa-lg"></span> SUPPLY MANAGERS
+              </NavLink>
+            </NavItem>
+            <hr></hr>
           </React.Fragment>
         )}
 
@@ -64,18 +64,19 @@ export default function NavigationBar() {
         </NavItem>
         <hr></hr>
         {auth.role === "Manager" && (
-          <NavItem>
-            <NavLink
-              style={{ color: "#fff" }}
-              className="nav-link"
-              to="editaccountdetails"
-            >
-              <span className="fa fa-cogs fa-lg"></span> ACCOUNT DETAILS
-            </NavLink>
-          </NavItem>
-          
+          <React.Fragment>
+            <NavItem>
+              <NavLink
+                style={{ color: "#fff" }}
+                className="nav-link"
+                to="editaccountdetails"
+              >
+                <span className="fa fa-cogs fa-lg"></span> ACCOUNT DETAILS
+              </NavLink>
+            </NavItem>
+            <hr></hr>
+          </React.Fragment>
         )}
-        <hr></hr>
       </Nav>
     </Navbar>
   );
