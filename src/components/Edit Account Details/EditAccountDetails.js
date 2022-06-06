@@ -44,7 +44,7 @@ export default function EditAccountDetails() {
         setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage("Request Failed");
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:
@@ -116,7 +116,8 @@ export default function EditAccountDetails() {
               <td colSpan={5}>
                 <b>Joined Date</b>
               </td>
-              <td>{userDetails.join_date}</td>
+
+              <td>{(userDetails.join_date)? userDetails.join_date.split('T')[0]:""}</td>
             </tr>
           </tbody>
         </Table>

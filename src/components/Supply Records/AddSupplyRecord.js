@@ -46,7 +46,8 @@ export default function AddSupplRecord() {
   
 
   useEffect(() => {
-    axios.get("http://localhost:8087/supplier/all")
+    axios.defaults.withCredentials = true;
+    axios.get("http://localhost:8087/supplier/all", {withCredentials:true})
       .then(getRecords => {
         
         setSupplyRecords(getRecords.data.data);
@@ -56,7 +57,8 @@ export default function AddSupplRecord() {
   }, [])
 
   useEffect(() => {
-    axios.get("http://localhost:8087/good/alltypes")
+    axios.defaults.withCredentials = true;
+    axios.get("http://localhost:8087/good/alltypes", {withCredentials:true})
       .then(getGoods => {
         
         setTypes(getGoods.data.data)
@@ -78,10 +80,6 @@ export default function AddSupplRecord() {
       <option value={o.type}>{o.type}</option>
     );
   })
-
-  
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,8 +117,9 @@ export default function AddSupplRecord() {
 
   const sendData = () => {
     const url = 'http://localhost:8087/supplyRecord/create';
+    axios.defaults.withCredentials = true;
     axios
-      .post(url, data)
+      .post(url, data, {withCredentials:true})
       .then((res) => {
   
         setAlertColor("info");
@@ -134,7 +133,7 @@ setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
       
-            setAlertMessage('Request Failed');
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:

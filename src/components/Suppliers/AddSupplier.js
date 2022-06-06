@@ -69,8 +69,8 @@ export default function AddSupplier() {
   const sendData = () => {
       const url = "http://localhost:8087/supplier/create"
       
-      
-      axios.post(url,data).then((res) => {
+      axios.defaults.withCredentials = true;
+      axios.post(url,data, {withCredentials:true}).then((res) => {
         
         setAlertColor('info')
         setAlertMessage(res.data.message)
@@ -81,7 +81,7 @@ export default function AddSupplier() {
 setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage('Request Failed');
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:

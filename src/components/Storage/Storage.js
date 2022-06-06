@@ -7,6 +7,7 @@ import {
   MDBCardImage,
   MDBCol,
   MDBRow,
+  MDBCardGroup
 } from "mdb-react-ui-kit";
 import { Button, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import "../../styles/styles_2.css";
@@ -51,18 +52,28 @@ export default function Storage() {
     }
   }
 
+  const dateFormatter = (date) => {
+    return date.split("T")[0]
+  }
+
   useEffect(() => {
+    axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:8087/storage/all")
+      .get("http://localhost:8087/storage/all", {withCredentials:true})
       .then((getItem) => {
-        setStorage(getItem.data.data );
+        let data = []
+        getItem.data.data.forEach(m => {
+          m.last_refilled_date = dateFormatter(m.last_refilled_date)
+          data.push(m)
+        });
+        setStorage(data );
         setShowToFalse()
       })
       .catch((err) => {
         setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage("Request Failed");
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:
@@ -98,6 +109,7 @@ export default function Storage() {
         <p>{alertMessage}</p>
       </Alert>
         <MDBRow>
+        <MDBCardGroup>
           {storage.map((good, index) => (
             <MDBCol sm="4">
               <center>
@@ -108,6 +120,7 @@ export default function Storage() {
                     margin: "0.5rem",
                     border: "0px",
                     backgroundColor: "rgba(95, 106, 230, 0.33)",
+                    height: '70vh'
                   }}
                 >
                   <MDBCardBody
@@ -119,13 +132,13 @@ export default function Storage() {
                       <b>{good.unit_price}</b>
                       <br></br>Unit : {good.unit}
                     </MDBCardText>
-                    <MDBCardImage
-                    className="img-fluid"
+                    <MDBCardImage style={{ maxHeight: "30vh" , maxWidth: "auto"}}
                     src={`http://localhost:3000/img/${good.image}`}
                     alt="..."
                     position="top"
+                    width='auto'
                   ></MDBCardImage>
-                    <br></br>
+                    <br></br><br></br>
                     <MDBCardText>
                       Stock Amount : <b>{good.stock_amount}</b>
                       <br></br>
@@ -144,6 +157,7 @@ export default function Storage() {
               </center>
             </MDBCol>
           ))}
+          </MDBCardGroup>
         </MDBRow>
       </div>
       <Modal isOpen={modalIsOpen}>

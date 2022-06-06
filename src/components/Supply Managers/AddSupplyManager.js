@@ -67,8 +67,9 @@ export default function AddSupplyManager() {
 
   const sendData = () => {
     const url = "http://localhost:8087/user/signup";
+    axios.defaults.withCredentials = true;
     axios
-      .post(url, data)
+      .post(url, data, {withCredentials:true})
       .then((res) => {
         setAlertColor("info");
         setAlertMessage(res.data.message);
@@ -79,7 +80,7 @@ export default function AddSupplyManager() {
 setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage('Request Failed');
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:

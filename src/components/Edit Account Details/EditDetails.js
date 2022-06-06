@@ -24,12 +24,12 @@ export default function EditDetails(props) {
     setShow(false);
   };
 
-
   const sendData = () => {
+    axios.defaults.withCredentials = true;
     const url = "http://localhost:8087/manager/update"; //EDIT DETAILS
 
     axios
-      .post(url, data)
+      .post(url, data , {withCredentials:true})
       .then((res) => {
         setAlertColor("info");
         setAlertMessage("Successfully edited.");
@@ -37,14 +37,14 @@ export default function EditDetails(props) {
       })
       .catch((err) => {
         setAlertColor("danger");
-setAlertMessage("");
+        setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage('Request Failed');
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:
-            setAlertMessage('Request Failed');
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 500:
@@ -99,7 +99,11 @@ setAlertMessage("");
     if (!reContact.test(values.contact)) {
       errors.contact = "Invalid Contact Number";
     }
-    if (!(values.newpass === '') && ! (values.repass === '') && values.newpass.length < 8) {
+    if (
+      !(values.newpass === "") &&
+      !(values.repass === "") &&
+      values.newpass.length < 8
+    ) {
       errors.newpass = "Password must be at least 8 characters";
     }
     if (!(values.newpass === values.repass)) {
@@ -166,7 +170,7 @@ setAlertMessage("");
               type="password"
               name="password"
               id="newpass"
-              value=""
+              // value={formValues.newpass}
               onChange={handleChange}
               invalid={
                 formErrors.newpass === "Password must be at least 8 characters"
@@ -182,7 +186,7 @@ setAlertMessage("");
               type="password"
               name="repassword"
               id="repass"
-              value=""
+              // value={formValues.repass}
               onChange={handleChange}
               invalid={formErrors.repass === "Password did not match !"}
             />
