@@ -16,10 +16,12 @@ export const AuthProvider = ({children}) => {
                 }
                     
                 const url = 'http://localhost:8087/user/login';
+                axios.defaults.withCredentials = true
                 axios
-                .post(url, data)
+                .post(url, data, {withCredentials:true})
                 .then((res) => {
                     if (res.request.status === 200 || res.request.status === 201 ) {
+                        console.log(res)
                         setRole(res.data.role)
                         setUser(user)
                         setPassword(password)
@@ -36,6 +38,7 @@ export const AuthProvider = ({children}) => {
         })
 
     const logout = () => {
+        axios.get('http://localhost:8087/user/logout')
         setUser(null)
     }
 

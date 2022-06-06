@@ -12,6 +12,7 @@ export default function AddGood() {
   const [show, setShow] = useState(false);
   const [alertColor, setAlertColor] = useState('')
   const [alertMessage, setAlertMessage] = useState('')
+  const [image, setImage] = useState(null)
 
   const setShowToTrue = () => {
     setShow(true);
@@ -54,9 +55,26 @@ export default function AddGood() {
     return errors;
   }
 
+  const onImageChange = (event) => { 
+    // if (event.target.files && event.target.files[0]) {
+    //   setImage(URL.createObjectURL(event.target.files[0]));
+    // }
+    setImage(event.target.files[0]);
+  }
+
+
   const sendData = () => {
     const url = "http://localhost:8087/storage/addgood"
-    axios.post(url, data)
+    var formData = new FormData();
+    formData.append('type', data.type)
+    formData.append('unit', data.unit)
+    formData.append('unit_price', data.unit_price)
+    formData.append('image', image)
+
+    const finalData = data
+    finalData['image'] = image
+    console.log(formData)
+    axios.post(url, formData)
     .then((res) => {
       //console.log("response", res)
       setAlertColor("info");
@@ -118,6 +136,11 @@ export default function AddGood() {
           <Input type="text" name="unit_price" id="unit_price" 
            onChange={handleChange} />
         </FormGroup>
+
+        <FormGroup>
+        <input type="file" onChange={onImageChange} className="filetype" />
+        </FormGroup>
+          
 
         <Button color="primary" type="submit"> Submit </Button>
       </Form>

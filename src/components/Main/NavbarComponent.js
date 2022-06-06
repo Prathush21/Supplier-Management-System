@@ -63,15 +63,18 @@ export default function NavigationBar() {
           </NavLink>
         </NavItem>
         <hr></hr>
-        <NavItem>
-          <NavLink
-            style={{ color: "#fff" }}
-            className="nav-link"
-            to="editaccountdetails"
-          >
-            <span className="fa fa-cogs fa-lg"></span> ACCOUNT DETAILS
-          </NavLink>
-        </NavItem>
+        {auth.role === "Manager" && (
+          <NavItem>
+            <NavLink
+              style={{ color: "#fff" }}
+              className="nav-link"
+              to="editaccountdetails"
+            >
+              <span className="fa fa-cogs fa-lg"></span> ACCOUNT DETAILS
+            </NavLink>
+          </NavItem>
+          
+        )}
         <hr></hr>
       </Nav>
     </Navbar>

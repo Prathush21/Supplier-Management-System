@@ -27,17 +27,17 @@ export default function EditAccountDetails() {
   };
 
   useEffect(() => {
-  axios
-    .get("http://localhost:8087/manager/profile") //Edit Page
-    .then((getUserDetails) => {
-      // this.setState({userDetails: getUserDetails.data.data[0]});
-      setUserDetails(getUserDetails.data.data[0]);
-      // console.log(userDetails)
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}, []);
+    axios.defaults.withCredentials = true
+    axios
+      .get("http://localhost:8087/manager/profile", {withCredentials:true}) //Edit Page
+      .then((getUserDetails) => {
+        setUserDetails(getUserDetails.data.data[0]);
+        // console.log(userDetails)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userDetails]);
 
   return (
     <React.Fragment>

@@ -42,10 +42,11 @@ export default function Good() {
   useEffect(() => {
     axios
       .get("http://localhost:8087/good/allgoods")
+
       .then((getGoods) => {
         // console.log(getGoods.data.data)
         setGoods(getGoods.data.data);
-        // console.log(goods[0])
+        console.log(goods[0])
       })
       .catch((err) => {
         console.log(err);
@@ -78,12 +79,12 @@ export default function Good() {
                 }}
               >
                 <MDBCardBody style={{ borderRadius: "5px" }}>
-                  {/* <MDBCardImage
+                  <MDBCardImage
                     className="img-fluid"
-                    src={good.image}
+                    src={`http://localhost:3000/img/${good.image}`}
                     alt="..."
                     position="top"
-                  ></MDBCardImage> */}
+                  ></MDBCardImage>
 
                   <MDBCardTitle>{good.type}</MDBCardTitle>
                   <MDBCardText>
@@ -91,13 +92,13 @@ export default function Good() {
                     <br></br>
                     Unit : {good.unit}
                   </MDBCardText>
-                  <Button
+                  {/* <Button
                     outline
                     color="dark"
                     onClick={() => getDeleteID(good.id)}
                   >
                     Delete
-                  </Button>
+                  </Button> */}
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

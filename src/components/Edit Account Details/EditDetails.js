@@ -184,8 +184,9 @@ export default function EditDetails(props) {
             <Label for="newpass">New Password</Label>
             <Input
               type="password"
-              name="newpass"
+              name="password"
               id="newpass"
+              value=""
               onChange={handleChange}
               invalid={
                 formErrors.newpass === "Password must be at least 8 characters"
@@ -199,8 +200,9 @@ export default function EditDetails(props) {
             <Label for="repass">Re-enter new password</Label>
             <Input
               type="password"
-              name="repass"
+              name="repassword"
               id="repass"
+              value=""
               onChange={handleChange}
               invalid={formErrors.repass === "Password did not match !"}
             />
