@@ -119,12 +119,12 @@ export default function Storage() {
                       <b>{good.unit_price}</b>
                       <br></br>Unit : {good.unit}
                     </MDBCardText>
-                    {/* <MDBCardImage
-                        className="img-fluid"
-                        src={good.image}
-                        alt="..."
-                        position="top"
-                      ></MDBCardImage> */}
+                    <MDBCardImage
+                    className="img-fluid"
+                    src={`http://localhost:3000/img/${good.image}`}
+                    alt="..."
+                    position="top"
+                  ></MDBCardImage>
                     <br></br>
                     <MDBCardText>
                       Stock Amount : <b>{good.stock_amount}</b>

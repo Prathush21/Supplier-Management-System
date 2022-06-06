@@ -29,10 +29,6 @@ const COLUMNS = [
     accessor: "type",
   },
   {
-    Header: "Availability",
-    accessor: "availability",
-  },
-  {
     Header: "Received Date",
     accessor: "received_date",
   },
