@@ -67,7 +67,7 @@ export default function AddGood() {
   };
 
   const sendData = () => {
-    const url = "http://localhost:8087/storage/addood";
+    const url = "http://localhost:8087/storage/addgood";
     var formData = new FormData();
     formData.append("type", data.type);
     formData.append("unit", data.unit);
@@ -89,7 +89,7 @@ export default function AddGood() {
         setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage("Request Failed");
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:

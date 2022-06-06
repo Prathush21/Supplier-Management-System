@@ -44,7 +44,7 @@ export default function EditStorage(props) {
 setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage('Request Failed');
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:

@@ -52,17 +52,26 @@ export default function SupplyRecordsTable() {
     setShow(false);
   };
 
+  const dateFormatter = (date) => {
+    return date.split("T")[0]
+}
+
 
   useEffect(() => {
     axios.get("http://localhost:8087/supplyRecord/all")
       .then(getRecords => {
-        setSupplyRecords(getRecords.data.data);
+        let data = []
+        getRecords.data.data.forEach(m => {
+          m.received_date = dateFormatter(m.received_date)
+          data.push(m)
+        });
+        setSupplyRecords(data);
         setShowToFalse()
       }).catch(err => {
         setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage("Request Failed");
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:

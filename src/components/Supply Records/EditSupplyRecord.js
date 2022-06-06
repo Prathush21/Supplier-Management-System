@@ -35,6 +35,7 @@ export default function EditSupplyRecords(props) {
         setAlertColor("info");
         setAlertMessage(res.data.message);
         setShowToTrue();
+        navigate(0)
       })
       .catch((err) => {
         setAlertColor("danger");
@@ -154,23 +155,11 @@ export default function EditSupplyRecords(props) {
           </FormGroup>
 
           <FormGroup>
-            <Label for="type">Availability</Label>
-            <Input
-              type="text"
-              name="availability"
-              id="exampleavailability"
-              value={formValues.availability}
-              required="true"
-              onChange={handleChange}
-            />
-          </FormGroup>
-
-          <FormGroup>
             <Label for="date">Received Date</Label>
             <Input
-              type="received_date"
+              type="date"
               name="received_date"
-              id="date"
+              id="received_date"
               value={formValues.received_date}
               required={true}
               onChange={handleChange}

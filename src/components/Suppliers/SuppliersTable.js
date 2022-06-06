@@ -52,19 +52,28 @@ export default function SupplersTable() {
     setShow(false);
   };
 
+  const dateFormatter = (date) => {
+    return date.split("T")[0]
+} 
+
 
   useEffect(() => {
     axios
       .get("http://localhost:8087/supplier/all")
       .then((getSuppliers) => {
-        setSuppliers(getSuppliers.data.data);
+        let data = []
+        getSuppliers.data.data.forEach(m => {
+          m.joined_date = dateFormatter(m.joined_date)
+          data.push(m)
+        });
+        setSuppliers(data);
         setShowToFalse()
       })
       .catch((err) => {
         setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
-            setAlertMessage("Request Failed");
+            setAlertMessage(err.response.data.message);
             setShowToTrue();
             break;
           case 401:
@@ -161,7 +170,7 @@ export default function SupplersTable() {
       setAlertMessage("");
       switch (err.response.request.status) {
         case 400:
-          setAlertMessage("Request Failed");
+          setAlertMessage(err.response.data.message);
           setShowToTrue();
           break;
         case 401:

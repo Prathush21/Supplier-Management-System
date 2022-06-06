@@ -48,40 +48,51 @@ export default function SupplyManagersTable() {
     setShow(false);
   };
 
+  const dateFormatter = (date) => {
+      return date.split("T")[0]
+  }
+
   useEffect(() => {
     axios
       .get("http://localhost:8087/user/managers")
       .then((getManagers) => {
-        setSupplyManagers(getManagers.data.data);
+        
+        let data = []
+        getManagers.data.data.forEach(m => {
+          m.join_date = dateFormatter(m.join_date)
+          data.push(m)
+        });
+        setSupplyManagers(data);
         setShowToFalse()
       })
       .catch((err) => {
+        console.log(err);
         setAlertMessage("");
-        switch (err.response.request.status) {
-          case 400:
-            setAlertMessage("Request Failed");
-            setShowToTrue();
-            break;
-          case 401:
-            auth.logout();
-            auth.setAlert("Session Expired! Login Again");
-            navigate("/");
-            break;
-          case 500:
-            setAlertMessage("Server Error!");
-            setShowToTrue();
-            break;
-          case 501:
-            setAlertMessage("Server Error!");
-            setShowToTrue();
-            break;
-          case 502:
-            setAlertMessage("Server Error!");
-            setShowToTrue();
-            break;
-          default:
-            break;
-        }
+        // switch (err.response.request.status) {
+        //   case 400:
+        //     setAlertMessage(err.response.data.message);
+        //     setShowToTrue();
+        //     break;
+        //   case 401:
+        //     auth.logout();
+        //     auth.setAlert("Session Expired! Login Again");
+        //     navigate("/");
+        //     break;
+        //   case 500:
+        //     setAlertMessage("Server Error!");
+        //     setShowToTrue();
+        //     break;
+        //   case 501:
+        //     setAlertMessage("Server Error!");
+        //     setShowToTrue();
+        //     break;
+        //   case 502:
+        //     setAlertMessage("Server Error!");
+        //     setShowToTrue();
+        //     break;
+        //   default:
+        //     break;
+        // }
       });
   }, []);
 
@@ -94,7 +105,7 @@ export default function SupplyManagersTable() {
       setAlertMessage("");
       switch (err.response.request.status) {
         case 400:
-          setAlertMessage("Request Failed");
+          setAlertMessage(err.response.data.message);
           setShowToTrue();
           break;
         case 401:
