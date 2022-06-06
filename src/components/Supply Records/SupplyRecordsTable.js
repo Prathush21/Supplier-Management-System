@@ -58,7 +58,8 @@ export default function SupplyRecordsTable() {
 
 
   useEffect(() => {
-    axios.get("http://localhost:8087/supplyRecord/all")
+    axios.defaults.withCredentials = true;
+    axios.get("http://localhost:8087/supplyRecord/all", {withCredentials:true})
       .then(getRecords => {
         let data = []
         getRecords.data.data.forEach(m => {

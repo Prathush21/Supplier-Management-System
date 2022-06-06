@@ -29,8 +29,9 @@ export default function EditSupplyRecords(props) {
 
   const sendData = () => {
     const url = `http://localhost:8087/supplyRecord/edit/${data.id}`; //Edit Supplier
+    axios.defaults.withCredentials = true;
     axios
-      .patch(url, data)
+      .patch(url, data, {withCredentials:true})
       .then((res) => {
         setAlertColor("info");
         setAlertMessage(res.data.message);

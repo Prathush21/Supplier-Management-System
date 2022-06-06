@@ -53,8 +53,9 @@ export default function SupplyManagersTable() {
   }
 
   useEffect(() => {
+    axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:8087/user/managers")
+      .get("http://localhost:8087/user/managers", {withCredentials:true})
       .then((getManagers) => {
         
         let data = []

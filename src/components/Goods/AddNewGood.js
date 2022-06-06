@@ -76,9 +76,9 @@ export default function AddGood() {
 
     const finalData = data;
     finalData["image"] = image;
-
+    axios.defaults.withCredentials = true;
     axios
-      .post(url, formData)
+      .post(url, formData, {withCredentials:true})
       .then((res) => {
         setAlertColor("info");
         setAlertMessage("Successfully added.");

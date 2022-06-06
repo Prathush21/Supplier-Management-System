@@ -32,8 +32,9 @@ export default function EditStorage(props) {
 
   const sendData = () => {
     const url = `http://localhost:8087/storage/update/${data.id}`;
+    axios.defaults.withCredentials = true;
    axios
-      .post(url, data)
+      .post(url, data, {withCredentials:true})
       .then((res) => {
         setAlertColor("info");
         setAlertMessage(res.data.message);

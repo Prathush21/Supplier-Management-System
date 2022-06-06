@@ -67,8 +67,9 @@ export default function AddSupplyManager() {
 
   const sendData = () => {
     const url = "http://localhost:8087/user/signup";
+    axios.defaults.withCredentials = true;
     axios
-      .post(url, data)
+      .post(url, data, {withCredentials:true})
       .then((res) => {
         setAlertColor("info");
         setAlertMessage(res.data.message);

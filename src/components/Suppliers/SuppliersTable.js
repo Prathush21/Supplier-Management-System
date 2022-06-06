@@ -58,8 +58,9 @@ export default function SupplersTable() {
 
 
   useEffect(() => {
+    axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:8087/supplier/all")
+      .get("http://localhost:8087/supplier/all", {withCredentials:true})
       .then((getSuppliers) => {
         let data = []
         getSuppliers.data.data.forEach(m => {

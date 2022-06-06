@@ -23,7 +23,9 @@ export const AuthProvider = ({ children }) => {
           .then((res) => {
             if (res.request.status === 200 || res.request.status === 201) {
               setRole(res.data.role);
-              setUser(user);
+              sessionStorage.setItem('user', user)
+              sessionStorage.setItem('role', res.data.role)
+              setUser(sessionStorage.getItem('user'));
               setAlertShow(false);
               setAlertMessage('');
               resolve(user);
@@ -64,6 +66,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     axios.get("http://localhost:8087/user/logout");
     setUser(null);
+    sessionStorage.removeItem('user')
+    sessionStorage.removeItem('role')
     setRole(null);
   };
 
@@ -72,9 +76,14 @@ export const AuthProvider = ({ children }) => {
       setAlertShow(true)
   }
 
+  const setAttribute = (value) => {
+      setUser(value.username);
+      setRole(value.role);
+  }
+
   return (
-    <AuthContext.Provider
-      value={{ user, role, alertMessage, alertShow, login, logout, setAlert }}
+    <AuthContext.Provider set = {(value) => setAttribute(value)}
+      value={{ user, role, alertMessage, alertShow,  login, logout, setAlert, setAttribute}}
     >
       {children}
     </AuthContext.Provider>
