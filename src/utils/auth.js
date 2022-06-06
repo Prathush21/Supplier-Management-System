@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) => {
                 axios
                 .post(url, data)
                 .then((res) => {
-                    if (res.request.status == 200 || res.request.status == 201 ) {
+                    if (res.request.status === 200 || res.request.status === 201 ) {
                         setRole(res.data.role)
                         setUser(user)
                         setPassword(password)

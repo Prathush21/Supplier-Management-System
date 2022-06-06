@@ -81,6 +81,13 @@ export default function AddSupplRecord() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setformErrors(validate(formValues));
+    if (formValues.type === "") {
+      formValues.type = types[0].type;
+    }
+    if (formValues.sup_ID === "") {
+      formValues.sup_ID = supplyrecords[0].id;
+    }
+    console.log(formValues);
     setIsSubmit(true);
     setData(formValues);
   };
@@ -113,14 +120,37 @@ export default function AddSupplRecord() {
       .then((res) => {
         console.log(res);
         setAlertColor("info");
-        setAlertMessage("Successfully added.");
+        setAlertMessage(res.data.message);
         setShowToTrue();
       })
       .catch((err) => {
         console.log(err);
         setAlertColor("danger");
-        setAlertMessage("Error!");
-        setShowToTrue();
+        switch (err.request.status) {
+          case 400:
+            console.log(err.data.message);
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 401:
+            setAlertMessage(err.data.message);
+            setShowToTrue();
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       });
   };
 

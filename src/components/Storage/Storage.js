@@ -83,7 +83,7 @@ export default function Storage() {
                     <MDBCardText>
                       Stock Amount : <b>{good.stock_amount}</b>
                       <br></br>
-                      Last Refilled Date : {good.last_refilled_date.slice(0,10)}
+                      Last Refilled Date : {good.last_refilled_date}
                       <br></br>
                     </MDBCardText>
                     <Button
