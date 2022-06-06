@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useLocation } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, Alert, Card,  CardBody } from "reactstrap";
-// import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 import { useAuth } from "../utils/auth";
 import "../styles/login.css";
 

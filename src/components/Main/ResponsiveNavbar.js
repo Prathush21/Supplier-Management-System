@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MDBNavbarToggler, MDBCollapse } from "mdb-react-ui-kit";
+import { NavbarToggler, Collapse } from "reactstrap";
 import NavigationBar from "./NavbarComponent";
 
 export default function NavigationComponent() {
@@ -10,7 +10,7 @@ export default function NavigationComponent() {
       <div className="d-md-none justify-content-center mt-2">
         <div className="justify-content-center ">
           <div className="container mx-auto mt-2">
-            <MDBNavbarToggler
+            <NavbarToggler
               type="button"
               data-target="#navbarToggleExternalContent"
               aria-controls="navbarToggleExternalContent"
@@ -22,11 +22,11 @@ export default function NavigationComponent() {
                 style={{ color: "#fff" }}
                 className="fa fa-bars fa-lg"
               ></span>
-            </MDBNavbarToggler>
+            </NavbarToggler>
           </div>
-          <MDBCollapse show={showNavExternal}>
+          <Collapse show={showNavExternal}>
             <NavigationBar />
-          </MDBCollapse>
+          </Collapse>
         </div>
       </div>
       <div className="d-none d-md-block">

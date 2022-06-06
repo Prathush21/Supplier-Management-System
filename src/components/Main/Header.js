@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  MDBContainer,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarItem,
-} from "mdb-react-ui-kit";
+  Container,
+  Navbar,
+  NavbarBrand,
+  NavItem,
+} from "reactstrap";
 import { Button } from "reactstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
@@ -22,9 +22,9 @@ export default function Header() {
 
   return (
     <>
-      <MDBNavbar className="navigationBar">
-        <MDBContainer fluid>
-          <MDBNavbarBrand>
+      <Navbar className="navigationBar">
+        <Container fluid>
+          <NavbarBrand>
             <img
               src="/assets/images/logo_new.png"
               width="120"
@@ -32,8 +32,8 @@ export default function Header() {
               loading="lazy"
             />
             <h1 className="header1">{name}</h1>
-          </MDBNavbarBrand>
-          <MDBNavbarItem>
+          </NavbarBrand>
+          <NavItem>
             <span>
               {" "}
               <NavLink
@@ -47,9 +47,9 @@ export default function Header() {
                 <span className="fa fa-sign-out fa-lg"></span> Logout
               </Button>
             </span>
-          </MDBNavbarItem>
-        </MDBContainer>
-      </MDBNavbar>
+          </NavItem>
+        </Container>
+      </Navbar>
     </>
   );
 }

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBCol,
-  MDBRow,
-  MDBCardGroup
-} from "mdb-react-ui-kit";
+ Card,
+ CardBody,
+ CardTitle,
+ CardText,
+ CardImg,
+ Col,
+ Row,
+ CardGroup
+} from "reactstrap";
 import { Button, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import "../../styles/styles_2.css";
 import EditStorage from "./EditStorage";
@@ -108,12 +108,12 @@ export default function Storage() {
         <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
         <p>{alertMessage}</p>
       </Alert>
-        <MDBRow>
-        <MDBCardGroup>
+        <Row>
+        <CardGroup>
           {storage.map((good, index) => (
-            <MDBCol sm="4">
+            <Col sm="4">
               <center>
-                <MDBCard
+                <Card
                   key={good.id}
                   className="shadow-5"
                   style={{
@@ -123,28 +123,28 @@ export default function Storage() {
                     height: '70vh'
                   }}
                 >
-                  <MDBCardBody
+                  <CardBody
                     className="shadow-5 hover-overlay"
                     style={{ borderRadius: "5px" }}
                   >
-                    <MDBCardTitle>{good.type}</MDBCardTitle>
-                    <MDBCardText>
+                    <CardTitle>{good.type}</CardTitle>
+                    <CardText>
                       <b>{good.unit_price}</b>
                       <br></br>Unit : {good.unit}
-                    </MDBCardText>
-                    <MDBCardImage style={{ maxHeight: "30vh" , maxWidth: "auto"}}
+                    </CardText>
+                    <CardImg style={{ maxHeight: "30vh" , maxWidth: "auto"}}
                     src={`http://localhost:3000/img/${good.image}`}
                     alt="..."
                     position="top"
                     width='auto'
-                  ></MDBCardImage>
+                  ></CardImg>
                     <br></br><br></br>
-                    <MDBCardText>
+                    <CardText>
                       Stock Amount : <b>{good.stock_amount}</b>
                       <br></br>
                       Last Refilled Date : {good.last_refilled_date}
                       <br></br>
-                    </MDBCardText>
+                    </CardText>
                     <Button
                       outline
                       color="dark"
@@ -152,13 +152,13 @@ export default function Storage() {
                     >
                       Edit
                     </Button>
-                  </MDBCardBody>
-                </MDBCard>
+                  </CardBody>
+                </Card>
               </center>
-            </MDBCol>
+            </Col>
           ))}
-          </MDBCardGroup>
-        </MDBRow>
+          </CardGroup>
+        </Row>
       </div>
       <Modal isOpen={modalIsOpen}>
         <ModalHeader

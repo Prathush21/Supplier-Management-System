@@ -1,4 +1,3 @@
-import { MDBCheckbox } from "mdb-react-ui-kit";
 import React from "react";
 
 export const Checkbox = React.forwardRef(({ indeterminate, ...rest}, ref) => {

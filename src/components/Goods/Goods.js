@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBCol,
-  MDBRow,
-  MDBCardGroup
-} from "mdb-react-ui-kit";
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardImg,
+  Col,
+  Row,
+  CardGroup
+} from "reactstrap";
 import { Button, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import "../../styles/styles_2.css";
 import AddGood from "./AddNewGood";
@@ -99,11 +99,11 @@ export default function Good() {
         <br></br>
         <br></br>
 
-        <MDBRow>
-          <MDBCardGroup>
+        <Row>
+          <CardGroup>
           {goods.map((good, index) => (
-            <MDBCol sm="4">
-              <MDBCard
+            <Col sm="4">
+              <Card
                 key={good.id}
                 className="shadow-5"
                 style={{
@@ -113,21 +113,21 @@ export default function Good() {
                   height: '50vh'
                 }}
               >
-                <MDBCardBody style={{ borderRadius: "5px" }}>
-                  <MDBCardImage style={{ maxHeight: "30vh" , maxWidth: "auto"}}
+                <CardBody style={{ borderRadius: "5px" }}>
+                  <CardImg style={{ maxHeight: "30vh" , maxWidth: "auto"}}
                     // className="img-fluid"
                     src={`http://localhost:3000/img/${good.image}`}
                     alt="..."
                     position="top"
                     width='auto'
-                  ></MDBCardImage>
+                  ></CardImg>
                   <br></br><br></br>
-                  <MDBCardTitle>{good.type}</MDBCardTitle>
-                  <MDBCardText>
+                  <CardTitle>{good.type}</CardTitle>
+                  <CardText>
                     ID : <b>{good.id}</b>
                     <br></br>
                     Unit : {good.unit}
-                  </MDBCardText>
+                  </CardText>
                   {/* <Button
                     outline
                     color="dark"
@@ -135,12 +135,12 @@ export default function Good() {
                   >
                     Delete
                   </Button> */}
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCol>
+                </CardBody>
+              </Card>
+            </Col>
           ))}
-          </MDBCardGroup>
-        </MDBRow>
+          </CardGroup>
+        </Row>
       </div>
       <Modal isOpen={modalIsOpen}>
         <ModalHeader
