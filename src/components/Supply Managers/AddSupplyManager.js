@@ -70,18 +70,16 @@ export default function AddSupplyManager() {
     axios
       .post(url, data)
       .then((res) => {
-        console.log(res);
         setAlertColor("info");
         setAlertMessage(res.data.message);
         setShowToTrue();
       })
       .catch((err) => {
-        console.log(err);
         setAlertColor("danger");
-        switch (err.request.status) {
+setAlertMessage("");
+        switch (err.response.request.status) {
           case 400:
-            console.log(err.data.message);
-            setAlertMessage(err.data.message);
+            setAlertMessage('Request Failed');
             setShowToTrue();
             break;
           case 401:

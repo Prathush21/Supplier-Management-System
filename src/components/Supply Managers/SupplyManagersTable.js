@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalFilter, useRowSelect, useTable } from "react-table";
-import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Button, Table, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import axios from "axios";
 import { Checkbox } from "../Utils/checkbox";
 import EditSupplyManager from "./EditSupplyManager";
 import { GlobalFilter } from "../Utils/GlobalFilter";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 
 const COLUMNS = [
   {
@@ -30,16 +32,56 @@ const COLUMNS = [
 ];
 
 export default function SupplyManagersTable() {
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const [supplymanagers, setSupplyManagers] = useState([]);
+  const [show, setShow] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
 
   useEffect(() => {
     axios
       .get("http://localhost:8087/user/managers")
       .then((getManagers) => {
         setSupplyManagers(getManagers.data.data);
+        setShowToFalse()
       })
       .catch((err) => {
-        console.log(err);
+        setAlertMessage("");
+        switch (err.response.request.status) {
+          case 400:
+            setAlertMessage("Request Failed");
+            setShowToTrue();
+            break;
+          case 401:
+            auth.logout();
+            auth.setAlert("Session Expired! Login Again");
+            navigate("/");
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       });
   }, []);
 
@@ -47,9 +89,34 @@ export default function SupplyManagersTable() {
   const deleteRecords = () => {
     const url = 'http://localhost:8087/user/manager-delete'
     axios.post(url, selectedrows).then((res) => {
-      console.log(res)
+      setShowToFalse()
     }).catch(err => {
-      console.log(err)
+      setAlertMessage("");
+      switch (err.response.request.status) {
+        case 400:
+          setAlertMessage("Request Failed");
+          setShowToTrue();
+          break;
+        case 401:
+          auth.logout();
+          auth.setAlert("Session Expired! Login Again");
+          navigate("/");
+          break;
+        case 500:
+          setAlertMessage("Server Error!");
+          setShowToTrue();
+          break;
+        case 501:
+          setAlertMessage("Server Error!");
+          setShowToTrue();
+          break;
+        case 502:
+          setAlertMessage("Server Error!");
+          setShowToTrue();
+          break;
+        default:
+          break;
+      }
     })
   };
 
@@ -69,7 +136,6 @@ export default function SupplyManagersTable() {
   };
 
   function viewModal(Id) {
-    console.log(Id);
     setModalIsOpenToTrue();
     if (modalIsOpen === false) {
       setModalId(Id);
@@ -130,6 +196,9 @@ export default function SupplyManagersTable() {
       >Delete Supply Manager</Button>
       
       <br></br>
+      <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
+        <p>{alertMessage}</p>
+      </Alert>
       <br></br>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div>

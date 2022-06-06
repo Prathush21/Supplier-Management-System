@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useTable, useGlobalFilter } from "react-table";
-import { Button, Table, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Button, Table, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import axios from "axios";
 import EditSupplyRecords from "./EditSupplyRecord";
 import { GlobalFilter } from "../Utils/GlobalFilter";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 
 const COLUMNS = [
   {
@@ -39,14 +41,54 @@ const COLUMNS = [
 
 export default function SupplyRecordsTable() {
 
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const [supplyrecords, setSupplyRecords] = useState([]);
+  const [show, setShow] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
+
 
   useEffect(() => {
     axios.get("http://localhost:8087/supplyRecord/all")
       .then(getRecords => {
         setSupplyRecords(getRecords.data.data);
+        setShowToFalse()
       }).catch(err => {
-        console.log(err)
+        setAlertMessage("");
+        switch (err.response.request.status) {
+          case 400:
+            setAlertMessage("Request Failed");
+            setShowToTrue();
+            break;
+          case 401:
+            auth.logout();
+            auth.setAlert("Session Expired! Login Again");
+            navigate("/");
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       })
   }, []);   
 
@@ -64,7 +106,6 @@ export default function SupplyRecordsTable() {
   };
 
   function viewModal(Id) {
-    console.log(Id);
     setModalIsOpenToTrue();
     if (modalIsOpen === false) {
       setModalId(Id);
@@ -104,6 +145,9 @@ export default function SupplyRecordsTable() {
 
   return (
     <React.Fragment>
+              <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
+        <p>{alertMessage}</p>
+      </Alert>
     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
     <div>
       <Table

@@ -8,15 +8,30 @@ import {
   MDBCol,
   MDBRow,
 } from "mdb-react-ui-kit";
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import "../../styles/styles_2.css";
 import AddGood from "./AddNewGood";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 
 export default function Good() {
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [goods, setGoods] = useState([
-  ]);
+  const [goods, setGoods] = useState([]);
+  const [show, setShow] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true);
@@ -33,9 +48,36 @@ export default function Good() {
       .then((getGoods) => {
 
         setGoods(getGoods.data.data);
+        setShowToFalse()
 
       })
       .catch((err) => {
+        setAlertMessage("");
+        switch (err.response.request.status) {
+          case 400:
+            setAlertMessage("Request Failed");
+            setShowToTrue();
+            break;
+          case 401:
+            auth.logout();
+            auth.setAlert("Session Expired! Login Again");
+            navigate("/");
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
 
       });
   }, [goods]);
@@ -45,7 +87,9 @@ export default function Good() {
       <div className="Container-fluid shadow-2-strong">
         <h2>Goods</h2>
         <br></br>
-
+        <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
+        <p>{alertMessage}</p>
+      </Alert>
         <Button color="light" onClick={setModalIsOpenToTrue}>
           {" "}
           Add New Good Type{" "}

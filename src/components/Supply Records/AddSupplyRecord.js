@@ -48,21 +48,21 @@ export default function AddSupplRecord() {
   useEffect(() => {
     axios.get("http://localhost:8087/supplier/all")
       .then(getRecords => {
-        // console.log(getRecords.data.data)
+        
         setSupplyRecords(getRecords.data.data);
       }).catch(err => {
-        console.log(err)
+  
       })
   }, [])
 
   useEffect(() => {
     axios.get("http://localhost:8087/good/alltypes")
       .then(getGoods => {
-        // console.log(getGoods.data.data)
+        
         setTypes(getGoods.data.data)
         
       }).catch(err => {
-        console.log(err)
+  
       })
   })
 
@@ -92,7 +92,6 @@ export default function AddSupplRecord() {
     if (formValues.sup_ID === "") {
       formValues.sup_ID = supplyrecords[0].id;
     }
-    console.log(formValues);
     setIsSubmit(true);
     setData(formValues);
   };
@@ -123,18 +122,19 @@ export default function AddSupplRecord() {
     axios
       .post(url, data)
       .then((res) => {
-        console.log(res);
+  
         setAlertColor("info");
         setAlertMessage(res.data.message);
         setShowToTrue();
       })
       .catch((err) => {
-        console.log(err);
+  
         setAlertColor("danger");
-        switch (err.request.status) {
+setAlertMessage("");
+        switch (err.response.request.status) {
           case 400:
-            console.log(err.data.message);
-            setAlertMessage(err.data.message);
+      
+            setAlertMessage('Request Failed');
             setShowToTrue();
             break;
           case 401:

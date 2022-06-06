@@ -24,24 +24,6 @@ export default function EditDetails(props) {
     setShow(false);
   };
 
-  // const userDetails = [
-  //   {
-  //     id: 1,
-  //     name: "Lokesh Kanagaraj",
-  //     username: "lokesh24",
-  //     email: "example@gmail.com",
-  //     contactNumber: "0768582163",
-  //   },
-  // ];
-
-  // axios.get("/manager/update") //Edit Page
-
-  // .then(getUserDetails => {
-  //   userDetails.append(getUserDetails.data);
-  //   console.log(getUserDetails)
-  // }).catch(err => {
-  //   console.log(err)
-  // })
 
   const sendData = () => {
     const url = "http://localhost:8087/manager/update"; //EDIT DETAILS
@@ -49,22 +31,20 @@ export default function EditDetails(props) {
     axios
       .post(url, data)
       .then((res) => {
-        console.log("res", res);
         setAlertColor("info");
         setAlertMessage("Successfully edited.");
         setShowToTrue();
       })
       .catch((err) => {
-        console.log("error::::", err);
         setAlertColor("danger");
-        switch (err.request.status) {
+setAlertMessage("");
+        switch (err.response.request.status) {
           case 400:
-            console.log(err.data.message);
-            setAlertMessage(err.data.message);
+            setAlertMessage('Request Failed');
             setShowToTrue();
             break;
           case 401:
-            setAlertMessage(err.data.message);
+            setAlertMessage('Request Failed');
             setShowToTrue();
             break;
           case 500:

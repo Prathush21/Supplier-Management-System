@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Button, Modal, ModalHeader, ModalBody, Table } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, Table, Alert } from "reactstrap";
 import EditDetails from "./EditDetails";
 import axios from "axios";
 import "../../styles/styles_1.css";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 
 export default function EditAccountDetails() {
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userDetails, setUserDetails] = useState( []);
+  const [show, setShow] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
-  // const userDetails = 
-  //   {
-  //     id: 1,
-  //     name: "Lokesh Kanagaraj",
-  //     join_date: "lokesh24",
-  //     email: "example@gmail.com",
-  //     contact: "0768582163",
-  //   }
-  // ;
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true);
@@ -32,10 +38,35 @@ export default function EditAccountDetails() {
       .get("http://localhost:8087/manager/profile", {withCredentials:true}) //Edit Page
       .then((getUserDetails) => {
         setUserDetails(getUserDetails.data.data[0]);
-        // console.log(userDetails)
+        setShowToFalse()
       })
       .catch((err) => {
-        console.log(err);
+        setAlertMessage("");
+        switch (err.response.request.status) {
+          case 400:
+            setAlertMessage("Request Failed");
+            setShowToTrue();
+            break;
+          case 401:
+            auth.logout();
+            auth.setAlert("Session Expired! Login Again");
+            navigate("/");
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       });
   }, [userDetails]);
 
@@ -44,6 +75,9 @@ export default function EditAccountDetails() {
       <div className="Container-fluid shadow-2-strong">
         <h2>Account Details</h2>
         <br></br>
+        <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
+        <p>{alertMessage}</p>
+      </Alert>
         <div className="row">
           <div className="col-sm-12 col-md-auto mb-2 align-content-center">
             <Button color="light" onClick={setModalIsOpenToTrue}>

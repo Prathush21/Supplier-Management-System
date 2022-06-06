@@ -8,16 +8,32 @@ import {
   MDBCol,
   MDBRow,
 } from "mdb-react-ui-kit";
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import "../../styles/styles_2.css";
 import EditStorage from "./EditStorage";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
 
 export default function Storage() {
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(0);
-  const [storage, setStorage] = useState([
-  ]);
+  const [storage, setStorage] = useState([]);
+  const [show, setShow] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const setShowToTrue = () => {
+    setShow(true);
+  };
+
+  const setShowToFalse = () => {
+    setShow(false);
+  };
+
 
 
   const setModalIsOpenToTrue = () => {
@@ -40,8 +56,35 @@ export default function Storage() {
       .get("http://localhost:8087/storage/all")
       .then((getItem) => {
         setStorage(getItem.data.data );
+        setShowToFalse()
       })
       .catch((err) => {
+        setAlertMessage("");
+        switch (err.response.request.status) {
+          case 400:
+            setAlertMessage("Request Failed");
+            setShowToTrue();
+            break;
+          case 401:
+            auth.logout();
+            auth.setAlert("Session Expired! Login Again");
+            navigate("/");
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
 
       });
   }, [storage]);
@@ -51,6 +94,9 @@ export default function Storage() {
       <div className="Container-fluid shadow-2-strong">
         <h2>Storage</h2>
         <br></br>
+        <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
+        <p>{alertMessage}</p>
+      </Alert>
         <MDBRow>
           {storage.map((good, index) => (
             <MDBCol sm="4">

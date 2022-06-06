@@ -32,7 +32,6 @@ export default function EditStorage(props) {
 
   const sendData = () => {
     const url = `http://localhost:8087/storage/update/${data.id}`;
-    console.log(data)
    axios
       .post(url, data)
       .then((res) => {
@@ -42,10 +41,10 @@ export default function EditStorage(props) {
       })
       .catch((err) => {
         setAlertColor("danger");
-        switch (err.request.status) {
+setAlertMessage("");
+        switch (err.response.request.status) {
           case 400:
-            console.log(err.data.message);
-            setAlertMessage(err.data.message);
+            setAlertMessage('Request Failed');
             setShowToTrue();
             break;
           case 401:

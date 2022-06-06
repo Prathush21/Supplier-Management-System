@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
           .post(url, data, { withCredentials: true })
           .then((res) => {
             if (res.request.status === 200 || res.request.status === 201) {
-              console.log(res);
               setRole(res.data.role);
               setUser(user);
               setAlertShow(false);
