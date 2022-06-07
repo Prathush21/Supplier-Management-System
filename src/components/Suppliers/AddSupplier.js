@@ -75,6 +75,7 @@ export default function AddSupplier() {
         setAlertColor('info')
         setAlertMessage(res.data.message)
         setShow(true)
+        navigate(0);
       }).catch(err => {
        
         setAlertColor("danger");
