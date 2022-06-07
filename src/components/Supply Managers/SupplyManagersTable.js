@@ -61,7 +61,7 @@ export default function SupplyManagersTable() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:3000/user/managers", { withCredentials: true })
+      .get("http://localhost:8087/user/managers", { withCredentials: true })
       .then((getManagers) => {
         let data = [];
         getManagers.data.data.forEach((m) => {
@@ -103,7 +103,7 @@ export default function SupplyManagersTable() {
   }, []);
 
   const deleteRecords = () => {
-    const url = "http://localhost:3000/user/manager-delete";
+    const url = "http://localhost:8087/user/manager-delete";
     axios
       .post(url, selectedrows)
       .then((res) => {

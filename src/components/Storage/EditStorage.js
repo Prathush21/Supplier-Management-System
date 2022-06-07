@@ -30,7 +30,7 @@ export default function EditStorage(props) {
   };
 
   const sendData = () => {
-    const url = `http://localhost:3000/storage/update/${data.id}`;
+    const url = `http://localhost:8087/storage/update/${data.id}`;
     axios.defaults.withCredentials = true;
     axios
       .post(url, data, { withCredentials: true })

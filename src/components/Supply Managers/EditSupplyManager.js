@@ -29,11 +29,11 @@ export default function EditSupplyManager(props) {
   };
 
   const sendData = () => {
-    const url = `http://localhost:3000/manager/update`; //Edit Supplier
-
+    const url = `http://localhost:8087/manager/update`; //Edit Supplier
+    
     axios.defaults.withCredentials = true;
     axios
-      .post(url, data, { withCredentials: true })
+      .post(url, data, {withCredentials:true})
       .then((res) => {
         setAlertColor("info");
         setAlertMessage("Successfully added.");

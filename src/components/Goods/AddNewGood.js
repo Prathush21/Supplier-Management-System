@@ -67,7 +67,7 @@ export default function AddGood() {
   // };
 
   const sendData = () => {
-    const url = "http://localhost:3000/storage/addgood";
+    const url = "http://localhost:8087/storage/addgood";
     var formData = new FormData();
     formData.append("type", data.type);
     formData.append("unit", data.unit);

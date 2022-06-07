@@ -44,7 +44,7 @@ export default function AddSupplRecord() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:3000/supplier/all", { withCredentials: true })
+      .get("http://localhost:8087/supplier/all", { withCredentials: true })
       .then((getRecords) => {
         setSupplyRecords(getRecords.data.data);
       })
@@ -54,7 +54,7 @@ export default function AddSupplRecord() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:3000/good/alltypes", { withCredentials: true })
+      .get("http://localhost:8087/good/alltypes", { withCredentials: true })
       .then((getGoods) => {
         setTypes(getGoods.data.data);
       })
@@ -107,7 +107,7 @@ export default function AddSupplRecord() {
   };
 
   const sendData = () => {
-    const url = "http://localhost:3000/supplyRecord/create";
+    const url = "http://localhost:8087/supplyRecord/create";
     axios.defaults.withCredentials = true;
     axios
       .post(url, data, { withCredentials: true })

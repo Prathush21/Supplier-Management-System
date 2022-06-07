@@ -65,7 +65,7 @@ export default function AddSupplyManager() {
   };
 
   const sendData = () => {
-    const url = "http://localhost:3000/user/signup";
+    const url = "http://localhost:8087/user/signup";
     axios.defaults.withCredentials = true;
     axios
       .post(url, data, { withCredentials: true })

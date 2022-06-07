@@ -44,7 +44,7 @@ export default function Good() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:3000/good/allgoods", { withCredentials: true })
+      .get("http://localhost:8087/good/allgoods", { withCredentials: true })
 
       .then((getGoods) => {
         setGoods(getGoods.data.data);
@@ -118,7 +118,7 @@ export default function Good() {
                     <CardImg
                       style={{ maxHeight: "30vh", maxWidth: "auto" }}
                       // className="img-fluid"
-                      src={`http://localhost:3000/img/${good.image}`}
+                      src={`http://localhost:8087/img/${good.image}`}
                       alt="..."
                       position="top"
                       width="auto"

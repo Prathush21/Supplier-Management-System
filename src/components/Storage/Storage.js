@@ -56,7 +56,7 @@ export default function Storage() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:3000/storage/all", { withCredentials: true })
+      .get("http://localhost:8087/storage/all", { withCredentials: true })
       .then((getItem) => {
         let data = [];
         getItem.data.data.forEach((m) => {
@@ -130,7 +130,7 @@ export default function Storage() {
                       </CardText>
                       <CardImg
                         style={{ maxHeight: "30vh", maxWidth: "auto" }}
-                        src={`http://localhost:3000/img/${good.image}`}
+                        src={`http://localhost:8087/img/${good.image}`}
                         alt="..."
                         position="top"
                         width="auto"
