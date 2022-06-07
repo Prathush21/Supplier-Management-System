@@ -31,7 +31,7 @@ export default function EditStorage(props) {
   };
 
   const sendData = () => {
-    const url = `http://localhost:8087/storage/update/${data.id}`;
+    const url = `https://s-16-sms.herokuapp.com/storage/update/${data.id}`;
     axios.defaults.withCredentials = true;
    axios
       .post(url, data, {withCredentials:true})

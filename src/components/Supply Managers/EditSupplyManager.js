@@ -29,7 +29,7 @@ export default function EditSupplyManager(props) {
   };
 
   const sendData = () => {
-    const url = `http://localhost:8087/manager/update`; //Edit Supplier
+    const url = `https://s-16-sms.herokuapp.com/manager/update`; //Edit Supplier
     
     axios.defaults.withCredentials = true;
     axios

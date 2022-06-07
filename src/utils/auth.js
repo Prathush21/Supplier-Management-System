@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
     });
 
   const logout = () => {
-    axios.get("http://localhost:8087/user/logout");
+    axios.get("https://s-16-sms.herokuapp.com/user/logout");
     setUser(null);
     sessionStorage.removeItem('user')
     sessionStorage.removeItem('role')

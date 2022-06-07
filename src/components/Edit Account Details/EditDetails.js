@@ -26,7 +26,7 @@ export default function EditDetails(props) {
 
   const sendData = () => {
     axios.defaults.withCredentials = true;
-    const url = "http://localhost:8087/manager/update"; //EDIT DETAILS
+    const url = "https://s-16-sms.herokuapp.com/manager/update"; //EDIT DETAILS
 
     axios
       .post(url, data , {withCredentials:true})

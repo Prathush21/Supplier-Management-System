@@ -45,7 +45,7 @@ export default function Good() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:8087/good/allgoods", {withCredentials:true})
+      .get("https://s-16-sms.herokuapp.com/good/allgoods", {withCredentials:true})
 
       .then((getGoods) => {
 

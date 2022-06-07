@@ -47,7 +47,7 @@ export default function AddSupplRecord() {
 
   useEffect(() => {
     axios.defaults.withCredentials = true;
-    axios.get("http://localhost:8087/supplier/all", {withCredentials:true})
+    axios.get("https://s-16-sms.herokuapp.com/supplier/all", {withCredentials:true})
       .then(getRecords => {
         
         setSupplyRecords(getRecords.data.data);
@@ -58,7 +58,7 @@ export default function AddSupplRecord() {
 
   useEffect(() => {
     axios.defaults.withCredentials = true;
-    axios.get("http://localhost:8087/good/alltypes", {withCredentials:true})
+    axios.get("https://s-16-sms.herokuapp.com/good/alltypes", {withCredentials:true})
       .then(getGoods => {
         
         setTypes(getGoods.data.data)
@@ -116,7 +116,7 @@ export default function AddSupplRecord() {
   };
 
   const sendData = () => {
-    const url = 'http://localhost:8087/supplyRecord/create';
+    const url = 'https://s-16-sms.herokuapp.com/supplyRecord/create';
     axios.defaults.withCredentials = true;
     axios
       .post(url, data, {withCredentials:true})

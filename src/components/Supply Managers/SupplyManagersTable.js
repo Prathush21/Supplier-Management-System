@@ -55,7 +55,7 @@ export default function SupplyManagersTable() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:8087/user/managers", {withCredentials:true})
+      .get("https://s-16-sms.herokuapp.com/user/managers", {withCredentials:true})
       .then((getManagers) => {
         
         let data = []
@@ -99,7 +99,7 @@ export default function SupplyManagersTable() {
 
   
   const deleteRecords = () => {
-    const url = 'http://localhost:8087/user/manager-delete'
+    const url = 'https://s-16-sms.herokuapp.com/user/manager-delete'
     axios.post(url, selectedrows).then((res) => {
       setShowToFalse()
     }).catch(err => {

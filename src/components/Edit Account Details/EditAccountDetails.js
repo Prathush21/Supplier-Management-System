@@ -35,7 +35,7 @@ export default function EditAccountDetails() {
   useEffect(() => {
     axios.defaults.withCredentials = true
     axios
-      .get("http://localhost:8087/manager/profile", {withCredentials:true}) //Edit Page
+      .get("https://s-16-sms.herokuapp.com/manager/profile", {withCredentials:true}) //Edit Page
       .then((getUserDetails) => {
         setUserDetails(getUserDetails.data.data[0]);
         setShowToFalse()

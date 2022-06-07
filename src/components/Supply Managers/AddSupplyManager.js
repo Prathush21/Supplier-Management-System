@@ -66,7 +66,7 @@ export default function AddSupplyManager() {
   };
 
   const sendData = () => {
-    const url = "http://localhost:8087/user/signup";
+    const url = "https://s-16-sms.herokuapp.com/user/signup";
     axios.defaults.withCredentials = true;
     axios
       .post(url, data, {withCredentials:true})

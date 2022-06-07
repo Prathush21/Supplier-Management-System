@@ -60,7 +60,7 @@ export default function SupplersTable() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("http://localhost:8087/supplier/all", {withCredentials:true})
+      .get("https://s-16-sms.herokuapp.com/supplier/all", {withCredentials:true})
       .then((getSuppliers) => {
         let data = []
         getSuppliers.data.data.forEach(m => {
@@ -164,7 +164,7 @@ export default function SupplersTable() {
   const { globalFilter } = state;
 
   const deleteRecords = () => {
-    const url = 'http://localhost:8087/supplier/remove'
+    const url = 'https://s-16-sms.herokuapp.com/supplier/remove'
     axios.post(url, selectedrows).then((res) => {
       setShowToFalse()
     }).catch(err => {
