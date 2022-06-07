@@ -119,7 +119,7 @@ export default function Storage() {
                   style={{
                     margin: "0.5rem",
                     border: "0px",
-                    backgroundColor: "rgba(95, 106, 230, 0.33)",
+                    backgroundColor: "rgba(98, 126, 141, 0.34)",
                     height: '70vh'
                   }}
                 >
