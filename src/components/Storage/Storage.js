@@ -59,7 +59,7 @@ export default function Storage() {
   useEffect(() => {
     axios.defaults.withCredentials = true;
     axios
-      .get("https://s-16-sms.herokuapp.com/storage/all", {withCredentials:true})
+      .get("http://localhost:8087/storage/all", {withCredentials:true})
       .then((getItem) => {
         let data = []
         getItem.data.data.forEach(m => {

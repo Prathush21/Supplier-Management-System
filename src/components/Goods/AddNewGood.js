@@ -67,7 +67,7 @@ export default function AddGood() {
   // };
 
   const sendData = () => {
-    const url = "https://s-16-sms.herokuapp.com/storage/addgood";
+    const url = "http://localhost:8087/storage/addgood";
     var formData = new FormData();
     formData.append("type", data.type);
     formData.append("unit", data.unit);

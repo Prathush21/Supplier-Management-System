@@ -67,7 +67,7 @@ export default function AddSupplier() {
   }
 
   const sendData = () => {
-      const url = "https://s-16-sms.herokuapp.com/supplier/create"
+      const url = "http://localhost:8087/supplier/create"
       
       axios.defaults.withCredentials = true;
       axios.post(url,data, {withCredentials:true}).then((res) => {
