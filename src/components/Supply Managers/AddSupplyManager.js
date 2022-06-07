@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Input, Label, Alert } from "reactstrap";
 import "../../styles/styles_2.css";
 import axios from "axios";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
 
 export default function AddSupplyManager() {
-
   const auth = useAuth();
   const navigate = useNavigate();
 
@@ -58,18 +57,18 @@ export default function AddSupplyManager() {
       errors.email = "Invalid Email Address";
     }
 
-    if(!reContact.test(values.contact)){
-      errors.contact = 'Invalid Contact Number'
+    if (!reContact.test(values.contact)) {
+      errors.contact = "Invalid Contact Number";
     }
 
     return errors;
   };
 
   const sendData = () => {
-    const url = "http://localhost:8087/user/signup";
+    const url = "http://localhost:3000/user/signup";
     axios.defaults.withCredentials = true;
     axios
-      .post(url, data, {withCredentials:true})
+      .post(url, data, { withCredentials: true })
       .then((res) => {
         setAlertColor("info");
         setAlertMessage(res.data.message);
@@ -77,7 +76,7 @@ export default function AddSupplyManager() {
       })
       .catch((err) => {
         setAlertColor("danger");
-setAlertMessage("");
+        setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
             setAlertMessage(err.response.data.message);
@@ -85,7 +84,7 @@ setAlertMessage("");
             break;
           case 401:
             auth.logout();
-            auth.setAlert('Session Expired! Login Again')
+            auth.setAlert("Session Expired! Login Again");
             navigate("/");
             break;
           case 500:
