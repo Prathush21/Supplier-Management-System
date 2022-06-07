@@ -86,13 +86,13 @@ export default function Good() {
 
   return (
     <React.Fragment>
-      <div className="Container-fluid shadow-2-strong">
+      <div className="Container-fluid shadow ">
         <h2>Goods</h2>
         <br></br>
         <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
         <p>{alertMessage}</p>
       </Alert>
-        <Button color="light" onClick={setModalIsOpenToTrue}>
+        <Button outline color="dark" className="shadow-sm" onClick={setModalIsOpenToTrue}>
           {" "}
           Add New Good Type{" "}
         </Button>
@@ -105,7 +105,7 @@ export default function Good() {
             <Col sm="4">
               <Card
                 key={good.id}
-                className="shadow-5"
+                className="shadow"
                 style={{
                   margin: "0.5rem",
                   border: "0px",

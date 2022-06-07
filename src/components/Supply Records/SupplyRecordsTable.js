@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useTable, useGlobalFilter } from "react-table";
-import { Button, Table, Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
+import {
+  Button,
+  Table,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Alert,
+} from "reactstrap";
 import axios from "axios";
 import EditSupplyRecords from "./EditSupplyRecord";
 import { GlobalFilter } from "../Utils/GlobalFilter";
@@ -34,9 +41,7 @@ const COLUMNS = [
   },
 ];
 
-
 export default function SupplyRecordsTable() {
-
   const auth = useAuth();
   const navigate = useNavigate();
 
@@ -53,22 +58,23 @@ export default function SupplyRecordsTable() {
   };
 
   const dateFormatter = (date) => {
-    return date.split("T")[0]
-}
-
+    return date.split("T")[0];
+  };
 
   useEffect(() => {
     axios.defaults.withCredentials = true;
-    axios.get("http://localhost:8087/supplyRecord/all", {withCredentials:true})
-      .then(getRecords => {
-        let data = []
-        getRecords.data.data.forEach(m => {
-          m.received_date = dateFormatter(m.received_date)
-          data.push(m)
+    axios
+      .get("http://localhost:8087/supplyRecord/all", { withCredentials: true })
+      .then((getRecords) => {
+        let data = [];
+        getRecords.data.data.forEach((m) => {
+          m.received_date = dateFormatter(m.received_date);
+          data.push(m);
         });
         setSupplyRecords(data);
-        setShowToFalse()
-      }).catch(err => {
+        setShowToFalse();
+      })
+      .catch((err) => {
         setAlertMessage("");
         switch (err.response.request.status) {
           case 400:
@@ -95,15 +101,14 @@ export default function SupplyRecordsTable() {
           default:
             break;
         }
-      })
-  }, []);   
-
+      });
+  }, []);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalId, setModalId] = useState(1);
 
   const setModalIsOpenToTrue = () => {
-    setModalIsOpen(true)
+    setModalIsOpen(true);
   };
 
   const setModalIsOpenToFalse = () => {
@@ -131,7 +136,7 @@ export default function SupplyRecordsTable() {
       columns: COLUMNS,
       data: supplyrecords,
     },
-     useGlobalFilter,
+    useGlobalFilter,
     (hooks) => {
       hooks.visibleColumns.push((columns) => {
         return [
@@ -139,9 +144,11 @@ export default function SupplyRecordsTable() {
           {
             id: "edit",
             Cell: ({ row }) => (
-              <Button outline color="dark" onClick={() => viewModal(row.id)}>Edit</Button>
+              <Button outline color="dark" onClick={() => viewModal(row.id)}>
+                Edit
+              </Button>
             ),
-          }, 
+          },
         ];
       });
     }
@@ -151,50 +158,57 @@ export default function SupplyRecordsTable() {
 
   return (
     <React.Fragment>
-              <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
+      <Alert isOpen={show} color="danger" toggle={setShowToFalse}>
         <p>{alertMessage}</p>
       </Alert>
-    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-    <div>
-      <Table
-        responsive
-        striped
-        bordered
-        hover
-        className="Mytable"
-        {...getTableProps()}
-      >
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <br></br>
+      <div>
+        <Table
+          responsive
+          striped
+          bordered
+          hover
+          className="Mytable table-striped shadow-sm table-striped shadow-sm"
+          {...getTableProps()}
+        >
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      <Modal isOpen={modalIsOpen}>
-        <ModalHeader close={<Button close onClick={setModalIsOpenToFalse}></Button>}>
-          <h3>Edit Supply Record</h3>
-        </ModalHeader>
-        <ModalBody><EditSupplyRecords row={modalId} supplyrecords={supplyrecords}/></ModalBody>
-      </Modal>
-    </div>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+        <Modal isOpen={modalIsOpen}>
+          <ModalHeader
+            close={<Button close onClick={setModalIsOpenToFalse}></Button>}
+          >
+            <h3>Edit Supply Record</h3>
+          </ModalHeader>
+          <ModalBody>
+            <EditSupplyRecords row={modalId} supplyrecords={supplyrecords} />
+          </ModalBody>
+        </Modal>
+      </div>
     </React.Fragment>
   );
 }

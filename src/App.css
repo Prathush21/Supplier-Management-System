@@ -12,7 +12,7 @@ li {
 }
 
 .navbar-dark,.navigationBar {
-  background-color: #2d37a8;
+  background-color: #336480;
 }
 
 .App{
@@ -55,13 +55,13 @@ hr{
 }
 
 h2{
-  color: #0411a4;
+  color: #172d39;
   font-family: 'Slabo 27px', serif;
 }
 
 h1{
   font-family: 'Bree Serif', serif;
-  color: #0411a4;
+  color: #172d39;
 }
 
 a.nav-link.active{

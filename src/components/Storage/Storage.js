@@ -102,7 +102,7 @@ export default function Storage() {
 
   return (
     <React.Fragment>
-      <div className="Container-fluid shadow-2-strong">
+      <div className="Container-fluid shadow ">
         <h2>Storage</h2>
         <br></br>
         <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
@@ -115,7 +115,7 @@ export default function Storage() {
               <center>
                 <Card
                   key={good.id}
-                  className="shadow-5"
+                  className="shadow"
                   style={{
                     margin: "0.5rem",
                     border: "0px",
@@ -146,6 +146,7 @@ export default function Storage() {
                       <br></br>
                     </CardText>
                     <Button
+                     className="shadow-sm"
                       outline
                       color="dark"
                       onClick={() => viewModal(good.id)}

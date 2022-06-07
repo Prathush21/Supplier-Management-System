@@ -72,7 +72,7 @@ export default function EditAccountDetails() {
 
   return (
     <React.Fragment>
-      <div className="Container-fluid shadow-2-strong">
+      <div className="Container-fluid shadow ">
         <h2>Account Details</h2>
         <br></br>
         <Alert isOpen={show} color='danger' toggle={setShowToFalse}>
@@ -80,7 +80,7 @@ export default function EditAccountDetails() {
       </Alert>
         <div className="row">
           <div className="col-sm-12 col-md-auto mb-2 align-content-center">
-            <Button color="light" onClick={setModalIsOpenToTrue}>
+            <Button outline color="dark" className="shadow-sm" onClick={setModalIsOpenToTrue}>
               Account Details
             </Button>
           </div>

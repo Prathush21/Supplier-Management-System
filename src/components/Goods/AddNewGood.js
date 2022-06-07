@@ -120,7 +120,7 @@ export default function AddGood() {
       <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
         <p>{alertMessage}</p>
       </Alert>
-      <div className="Container-fluid shadow-2-strong">
+      <div className="Container-fluid shadow ">
         <Form className="form" onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="type">Type Name</Label>

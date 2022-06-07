@@ -199,7 +199,7 @@ export default function SupplersTable() {
 
   return (
     <React.Fragment>
-      <Button color="dark"
+      <Button color="secondary" outline className="shadow-sm"
       onClick={deleteRecords}>Delete Supplier</Button>
       {/* {data = SupplyRecordsTable.selectedrows} */}
       <br></br>
@@ -208,13 +208,14 @@ export default function SupplersTable() {
       </Alert>
       <br></br>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <br></br>
       <div>
         <Table
           responsive
           striped
           bordered
           hover
-          className="Mytable"
+          className="Mytable table-striped shadow-sm"
           {...getTableProps()}
         >
           <thead>

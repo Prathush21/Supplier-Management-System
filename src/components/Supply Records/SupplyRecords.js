@@ -26,13 +26,13 @@ class SupplyRecords extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid shadow-2-strong">
+        <div className="Container-fluid shadow ">
           <h2>Supply Records </h2>
           <br></br>
-          <Button color="light" onClick={this.toggleModal}>
+          <Button outline color="dark" className="shadow-sm" onClick={this.toggleModal}>
             Add New Record
           </Button>
-          <br></br> <br></br> <br></br>
+          <br></br> <br></br>
           <SupplyRecordsTable />
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

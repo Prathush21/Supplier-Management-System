@@ -36,10 +36,10 @@ class Suppliers extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid shadow-2-strong">
+        <div className="Container-fluid shadow ">
           <h2>Supplier</h2>
           <br></br>
-          <Button color="light" onClick={this.toggleModal}>
+          <Button outline color="dark" className="shadow-sm" onClick={this.toggleModal}>
             Add New Supplier
           </Button>
           <br></br>

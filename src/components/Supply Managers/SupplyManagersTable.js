@@ -69,31 +69,31 @@ export default function SupplyManagersTable() {
       .catch((err) => {
         console.log(err);
         setAlertMessage("");
-        // switch (err.response.request.status) {
-        //   case 400:
-        //     setAlertMessage(err.response.data.message);
-        //     setShowToTrue();
-        //     break;
-        //   case 401:
-        //     auth.logout();
-        //     auth.setAlert("Session Expired! Login Again");
-        //     navigate("/");
-        //     break;
-        //   case 500:
-        //     setAlertMessage("Server Error!");
-        //     setShowToTrue();
-        //     break;
-        //   case 501:
-        //     setAlertMessage("Server Error!");
-        //     setShowToTrue();
-        //     break;
-        //   case 502:
-        //     setAlertMessage("Server Error!");
-        //     setShowToTrue();
-        //     break;
-        //   default:
-        //     break;
-        // }
+        switch (err.response.request.status) {
+          case 400:
+            setAlertMessage(err.response.data.message);
+            setShowToTrue();
+            break;
+          case 401:
+            auth.logout();
+            auth.setAlert("Session Expired! Login Again");
+            navigate("/");
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShowToTrue();
+            break;
+          default:
+            break;
+        }
       });
   }, []);
 
@@ -203,7 +203,7 @@ export default function SupplyManagersTable() {
 
   return (
     <React.Fragment>
-      <Button color="dark"
+      <Button outline color="secondary" className="shadow-sm"
       onClick={deleteRecords}
       >Delete Supply Manager</Button>
       
@@ -213,13 +213,14 @@ export default function SupplyManagersTable() {
       </Alert>
       <br></br>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <br></br>
       <div>
         <Table
           responsive
           striped
           bordered
           hover
-          className="Mytable"
+          className="Mytable table-striped shadow-sm"
           {...getTableProps()}
         >
           <thead>

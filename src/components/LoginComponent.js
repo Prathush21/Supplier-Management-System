@@ -88,12 +88,13 @@ export default function Login() {
         <div className="">
           <div className="position-absolute top-50 start-50 translate-middle">
             <Card
-              className="shadow-5"
+              className="shadow"
               style={{
-                margin: "2rem",
+                margin: "5rem",
                 border: "0px",
-                color: "#fff",
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
+                borderRadius: '10px',
+                color: "rgb(38, 59, 70)",
+                backgroundColor: "rgba(255, 255, 255, 0.3)",
               }}
             >
               <CardBody>
@@ -148,6 +149,7 @@ export default function Login() {
                         type="submit"
                         value="submit"
                         color="primary"
+                        className="shadow-sm"
                       >
                         Login
                       </Button>

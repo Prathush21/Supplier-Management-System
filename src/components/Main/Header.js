@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Navbar,
-  NavbarBrand,
-  NavItem,
-} from "reactstrap";
+import { Container, Navbar, NavbarBrand, NavItem, Nav } from "reactstrap";
 import { Button } from "reactstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
@@ -24,30 +19,36 @@ export default function Header() {
     <>
       <Navbar className="navigationBar">
         <Container fluid>
-          <NavbarBrand>
-            <img
-              src="/assets/images/logo_new.png"
-              width="120"
-              alt=""
-              loading="lazy"
-            />
-            <h1 className="header1">{name}</h1>
-          </NavbarBrand>
-          <NavItem>
-            <span>
-              {" "}
-              <NavLink
-                style={{ color: "#fff", margin: "5px" }}
-                to="editaccountdetails"
-              >
-                {auth.user}
-              </NavLink>{" "}
-              {"   "}
-              <Button color="light" onClick={handleLogout}>
-                <span className="fa fa-sign-out fa-lg"></span> Logout
-              </Button>
-            </span>
-          </NavItem>
+          <Nav>
+            {" "}
+            <NavbarBrand>
+              <img
+                src="/assets/images/logo_new.png"
+                width="120"
+                alt=""
+                loading="lazy"
+              />
+              <h1 className="header1">{name}</h1>
+            </NavbarBrand>
+          </Nav>
+          <Nav>
+            {" "}
+            <NavItem>
+              <span>
+                {" "}
+                <NavLink
+                  style={{ color: "#fff", margin: "5px" }}
+                  to="editaccountdetails"
+                >
+                  
+                </NavLink>{" "}
+                {"   "}
+                <Button outline color="dark" onClick={handleLogout}>
+                  <span className="fa fa-sign-out fa-lg"></span> Logout
+                </Button>
+              </span>
+            </NavItem>
+          </Nav>
         </Container>
       </Navbar>
     </>

@@ -102,7 +102,7 @@ setAlertMessage("");
     <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
       <p>{alertMessage}</p>
     </Alert>
-    <div className="Container-fluid shadow-2-strong">
+    <div className="Container-fluid shadow ">
       <div className="row">
         <div className="col-6 offset-1">
           <Form className="form"  onSubmit={handleSubmit}>

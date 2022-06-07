@@ -3,7 +3,7 @@ import React from "react";
 export default function Home() {
   const name = "Supplier Management System";
   return (
-    <div className="Container-fluid shadow-2-strong">
+    <div className="Container-fluid shadow ">
       <div className="row justify-content-center">
         <h1 className="text-center">WELCOME</h1>
         <h1 className="text-center">to</h1>
@@ -13,7 +13,7 @@ export default function Home() {
       <div className="row d-flex align-items-center justify-content-center">
         <img
           src="/assets/images/logo_new.png"
-          className="img-fluid shadow-2-strong"
+          className="img-fluid shadow "
           alt="logo.png"
           style={{ maxWidth: "30rem" }}
         />
