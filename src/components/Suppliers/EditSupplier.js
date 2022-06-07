@@ -33,7 +33,7 @@ export default function EditSupplier(props) {
     const url = `http://localhost:8087/supplier/edit/${ID}`;
     axios.defaults.withCredentials = true;
     axios
-      .post(url, data, {withCredentials:true})
+      .post(url, data, { withCredentials: true })
       .then((res) => {
         setAlertColor("info");
         setAlertMessage(res.data.message);

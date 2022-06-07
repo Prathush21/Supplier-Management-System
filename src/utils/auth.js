@@ -23,11 +23,11 @@ export const AuthProvider = ({ children }) => {
           .then((res) => {
             if (res.request.status === 200 || res.request.status === 201) {
               setRole(res.data.role);
-              sessionStorage.setItem('user', user)
-              sessionStorage.setItem('role', res.data.role)
-              setUser(sessionStorage.getItem('user'));
+              sessionStorage.setItem("user", user);
+              sessionStorage.setItem("role", res.data.role);
+              setUser(sessionStorage.getItem("user"));
               setAlertShow(false);
-              setAlertMessage('');
+              setAlertMessage("");
               resolve(user);
             } else {
               reject(res.data.message);
@@ -66,24 +66,34 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     axios.get("http://localhost:8087/user/logout");
     setUser(null);
-    sessionStorage.removeItem('user')
-    sessionStorage.removeItem('role')
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("role");
     setRole(null);
   };
 
   const setAlert = (msg) => {
-      setAlertMessage(msg)
-      setAlertShow(true)
-  }
+    setAlertMessage(msg);
+    setAlertShow(true);
+  };
 
   const setAttribute = (value) => {
-      setUser(value.username);
-      setRole(value.role);
-  }
+    setUser(value.username);
+    setRole(value.role);
+  };
 
   return (
-    <AuthContext.Provider set = {(value) => setAttribute(value)}
-      value={{ user, role, alertMessage, alertShow,  login, logout, setAlert, setAttribute}}
+    <AuthContext.Provider
+      set={(value) => setAttribute(value)}
+      value={{
+        user,
+        role,
+        alertMessage,
+        alertShow,
+        login,
+        logout,
+        setAlert,
+        setAttribute,
+      }}
     >
       {children}
     </AuthContext.Provider>

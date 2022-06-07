@@ -31,12 +31,12 @@ export default function EditSupplyRecords(props) {
     const url = `http://localhost:8087/supplyRecord/edit/${data.id}`; //Edit Supplier
     axios.defaults.withCredentials = true;
     axios
-      .patch(url, data, {withCredentials:true})
+      .patch(url, data, { withCredentials: true })
       .then((res) => {
         setAlertColor("info");
         setAlertMessage(res.data.message);
         setShowToTrue();
-        navigate(0)
+        navigate(0);
       })
       .catch((err) => {
         setAlertColor("danger");

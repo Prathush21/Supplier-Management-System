@@ -29,7 +29,7 @@ export default function EditDetails(props) {
     const url = "http://localhost:8087/manager/update"; //EDIT DETAILS
 
     axios
-      .post(url, data , {withCredentials:true})
+      .post(url, data, { withCredentials: true })
       .then((res) => {
         setAlertColor("info");
         setAlertMessage("Successfully edited.");
