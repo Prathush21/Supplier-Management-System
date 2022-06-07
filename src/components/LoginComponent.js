@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useLocation } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
-import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
+import { Button, Form, FormGroup, Label, Input, Alert, Card,  CardBody } from "reactstrap";
 import { useAuth } from "../utils/auth";
 import "../styles/login.css";
 
@@ -88,16 +87,17 @@ export default function Login() {
       <div className="">
         <div className="">
           <div className="position-absolute top-50 start-50 translate-middle">
-            <MDBCard
-              className="shadow-5"
+            <Card
+              className="shadow"
               style={{
-                margin: "2rem",
+                margin: "5rem",
                 border: "0px",
-                color: "#fff",
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
+                borderRadius: '10px',
+                color: "rgb(38, 59, 70)",
+                backgroundColor: "rgba(255, 255, 255, 0.3)",
               }}
             >
-              <MDBCardBody>
+              <CardBody>
                 <h1 className="">Supplier Management System</h1>
                 <br></br>
                 <Alert isOpen={auth.alertShow || show} color='danger'>
@@ -149,14 +149,15 @@ export default function Login() {
                         type="submit"
                         value="submit"
                         color="primary"
+                        className="shadow-sm"
                       >
                         Login
                       </Button>
                     </div>
                   </Form>
                 </div>
-              </MDBCardBody>
-            </MDBCard>
+              </CardBody>
+            </Card>
           </div>
         </div>
       </div>

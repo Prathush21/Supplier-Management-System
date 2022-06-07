@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
           password: password,
         };
 
-        const url = "http://localhost:8087/user/login";
+        const url = "https://s-16-sms.herokuapp.com/user/login";
         axios.defaults.withCredentials = true;
         axios
           .post(url, data, { withCredentials: true })
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
     });
 
   const logout = () => {
-    axios.get("http://localhost:8087/user/logout");
+    axios.get("https://s-16-sms.herokuapp.com/user/logout");
     setUser(null);
     sessionStorage.removeItem('user')
     sessionStorage.removeItem('role')

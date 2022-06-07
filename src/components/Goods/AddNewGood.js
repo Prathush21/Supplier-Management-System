@@ -67,7 +67,12 @@ export default function AddGood() {
   // };
 
   const sendData = () => {
-    const url = "http://localhost:8087/storage/addgood";
+    const url = "https://s-16-sms.herokuapp.com/storage/addgood";
+    var formData = new FormData();
+    formData.append("type", data.type);
+    formData.append("unit", data.unit);
+    formData.append("unit_price", data.unit_price);
+    formData.append("image", image);
 
     axios.defaults.withCredentials = true;
     axios
@@ -113,7 +118,7 @@ export default function AddGood() {
       <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
         <p>{alertMessage}</p>
       </Alert>
-      <div className="Container-fluid shadow-2-strong">
+      <div className="Container-fluid shadow ">
         <Form className="form" onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="type">Type Name</Label>

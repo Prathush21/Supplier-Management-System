@@ -66,7 +66,7 @@ export default function AddSupplyManager() {
   };
 
   const sendData = () => {
-    const url = "http://localhost:8087/user/signup";
+    const url = "https://s-16-sms.herokuapp.com/user/signup";
     axios.defaults.withCredentials = true;
     axios
       .post(url, data, {withCredentials:true})
@@ -111,7 +111,7 @@ setAlertMessage("");
       <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
         <p>{alertMessage}</p>
       </Alert>
-      <div className="Container-fluid shadow-2-strong">
+      <div className="Container-fluid shadow ">
         <Form className="form" onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="name">Name</Label>

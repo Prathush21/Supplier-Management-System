@@ -31,7 +31,7 @@ export default function EditStorage(props) {
   };
 
   const sendData = () => {
-    const url = `http://localhost:8087/storage/update/${data.id}`;
+    const url = `https://s-16-sms.herokuapp.com/storage/update/${data.id}`;
     axios.defaults.withCredentials = true;
    axios
       .post(url, data, {withCredentials:true})
@@ -102,7 +102,7 @@ setAlertMessage("");
     <Alert isOpen={show} color={alertColor} toggle={setShowToFalse}>
       <p>{alertMessage}</p>
     </Alert>
-    <div className="Container-fluid shadow-2-strong">
+    <div className="Container-fluid shadow ">
       <div className="row">
         <div className="col-6 offset-1">
           <Form className="form"  onSubmit={handleSubmit}>
