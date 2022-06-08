@@ -38,6 +38,7 @@ export default function EditSupplier(props) {
         setAlertColor("info");
         setAlertMessage(res.data.message);
         setShowToTrue();
+        navigate(0);
       })
       .catch((err) => {
         setAlertColor("danger");

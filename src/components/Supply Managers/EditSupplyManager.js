@@ -38,6 +38,7 @@ export default function EditSupplyManager(props) {
         setAlertColor("info");
         setAlertMessage("Successfully added.");
         setShowToTrue();
+        navigate(0);
       })
       .catch((err) => {
         setAlertColor("danger");

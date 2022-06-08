@@ -102,6 +102,7 @@ export default function SupplyManagersTable() {
     const url = 'https://s-16-sms.herokuapp.com/user/manager-delete'
     axios.post(url, selectedrows).then((res) => {
       setShowToFalse()
+      navigate(0);
     }).catch(err => {
       setAlertMessage("");
       switch (err.response.request.status) {

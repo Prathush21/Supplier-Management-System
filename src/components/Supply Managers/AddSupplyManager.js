@@ -74,6 +74,7 @@ export default function AddSupplyManager() {
         setAlertColor("info");
         setAlertMessage(res.data.message);
         setShowToTrue();
+        navigate(0);
       })
       .catch((err) => {
         setAlertColor("danger");

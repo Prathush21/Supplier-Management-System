@@ -167,6 +167,7 @@ export default function SupplersTable() {
     const url = 'https://s-16-sms.herokuapp.com/supplier/remove'
     axios.post(url, selectedrows).then((res) => {
       setShowToFalse()
+      navigate(0);
     }).catch(err => {
       setAlertMessage("");
       switch (err.response.request.status) {
