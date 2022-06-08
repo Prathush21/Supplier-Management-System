@@ -42,6 +42,7 @@ export default function AddSupplier() {
     setformErrors(validate(formValues));
     setIsSubmit(true);
     setData(formValues);
+    navigate(0);
   };
 
   useEffect(() => {

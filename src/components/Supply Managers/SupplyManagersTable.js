@@ -108,6 +108,7 @@ export default function SupplyManagersTable() {
       .post(url, selectedrows)
       .then((res) => {
         setShowToFalse();
+        navigate(0);
       })
       .catch((err) => {
         setAlertMessage("");

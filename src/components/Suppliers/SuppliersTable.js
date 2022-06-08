@@ -74,6 +74,7 @@ export default function SupplersTable() {
         });
         setSuppliers(data);
         setShowToFalse();
+        navigate(0);
       })
       .catch((err) => {
         setAlertMessage("");
