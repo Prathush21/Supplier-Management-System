@@ -74,7 +74,6 @@ export default function SupplersTable() {
         });
         setSuppliers(data);
         setShowToFalse();
-        navigate(0);
       })
       .catch((err) => {
         setAlertMessage("");
@@ -175,6 +174,7 @@ export default function SupplersTable() {
       .post(url, selectedrows)
       .then((res) => {
         setShowToFalse();
+        navigate(0);
       })
       .catch((err) => {
         setAlertMessage("");
