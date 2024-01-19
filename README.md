@@ -1,3 +1,4 @@
+# Supplier Management System 
 Web based application for a company’s Human Resource Management
 
 System to manage their employee details, leave details and derive use-
